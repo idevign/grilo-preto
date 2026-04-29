@@ -3,17 +3,17 @@ import Link from "next/link";
 const paths = [
   {
     title: "RMP⁺ Guided",
-    description: "A structured online program you move through at your own pace.",
+    description: "The foundation. A structured online program you move through at your own pace.",
     href: "/rmp/guided",
   },
   {
     title: "RMP⁺ In-Person",
-    description: "Weekly group sessions at the Movement Ritual studio in Denver.",
+    description: "Weekly group sessions at the Movement Ritual studio in Denver. What practice by yourself cannot replicate.",
     href: "/rmp/in-person",
   },
   {
     title: "RMP⁺ Personalized",
-    description: "One-to-one work tailored to where you are and where you want to go.",
+    description: "One-to-one bespoke curriculum tailored to where you are and where you want to go.",
     href: "/rmp/personalized",
   },
 ];
@@ -50,8 +50,52 @@ export default function MovementPractice() {
         </p>
       </section>
 
+      {/* ── Intro ── */}
+      <section
+        style={{
+          padding: "0 1.5rem 4rem",
+          maxWidth: "1200px",
+          margin: "0 auto",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: "560px",
+            display: "flex",
+            flexDirection: "column",
+            gap: "1.25rem",
+          }}
+        >
+          <p
+            style={{
+              fontFamily: "var(--font-body)",
+              fontSize: "clamp(1rem, 1.8vw, 1.125rem)",
+              lineHeight: 1.8,
+              color: "var(--color-dark)",
+              margin: 0,
+              fontWeight: 300,
+            }}
+          >
+            Ritual Movement Practice is a physical-first path to self mastery.
+          </p>
+          <p
+            style={{
+              fontFamily: "var(--font-body)",
+              fontSize: "clamp(1rem, 1.8vw, 1.125rem)",
+              lineHeight: 1.8,
+              color: "var(--color-dark)",
+              margin: 0,
+              fontWeight: 300,
+            }}
+          >
+            This practice develops the whole person through the body. Not the
+            body in isolation from everything else, but as one integrated system.
+          </p>
+        </div>
+      </section>
+
       {/* ── Path cards ── */}
-      <section style={{ padding: "0 1.5rem 6rem", maxWidth: "1200px", margin: "0 auto" }}>
+      <section style={{ padding: "0 1.5rem 4rem", maxWidth: "1200px", margin: "0 auto" }}>
         <div className="mp-grid">
           {paths.map((path) => (
             <div
@@ -99,29 +143,18 @@ export default function MovementPractice() {
         </div>
       </section>
 
-      {/* ── Placeholder text ── */}
+      {/* ── Full practice link ── */}
       <section
         style={{
           padding: "0 1.5rem 8rem",
           maxWidth: "1200px",
           margin: "0 auto",
-          borderTop: "1px solid var(--color-subtle)",
-          paddingTop: "4rem",
+          textAlign: "center",
         }}
       >
-        <p
-          style={{
-            fontFamily: "var(--font-body)",
-            fontSize: "clamp(1rem, 1.8vw, 1.125rem)",
-            lineHeight: 1.8,
-            color: "var(--color-dark)",
-            maxWidth: "560px",
-            margin: 0,
-            fontWeight: 300,
-          }}
-        >
-          Placeholder — more about the movement practice philosophy, the arc of the work, and what to expect will live here.
-        </p>
+        <Link href="/rmp" className="mp-full-link">
+          Explore the full practice →
+        </Link>
       </section>
 
       <style>{`
@@ -150,6 +183,15 @@ export default function MovementPractice() {
           transition: opacity 0.2s;
         }
         .mp-card-link:hover { opacity: 1; }
+        .mp-full-link {
+          font-family: var(--font-body);
+          font-size: 0.875rem;
+          color: var(--color-mid);
+          text-decoration: none;
+          letter-spacing: 0.03em;
+          transition: color 0.2s;
+        }
+        .mp-full-link:hover { color: var(--color-dark); }
       `}</style>
     </main>
   );
