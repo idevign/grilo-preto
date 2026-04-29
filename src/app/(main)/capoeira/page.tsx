@@ -1,6 +1,7 @@
 export default function Capoeira() {
   return (
     <main>
+
       {/* ── Hero ── */}
       <section style={{ padding: "5rem 1.5rem 4rem", maxWidth: "1200px", margin: "0 auto" }}>
         <h1
@@ -26,139 +27,375 @@ export default function Capoeira() {
             margin: 0,
           }}
         >
-          Afro-Brazilian martial art&nbsp;&nbsp;·&nbsp;&nbsp;Culture&nbsp;&nbsp;·&nbsp;&nbsp;Community
+          An Afro-Brazilian Martial Art
         </p>
       </section>
 
-      {/* ── Link blocks ── */}
-      <section style={{ padding: "0 1.5rem 6rem", maxWidth: "1200px", margin: "0 auto" }}>
-        <div className="capoeira-grid">
-          <LinkBlock
-            title="UCA Colorado — In Person"
-            description="Join us in Denver for open classes, workshops, and roda. Rooted in the lineage of Mestre Acordeon."
-            label="Visit UCA Colorado"
-            href="https://ucacolorado.com"
-            external
-          />
-          <LinkBlock
-            title="Grilo Preto on YouTube"
-            description="Movement breakdowns, capoeira history, and practice resources — available anywhere, at any time."
-            label="Watch on YouTube"
-            href="https://www.youtube.com/@grilopretocapoeira"
-            external
-          />
+      {/* ── Section 1: What it is ── */}
+      <section
+        style={{
+          padding: "0 1.5rem 6rem",
+          maxWidth: "1200px",
+          margin: "0 auto",
+          borderTop: "1px solid var(--color-subtle)",
+          paddingTop: "4rem",
+        }}
+      >
+        <div style={{ maxWidth: "680px", display: "flex", flexDirection: "column", gap: "2rem" }}>
+
+          {/* Pull quote */}
+          <blockquote
+            style={{
+              fontFamily: "var(--font-display)",
+              fontStyle: "italic",
+              fontSize: "clamp(1.375rem, 2.5vw, 1.75rem)",
+              fontWeight: 300,
+              color: "var(--color-dark)",
+              margin: 0,
+              lineHeight: 1.4,
+            }}
+          >
+            "A fight like dance, a dance like fight."
+            <cite
+              style={{
+                display: "block",
+                fontFamily: "var(--font-body)",
+                fontStyle: "normal",
+                fontSize: "0.8125rem",
+                letterSpacing: "0.06em",
+                color: "var(--color-mid)",
+                marginTop: "0.75rem",
+              }}
+            >
+              — Mestre Acordeon
+            </cite>
+          </blockquote>
+
+          {/* Body */}
+          <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
+            <p className="cap-body">
+              It is Afro-Brazilian in its roots. Born from a people who needed to move in ways that
+              could not be taken from them. Part martial art, part game, part music, part ritual.
+              Those categories do not fully contain it. They never have.
+            </p>
+            <p className="cap-body">
+              In the roda, two practitioners enter into a conversation through movement. There is no
+              script. No choreography. What unfolds is a live negotiation of space, timing, deception,
+              and presence. You learn to read another person while staying honest about yourself. You
+              learn that the body has its own intelligence and that developing it takes more than
+              strength or technique.
+            </p>
+            <p className="cap-body">
+              Capoeira is also song. It is percussion. It is a culture passed between people over
+              generations, carried in the body rather than written in books. To train capoeira
+              seriously is to enter something larger than yourself.
+            </p>
+          </div>
+
+          {/* Italic callout */}
+          <p
+            style={{
+              fontFamily: "var(--font-display)",
+              fontStyle: "italic",
+              fontSize: "clamp(1.125rem, 2vw, 1.375rem)",
+              fontWeight: 300,
+              color: "var(--color-dark)",
+              margin: 0,
+              lineHeight: 1.5,
+            }}
+          >
+            It is one of the few practices in the world that asks for all of you. Physical, mental,
+            musical, and emotional at the same time.
+          </p>
         </div>
       </section>
 
-      {/* ── Placeholder text ── */}
+      {/* ── Section 2: Lineage ── */}
+      <section
+        style={{
+          padding: "4rem 1.5rem 6rem",
+          maxWidth: "1200px",
+          margin: "0 auto",
+          borderTop: "1px solid var(--color-subtle)",
+        }}
+      >
+        <div style={{ maxWidth: "680px", display: "flex", flexDirection: "column", gap: "1.75rem" }}>
+          <h2
+            style={{
+              fontFamily: "var(--font-display)",
+              fontSize: "clamp(1.75rem, 3vw, 2.5rem)",
+              fontWeight: 300,
+              fontStyle: "italic",
+              color: "var(--color-dark)",
+              margin: 0,
+              lineHeight: 1.2,
+            }}
+          >
+            Lineage
+          </h2>
+
+          <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
+            <p className="cap-body">
+              I am a Mestre in capoeira, the highest title within the culture. My lineage runs through
+              the United Capoeira Association, under the guidance of world-renowned Mestre Acordeon,
+              the late Mestre Rã, and Mestra Suelly.
+            </p>
+            <p className="cap-body">
+              This lineage is not a credential. It is an honor. It is communal recognition. It is a
+              responsibility. To teach with integrity, to preserve what was passed to me, to evolve
+              it where needed, and to pass it forward with care.
+            </p>
+            <p className="cap-body">
+              I have been in this practice for over two decades. It shaped everything that came after
+              it, including the movement practice I teach today. Capoeira is where my roots live.
+            </p>
+          </div>
+
+          <p
+            style={{
+              fontFamily: "var(--font-body)",
+              fontSize: "0.75rem",
+              letterSpacing: "0.08em",
+              color: "var(--color-mid)",
+              margin: 0,
+            }}
+          >
+            Mestre Acordeon&nbsp;&nbsp;·&nbsp;&nbsp;Mestre Rã&nbsp;&nbsp;·&nbsp;&nbsp;Mestra Suelly
+          </p>
+        </div>
+      </section>
+
+      {/* ── Section 3: Train & Play ── */}
+      <section
+        style={{
+          padding: "4rem 1.5rem 6rem",
+          maxWidth: "1200px",
+          margin: "0 auto",
+          borderTop: "1px solid var(--color-subtle)",
+        }}
+      >
+        <div style={{ maxWidth: "680px", display: "flex", flexDirection: "column", gap: "4rem" }}>
+          <h2
+            style={{
+              fontFamily: "var(--font-display)",
+              fontSize: "clamp(1.75rem, 3vw, 2.5rem)",
+              fontWeight: 300,
+              fontStyle: "italic",
+              color: "var(--color-dark)",
+              margin: 0,
+              lineHeight: 1.2,
+            }}
+          >
+            Train &amp; Play
+          </h2>
+
+          {/* Online */}
+          <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
+            <p className="cap-subheading">Online — available anywhere</p>
+            <h3 className="cap-subsubheading">YouTube</h3>
+            <p className="cap-body">
+              Over 16,000 practitioners around the world have found their way to capoeira through
+              this channel. What began during the pandemic as a resource for students has grown into
+              a widely respected platform for conditioning and training, used by beginners and
+              seasoned practitioners alike. A new video series is coming. In the meantime, the
+              existing library remains a genuine place to begin.
+            </p>
+            <a
+              href="https://www.youtube.com/@grilopretocapoeira"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="cap-link"
+            >
+              Visit My Channel @grilopretocapoeira
+            </a>
+          </div>
+
+          {/* In-Person Denver */}
+          <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
+            <p className="cap-subheading">In-Person — Denver</p>
+            <h3 className="cap-subsubheading">UCA Colorado</h3>
+            <p className="cap-body">
+              Classes for all levels, for adults and children. Regular rodas, cultural immersions,
+              and an annual batizado. A community rooted in genuine practice of the art, not
+              performance, not fitness, not trend. If you are in Denver and want to train capoeira
+              in person, this is where you come.
+            </p>
+            <a
+              href="https://ucacolorado.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="cap-link"
+            >
+              Visit UCA Colorado
+            </a>
+          </div>
+
+          {/* In-Person Global */}
+          <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
+            <p className="cap-subheading">In-Person — Globally</p>
+            <h3 className="cap-subsubheading">Upcoming Events</h3>
+            <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+              <p style={{ margin: 0 }}>
+                <a
+                  href="https://www.miamicapoeirasolelua.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="cap-event-link cap-event-passed"
+                >
+                  Sol e Lua Cultural Arts Center Encounter &amp; Belt Ceremony&nbsp;&nbsp;·&nbsp;&nbsp;Miami, FL&nbsp;&nbsp;·&nbsp;&nbsp;Feb 25th – March 1st, 2025{" "}
+                  <span className="cap-event-passed-tag">(passed)</span>
+                </a>
+              </p>
+              <p style={{ margin: 0 }}>
+                <a
+                  href="https://www.ucahayward.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="cap-event-link cap-event-passed"
+                >
+                  UCA Hayward Batizado 2026&nbsp;&nbsp;·&nbsp;&nbsp;Hayward, CA&nbsp;&nbsp;·&nbsp;&nbsp;April 2026{" "}
+                  <span className="cap-event-passed-tag">(passed)</span>
+                </a>
+              </p>
+              <p style={{ margin: 0 }}>
+                <a
+                  href="https://www.maplevalleycapoeira.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="cap-event-link cap-event-passed"
+                >
+                  Maple Valley Capoeira&nbsp;&nbsp;·&nbsp;&nbsp;Maple Valley, WA&nbsp;&nbsp;·&nbsp;&nbsp;April 24th–25th{" "}
+                  <span className="cap-event-passed-tag">(passed)</span>
+                </a>
+              </p>
+              <p style={{ margin: 0 }}>
+                <a
+                  href="https://ucacolorado.com/batizado"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="cap-event-link"
+                >
+                  Denver Batizado&nbsp;&nbsp;·&nbsp;&nbsp;Denver, CO&nbsp;&nbsp;·&nbsp;&nbsp;June 4th–7th
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Section 4: Closing CTA ── */}
       <section
         style={{
           padding: "4rem 1.5rem 8rem",
           maxWidth: "1200px",
           margin: "0 auto",
           borderTop: "1px solid var(--color-subtle)",
+          textAlign: "center",
         }}
       >
         <p
           style={{
-            fontFamily: "var(--font-body)",
-            fontSize: "clamp(1rem, 1.8vw, 1.125rem)",
-            lineHeight: 1.8,
-            color: "var(--color-dark)",
-            maxWidth: "560px",
-            margin: 0,
+            fontFamily: "var(--font-display)",
+            fontStyle: "italic",
+            fontSize: "clamp(1.25rem, 2.5vw, 1.75rem)",
             fontWeight: 300,
+            color: "var(--color-dark)",
+            margin: "0 0 2rem",
+            lineHeight: 1.4,
           }}
         >
-          Placeholder — the story of capoeira, its origins, and what it means to practice it today will live here.
+          Whether you begin online or step into the studio, the art is waiting.
         </p>
+        <div style={{ display: "flex", justifyContent: "center", gap: "2.5rem", flexWrap: "wrap" }}>
+          <a
+            href="https://www.youtube.com/@grilopretocapoeira"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="cap-cta-link"
+          >
+            Start online
+          </a>
+          <a
+            href="https://ucacolorado.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="cap-cta-link"
+          >
+            Train in Denver
+          </a>
+        </div>
       </section>
 
       <style>{`
-        .capoeira-grid {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 1.5rem;
-        }
-        @media (max-width: 640px) {
-          .capoeira-grid { grid-template-columns: 1fr; }
-        }
-        .capoeira-link {
+        .cap-body {
           font-family: var(--font-body);
-          font-size: 0.8rem;
-          letter-spacing: 0.08em;
+          font-size: clamp(1rem, 1.8vw, 1.0625rem);
+          line-height: 1.85;
+          color: var(--color-dark);
+          margin: 0;
+          font-weight: 300;
+        }
+        .cap-subheading {
+          font-family: var(--font-body);
+          font-size: 0.75rem;
+          letter-spacing: 0.1em;
           text-transform: uppercase;
+          color: var(--color-mid);
+          margin: 0;
+        }
+        .cap-subsubheading {
+          font-family: var(--font-display);
+          font-size: clamp(1.25rem, 2vw, 1.625rem);
+          font-weight: 400;
+          color: var(--color-dark);
+          margin: 0;
+          line-height: 1.2;
+        }
+        .cap-link {
+          font-family: var(--font-body);
+          font-size: 0.875rem;
           color: var(--color-dark);
           text-decoration: none;
-          border-bottom: 1px solid currentColor;
-          padding-bottom: 1px;
+          border-bottom: 1px solid var(--color-subtle);
+          padding-bottom: 2px;
           align-self: flex-start;
-          opacity: 0.6;
-          transition: opacity 0.2s;
+          transition: border-color 0.2s, color 0.2s;
         }
-        .capoeira-link:hover { opacity: 1; }
+        .cap-link:hover {
+          color: var(--color-dark);
+          border-color: var(--color-dark);
+        }
+        .cap-event-link {
+          font-family: var(--font-body);
+          font-size: 0.9375rem;
+          color: var(--color-dark);
+          text-decoration: none;
+          border-bottom: 1px solid var(--color-subtle);
+          padding-bottom: 1px;
+          font-weight: 300;
+          line-height: 1.6;
+          transition: border-color 0.2s, color 0.2s;
+        }
+        .cap-event-link:hover { border-color: var(--color-dark); }
+        .cap-event-passed { color: var(--color-mid); }
+        .cap-event-passed:hover { color: var(--color-mid); border-color: var(--color-subtle); }
+        .cap-event-passed-tag { font-size: 0.8125rem; opacity: 0.6; }
+        .cap-cta-link {
+          font-family: var(--font-body);
+          font-size: 0.875rem;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          color: var(--color-mid);
+          text-decoration: none;
+          border-bottom: 1px solid var(--color-subtle);
+          padding-bottom: 2px;
+          transition: color 0.2s, border-color 0.2s;
+        }
+        .cap-cta-link:hover {
+          color: var(--color-dark);
+          border-color: var(--color-dark);
+        }
       `}</style>
     </main>
-  );
-}
-
-function LinkBlock({
-  title,
-  description,
-  label,
-  href,
-  external,
-}: {
-  title: string;
-  description: string;
-  label: string;
-  href: string;
-  external?: boolean;
-}) {
-  return (
-    <div
-      style={{
-        backgroundColor: "var(--color-base)",
-        border: "1px solid var(--color-subtle)",
-        padding: "3rem 2.5rem",
-        display: "flex",
-        flexDirection: "column",
-        gap: "1rem",
-        minHeight: "280px",
-      }}
-    >
-      <h2
-        style={{
-          fontFamily: "var(--font-display)",
-          fontSize: "clamp(1.5rem, 2.5vw, 2rem)",
-          fontWeight: 400,
-          color: "var(--color-dark)",
-          margin: 0,
-          lineHeight: 1.2,
-        }}
-      >
-        {title}
-      </h2>
-      <p
-        style={{
-          fontFamily: "var(--font-body)",
-          fontSize: "0.9rem",
-          color: "var(--color-dark)",
-          margin: 0,
-          lineHeight: 1.7,
-          opacity: 0.75,
-          flexGrow: 1,
-        }}
-      >
-        {description}
-      </p>
-      <a
-        href={href}
-        className="capoeira-link"
-        {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-      >
-        {label}
-      </a>
-    </div>
   );
 }
