@@ -86,22 +86,71 @@ export default function Home() {
           margin: "0 auto",
         }}
       >
-        <p
+        <div
           style={{
-            fontFamily: "var(--font-body)",
-            fontSize: "clamp(1rem, 1.8vw, 1.125rem)",
-            lineHeight: 1.8,
-            color: "var(--color-dark)",
             maxWidth: "560px",
-            margin: 0,
-            fontWeight: 300,
+            display: "flex",
+            flexDirection: "column",
+            gap: "1.5rem",
           }}
         >
-          I have lived inside this practice for two decades. Through capoeira
-          and movement. Not as techniques to master, but as a way of asking a
-          question I kept needing to return to. What does it mean to truly be
-          free?
-        </p>
+          <p
+            style={{
+              fontFamily: "var(--font-body)",
+              fontSize: "clamp(1rem, 1.8vw, 1.125rem)",
+              lineHeight: 1.8,
+              color: "var(--color-dark)",
+              margin: 0,
+              fontWeight: 300,
+            }}
+          >
+            I have lived inside this practice for two decades. Through capoeira
+            and movement. Not as techniques to master, but as a way of asking a
+            question I kept needing to return to.
+          </p>
+
+          <p
+            style={{
+              fontFamily: "var(--font-display)",
+              fontStyle: "italic",
+              fontSize: "clamp(1.25rem, 2.5vw, 1.5rem)",
+              lineHeight: 1.4,
+              color: "var(--color-dark)",
+              margin: 0,
+              fontWeight: 300,
+            }}
+          >
+            What does it mean to truly be free?
+          </p>
+
+          <p
+            style={{
+              fontFamily: "var(--font-body)",
+              fontSize: "clamp(1rem, 1.8vw, 1.125rem)",
+              lineHeight: 1.8,
+              color: "var(--color-dark)",
+              margin: 0,
+              fontWeight: 300,
+            }}
+          >
+            What I found is that the strength, awareness, and adaptability we
+            are looking for was never missing. It was buried. Under routine,
+            under performance, under lives shaped more by habit than by choice.
+          </p>
+
+          <p
+            style={{
+              fontFamily: "var(--font-body)",
+              fontSize: "clamp(1rem, 1.8vw, 1.125rem)",
+              lineHeight: 1.8,
+              color: "var(--color-dark)",
+              margin: 0,
+              fontWeight: 300,
+            }}
+          >
+            What I offer is a way back to it.
+          </p>
+        </div>
       </section>
 
       {/* ── Practice Cards ── */}
@@ -115,12 +164,12 @@ export default function Home() {
         <div className="cards-grid">
           <PracticeCard
             title="The Movement Practice"
-            description="A somatic inquiry into how you move, hold yourself, and meet the world."
+            description="A physical-first path to self mastery. Two decades of study distilled into one practice."
             href="/movement-practice"
           />
           <PracticeCard
             title="Capoeira"
-            description="Brazilian martial art as living tradition — dialogue between bodies in motion."
+            description="Train with me in Denver or connect online through YouTube."
             href="/capoeira"
           />
         </div>
