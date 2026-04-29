@@ -40,7 +40,7 @@ const logistics: LogisticsItem[] = [
   {
     title: "Your Invite",
     body: "Get your invite by finding your starting point. Available to those local to Denver, CO and visiting guests of existing members.",
-    link: { text: "Find Your Starting Point", href: "https://grilopreto.com/starting-point" },
+    link: { text: "Find Your Starting Point", href: "/rmp/starting-point" },
     highlight: true,
   },
 ];
@@ -437,7 +437,7 @@ export default function RmpInPerson() {
         >
           Not sure where to begin?
         </p>
-        <a href="https://grilopreto.com/starting-point" className="ip-cta-link">
+        <a href="https://grilopreto.com/rmp/starting-point" className="ip-cta-link">
           Find Your Starting Point
         </a>
       </section>
@@ -523,10 +523,12 @@ export default function RmpInPerson() {
         }
         .ip-logistics-link:hover { border-color: var(--color-dark); }
         .ip-logistics-item--highlight {
-          background-color: var(--color-subtle);
-          outline: 1px solid var(--color-subtle);
+          outline: 1px solid var(--color-copper);
           outline-offset: -1px;
           padding: 3rem;
+        }
+        .ip-logistics-item--highlight .ip-logistics-title {
+          color: var(--color-copper);
         }
         @media (max-width: 640px) {
           .ip-logistics-grid { grid-template-columns: 1fr; }

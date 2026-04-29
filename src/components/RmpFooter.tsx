@@ -9,7 +9,6 @@ const navLinks = [
   { label: "Guided", href: "/guided" },
   { label: "In-Person", href: "/in-person" },
   { label: "Personalized", href: "/personalized" },
-  { label: "About", href: "/about" },
   { label: "Find Your Starting Point", href: "/starting-point" },
 ];
 

@@ -341,7 +341,53 @@ export default function RmpHome() {
         </div>
       </section>
 
-      {/* ── Section 7: CTA ── */}
+      {/* ── Section 7: What It Is ── */}
+      <section
+        style={{
+          padding: "4rem 1.5rem 6rem",
+          maxWidth: "1200px",
+          margin: "0 auto",
+          borderTop: "1px solid var(--color-subtle)",
+        }}
+      >
+        <div style={{ maxWidth: "680px", display: "flex", flexDirection: "column", gap: "1.75rem" }}>
+          <h2 className="rmp-section-heading">What It Is</h2>
+          <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
+            <p className="rmp-body">
+              Ritual Movement Practice is a physical-first methodology for developing the whole
+              person. Not the body in isolation from everything else, but as one integrated system.
+              The curriculum unfolds in three-month phases, each organized around four simultaneous
+              areas of study, working toward a central theme that gives the work direction without
+              making it rigid.
+            </p>
+            <p className="rmp-body">
+              The three paths, Guided, In-Person, and Personalized, are different ways of entering
+              the same work. The foundation is the same across all three.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Section 8: What It Is For ── */}
+      <section
+        style={{
+          padding: "4rem 1.5rem 6rem",
+          maxWidth: "1200px",
+          margin: "0 auto",
+          borderTop: "1px solid var(--color-subtle)",
+        }}
+      >
+        <div style={{ maxWidth: "680px", display: "flex", flexDirection: "column", gap: "1.75rem" }}>
+          <h2 className="rmp-section-heading">What It Is For</h2>
+          <p className="rmp-body">
+            People who are ready to be honest about how they move and what that reveals. People who
+            have tried other things and found them useful but incomplete. People who want to develop
+            something real over time rather than optimize a number on a screen.
+          </p>
+        </div>
+      </section>
+
+      {/* ── Section 9: CTA ── */}
       <section
         style={{
           padding: "6rem 1.5rem 8rem",
@@ -365,7 +411,7 @@ export default function RmpHome() {
           Not sure where to begin?
         </p>
         <a
-          href="https://grilopreto.com/starting-point"
+          href="https://grilopreto.com/rmp/starting-point"
           className="rmp-cta-link"
         >
           Find Your Starting Point

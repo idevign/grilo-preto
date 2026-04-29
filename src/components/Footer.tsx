@@ -6,7 +6,7 @@ const navLinks = [
   { label: "The Movement Practice", href: "/movement-practice" },
   { label: "Capoeira", href: "/capoeira" },
   { label: "About", href: "/about" },
-  { label: "Find Your Starting Point", href: "/starting-point" },
+  { label: "Find Your Starting Point", href: "/rmp/starting-point" },
 ];
 
 export default function Footer() {

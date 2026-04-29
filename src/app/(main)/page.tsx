@@ -196,7 +196,7 @@ export default function Home() {
         >
           Find Your Starting Point
         </h2>
-        <Link href="/starting-point" className="cta-link">
+        <Link href="/rmp/starting-point" className="cta-link">
           Begin here
         </Link>
       </section>
