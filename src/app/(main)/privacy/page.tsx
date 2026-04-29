@@ -19,47 +19,50 @@ export default function PrivacyPolicy() {
           fontFamily: "var(--font-body)",
           fontSize: "0.8125rem",
           color: "var(--color-mid)",
-          margin: "0 0 4rem",
+          margin: "0 0 3rem",
           letterSpacing: "0.02em",
         }}
       >
-        Last updated: January 2026
+        Last updated: April 2026
+      </p>
+
+      <p
+        style={{
+          fontFamily: "var(--font-body)",
+          fontSize: "0.9375rem",
+          color: "var(--color-dark)",
+          margin: "0 0 3rem",
+          lineHeight: 1.8,
+          fontWeight: 300,
+        }}
+      >
+        This privacy policy describes how Grilo Preto collects, uses, and protects information
+        submitted through this website.
       </p>
 
       <div style={{ display: "flex", flexDirection: "column", gap: "2.5rem" }}>
-        <PolicySection heading="1. Information We Collect">
-          Placeholder — description of what personal data is collected when you visit this site or
-          engage with our services, including contact forms, email subscriptions, and payment
-          processing.
+        <PolicySection heading="Information We Collect">
+          We collect email addresses submitted through the waitlist form on this site. We do not
+          collect any other personal information unless you contact us directly.
         </PolicySection>
 
-        <PolicySection heading="2. How We Use Your Information">
-          Placeholder — explanation of how collected information is used: to respond to enquiries,
-          process bookings, deliver programs, and improve the site experience.
+        <PolicySection heading="How We Use Your Information">
+          Email addresses collected through the waitlist are used solely to notify you when RMP⁺
+          Guided opens for enrollment. We do not sell, share, or distribute your information to
+          third parties.
         </PolicySection>
 
-        <PolicySection heading="3. Sharing of Information">
-          Placeholder — we do not sell personal data. This section will describe any third-party
-          services used (e.g. payment processors, email platforms) and their role.
+        <PolicySection heading="Cookies">
+          This site does not use tracking cookies or third-party analytics.
         </PolicySection>
 
-        <PolicySection heading="4. Cookies">
-          Placeholder — description of cookies used on this site, how to manage them, and what
-          happens if you disable them.
+        <PolicySection heading="Contact">
+          For any questions regarding this privacy policy, contact us directly.
         </PolicySection>
 
-        <PolicySection heading="5. Data Retention">
-          Placeholder — how long we retain personal data and the criteria used to determine
-          retention periods.
-        </PolicySection>
-
-        <PolicySection heading="6. Your Rights">
-          Placeholder — your rights regarding your personal data, including the right to access,
-          correct, or delete information we hold about you.
-        </PolicySection>
-
-        <PolicySection heading="7. Contact">
-          Placeholder — how to reach us with privacy-related questions or requests.
+        <PolicySection heading="Changes">
+          We may update this policy occasionally. Continued use of the site constitutes acceptance
+          of any changes.
         </PolicySection>
       </div>
     </main>
@@ -80,6 +83,7 @@ function PolicySection({
           fontFamily: "var(--font-display)",
           fontSize: "1.25rem",
           fontWeight: 400,
+          fontStyle: "italic",
           color: "var(--color-dark)",
           margin: "0 0 1rem",
           lineHeight: 1.3,
@@ -91,10 +95,11 @@ function PolicySection({
         style={{
           fontFamily: "var(--font-body)",
           fontSize: "0.9375rem",
-          color: "var(--color-mid)",
+          color: "var(--color-dark)",
           margin: 0,
           lineHeight: 1.8,
           fontWeight: 300,
+          opacity: 0.85,
         }}
       >
         {children}

@@ -12,59 +12,60 @@ export default function TermsAndConditions() {
           lineHeight: 1.15,
         }}
       >
-        Terms &amp; Conditions
+        Terms and Conditions
       </h1>
       <p
         style={{
           fontFamily: "var(--font-body)",
           fontSize: "0.8125rem",
           color: "var(--color-mid)",
-          margin: "0 0 4rem",
+          margin: "0 0 3rem",
           letterSpacing: "0.02em",
         }}
       >
-        Last updated: January 2026
+        Last updated: April 2026
+      </p>
+
+      <p
+        style={{
+          fontFamily: "var(--font-body)",
+          fontSize: "0.9375rem",
+          color: "var(--color-dark)",
+          margin: "0 0 3rem",
+          lineHeight: 1.8,
+          fontWeight: 300,
+        }}
+      >
+        By accessing and using grilopreto.com and rmp.grilopreto.com you agree to the following
+        terms.
       </p>
 
       <div style={{ display: "flex", flexDirection: "column", gap: "2.5rem" }}>
-        <PolicySection heading="1. Acceptance of Terms">
-          Placeholder — by accessing and using this site, you accept these terms in full. If you
-          disagree with any part, you must not use this site or its services.
+        <PolicySection heading="Use of the Site">
+          This site is for informational purposes. Content may not be reproduced, distributed, or
+          used without express written permission from Grilo Preto.
         </PolicySection>
 
-        <PolicySection heading="2. Services">
-          Placeholder — description of the services offered through Grilo Preto, including online
-          programs, in-person classes, and one-to-one sessions, and the terms under which they are
-          provided.
+        <PolicySection heading="Membership and Payments">
+          RMP⁺ memberships are billed monthly. Cancellation is available after the first month.
+          Founding rates are held permanently for continuously subscribed First Wave members. Rates
+          are subject to change for new subscribers.
         </PolicySection>
 
-        <PolicySection heading="3. Bookings and Payments">
-          Placeholder — terms governing bookings, payment methods accepted, and what happens in the
-          event of a failed or disputed payment.
+        <PolicySection heading="Limitation of Liability">
+          Participation in any physical practice carries inherent risk. Grilo Preto is not liable
+          for any injury resulting from participation in RMP⁺ sessions, whether in-person or
+          online. Participants are responsible for consulting a medical professional before
+          beginning any new physical practice.
         </PolicySection>
 
-        <PolicySection heading="4. Cancellations and Refunds">
-          Placeholder — our cancellation policy, the notice period required, and circumstances
-          under which refunds are issued or withheld.
+        <PolicySection heading="Intellectual Property">
+          All content on this site including curriculum, videos, and written materials is the
+          intellectual property of Grilo Preto. Unauthorized reproduction is prohibited.
         </PolicySection>
 
-        <PolicySection heading="5. Intellectual Property">
-          Placeholder — all content on this site, including text, imagery, and program materials,
-          is the property of Grilo Preto. Unauthorised reproduction or distribution is prohibited.
-        </PolicySection>
-
-        <PolicySection heading="6. Limitation of Liability">
-          Placeholder — to the extent permitted by law, Grilo Preto is not liable for any indirect
-          or consequential loss arising from use of this site or participation in its programs.
-        </PolicySection>
-
-        <PolicySection heading="7. Governing Law">
-          Placeholder — these terms are governed by the laws of the State of Colorado, United
-          States.
-        </PolicySection>
-
-        <PolicySection heading="8. Contact">
-          Placeholder — how to reach us with questions about these terms.
+        <PolicySection heading="Contact">
+          For any questions regarding these terms, contact us directly.
         </PolicySection>
       </div>
     </main>
@@ -85,6 +86,7 @@ function PolicySection({
           fontFamily: "var(--font-display)",
           fontSize: "1.25rem",
           fontWeight: 400,
+          fontStyle: "italic",
           color: "var(--color-dark)",
           margin: "0 0 1rem",
           lineHeight: 1.3,
@@ -96,10 +98,11 @@ function PolicySection({
         style={{
           fontFamily: "var(--font-body)",
           fontSize: "0.9375rem",
-          color: "var(--color-mid)",
+          color: "var(--color-dark)",
           margin: 0,
           lineHeight: 1.8,
           fontWeight: 300,
+          opacity: 0.85,
         }}
       >
         {children}
