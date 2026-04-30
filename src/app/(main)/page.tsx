@@ -1,9 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
+import BlobNav from "@/components/BlobNav";
 
 export default function Home() {
   return (
     <main>
+      <BlobNav />
+
       {/* ── Hero ── */}
       <section
         style={{
@@ -21,7 +24,7 @@ export default function Home() {
           style={{ objectFit: "cover", objectPosition: "center center" }}
         />
 
-        {/* Subtle overlay — gradient pools gently at the bottom where text lives */}
+        {/* Gradient overlay */}
         <div
           style={{
             position: "absolute",
