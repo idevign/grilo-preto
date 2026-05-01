@@ -31,33 +31,16 @@ export default function About() {
   return (
     <main>
 
-      {/* ── Header ── */}
-      <section style={{ padding: "5rem 1.5rem 4rem", maxWidth: "1200px", margin: "0 auto" }}>
-        <h1
-          style={{
-            fontFamily: "var(--font-display)",
-            fontSize: "clamp(2.5rem, 5vw, 4.5rem)",
-            fontWeight: 300,
-            fontStyle: "italic",
-            lineHeight: 1.1,
-            color: "var(--color-dark)",
-            margin: "0 0 1.25rem",
-          }}
-        >
-          About Grilo
-        </h1>
-        <p
-          style={{
-            fontFamily: "var(--font-body)",
-            fontSize: "0.875rem",
-            letterSpacing: "0.1em",
-            textTransform: "uppercase",
-            color: "var(--color-mid)",
-            margin: 0,
-          }}
-        >
-          Mestre. Movement teacher. The story behind the practice.
-        </p>
+      {/* ── Hero ── */}
+      <section className="about-hero">
+        <div className="about-hero-scrim" />
+        <div className="about-hero-content">
+          <p className="about-hero-eyebrow">Mestre. Movement Teacher.</p>
+          <h1 className="about-hero-h1">About Grilo</h1>
+          <p className="about-hero-blurb">
+            Two decades inside a practice that asks for all of you. This is the story behind it.
+          </p>
+        </div>
       </section>
 
       {/* ── Desktop: two-column ── */}
@@ -244,6 +227,58 @@ export default function About() {
       </div>
 
       <style>{`
+        .about-hero {
+          position: relative;
+          min-height: 100dvh;
+          display: flex;
+          align-items: flex-end;
+          justify-content: flex-start;
+          overflow: hidden;
+          background: url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=1600&q=80') center / cover no-repeat;
+        }
+        .about-hero-scrim {
+          position: absolute;
+          inset: 0;
+          z-index: 1;
+          background: linear-gradient(to bottom, rgba(10,8,6,0.35) 0%, rgba(10,8,6,0.72) 100%);
+          pointer-events: none;
+        }
+        .about-hero-content {
+          position: relative;
+          z-index: 2;
+          display: flex;
+          flex-direction: column;
+          gap: 1.25rem;
+          padding: 5rem max(2rem, calc((100vw - 1200px) / 2 + 1.5rem));
+          max-width: 680px;
+        }
+        .about-hero-eyebrow {
+          font-family: var(--font-body);
+          font-size: 0.6875rem;
+          letter-spacing: 0.14em;
+          text-transform: uppercase;
+          color: var(--color-copper);
+          margin: 0;
+        }
+        .about-hero-h1 {
+          font-family: var(--font-display);
+          font-size: clamp(3rem, 5.5vw, 5.5rem);
+          font-weight: 300;
+          font-style: italic;
+          line-height: 1.05;
+          color: #f0ebe3;
+          margin: 0;
+        }
+        .about-hero-blurb {
+          font-family: var(--font-body);
+          font-size: 1rem;
+          line-height: 1.8;
+          color: rgba(240, 235, 227, 0.85);
+          margin: 0;
+          max-width: 42ch;
+          font-weight: 300;
+        }
+
         /* ── Shared ── */
         .about-eyebrow {
           font-family: var(--font-body);

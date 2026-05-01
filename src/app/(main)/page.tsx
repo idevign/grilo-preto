@@ -7,24 +7,28 @@ const PATHS = [
     title: "Movement Practice",
     desc: "Functional movement, mobility, and embodied awareness.",
     href: "/movement-practice",
+    img: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&q=80",
   },
   {
     num: "02",
     title: "Capoeira",
     desc: "The art of movement, music, and liberation.",
     href: "/capoeira",
+    img: "https://images.unsplash.com/photo-1555597673-b21d5c935865?w=800&q=80",
   },
   {
     num: "03",
     title: "Journal",
     desc: "Reflections, lessons, and ongoing practice.",
     href: "/journal",
+    img: "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=800&q=80",
   },
   {
     num: "04",
     title: "About",
     desc: "Two decades of practice. One invitation to begin.",
     href: "/about",
+    img: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=800&q=80",
   },
 ];
 
@@ -92,12 +96,18 @@ export default function Home() {
         <div className="h2-paths-grid">
           {PATHS.map((p) => (
             <div key={p.href} className="h2-path-item">
-              <span className="h2-path-num">{p.num}</span>
-              <h3 className="h2-path-title">{p.title}</h3>
-              <p className="h2-path-desc">{p.desc}</p>
-              <Link href={p.href} className="h2-path-arrow" aria-label={`Go to ${p.title}`}>
-                &rarr;
-              </Link>
+              <div className="h2-path-bg">
+                <img src={p.img} alt="" aria-hidden="true" />
+              </div>
+              <div className="h2-path-scrim" />
+              <div className="h2-path-content">
+                <span className="h2-path-num">{p.num}</span>
+                <h3 className="h2-path-title">{p.title}</h3>
+                <p className="h2-path-desc">{p.desc}</p>
+                <Link href={p.href} className="h2-path-arrow" aria-label={`Go to ${p.title}`}>
+                  &rarr;
+                </Link>
+              </div>
             </div>
           ))}
         </div>
@@ -269,20 +279,71 @@ export default function Home() {
         .h2-paths {
           border-top: 1px solid var(--color-subtle);
           padding: 0 max(2rem, calc((100vw - 1200px) / 2 + 2.5rem));
+          overflow: hidden;
         }
         .h2-paths-grid {
           display: grid;
           grid-template-columns: repeat(4, 1fr);
         }
         .h2-path-item {
-          padding: 4rem 2.5rem;
+          padding: 7rem 2.5rem;
           border-right: 1px solid var(--color-subtle);
           display: flex;
           flex-direction: column;
           gap: 0.75rem;
+          position: relative;
+          overflow: hidden;
         }
-        .h2-path-item:first-child { padding-left: 0; }
-        .h2-path-item:last-child { border-right: none; padding-right: 0; }
+        .h2-path-item:last-child { border-right: none; }
+        .h2-path-bg {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          z-index: 0;
+          opacity: 0;
+          transition: opacity 0.4s ease;
+        }
+        .h2-path-bg img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center;
+          display: block;
+        }
+        .h2-path-scrim {
+          position: absolute;
+          inset: 0;
+          background: rgba(10, 8, 6, 0.55);
+          opacity: 0;
+          transition: opacity 0.4s ease;
+          z-index: 0;
+        }
+        .h2-path-item:hover .h2-path-bg,
+        .h2-path-item:hover .h2-path-scrim {
+          opacity: 1;
+        }
+        .h2-path-content {
+          position: relative;
+          z-index: 1;
+          display: flex;
+          flex-direction: column;
+          gap: 0.75rem;
+          flex: 1;
+        }
+        .h2-path-item:hover .h2-path-title {
+          transform: scale(1.12);
+          color: #f0ebe3;
+        }
+        .h2-path-item:hover .h2-path-desc {
+          opacity: 0;
+        }
+        .h2-path-item:hover .h2-path-num {
+          color: var(--color-copper);
+        }
+        .h2-path-item:hover .h2-path-arrow {
+          opacity: 1;
+          color: #f0ebe3;
+        }
         .h2-path-num {
           font-family: var(--font-body);
           font-size: 0.75rem;
@@ -297,6 +358,8 @@ export default function Home() {
           text-transform: uppercase;
           color: var(--color-dark);
           margin: 0;
+          transform-origin: left center;
+          transition: transform 0.3s ease, color 0.3s ease;
         }
         .h2-path-desc {
           font-family: var(--font-body);
@@ -307,6 +370,7 @@ export default function Home() {
           margin: 0;
           font-weight: 300;
           flex: 1;
+          transition: opacity 0.25s ease;
         }
         .h2-path-arrow {
           font-size: 1rem;
@@ -350,7 +414,6 @@ export default function Home() {
             grid-template-columns: 1fr 1fr;
           }
           .h2-path-item:nth-child(2) { border-right: none; }
-          .h2-path-item:nth-child(3) { padding-left: 0; }
           .h2-path-item:nth-child(3),
           .h2-path-item:nth-child(4) { border-top: 1px solid var(--color-subtle); }
         }
@@ -359,9 +422,9 @@ export default function Home() {
           .h2-path-item {
             border-right: none;
             border-top: 1px solid var(--color-subtle);
-            padding: 2.5rem 0;
+            padding: 4rem 2rem;
           }
-          .h2-path-item:nth-child(3) { border-top: 1px solid var(--color-subtle); }
+          .h2-path-item:first-child { border-top: none; }
         }
       `}</style>
     </main>

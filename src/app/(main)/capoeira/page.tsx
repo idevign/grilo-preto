@@ -3,32 +3,15 @@ export default function Capoeira() {
     <main>
 
       {/* ── Hero ── */}
-      <section style={{ padding: "5rem 1.5rem 4rem", maxWidth: "1200px", margin: "0 auto" }}>
-        <h1
-          style={{
-            fontFamily: "var(--font-display)",
-            fontSize: "clamp(2.5rem, 5vw, 4.5rem)",
-            fontWeight: 300,
-            fontStyle: "italic",
-            lineHeight: 1.1,
-            color: "var(--color-dark)",
-            margin: "0 0 1.25rem",
-          }}
-        >
-          Capoeira
-        </h1>
-        <p
-          style={{
-            fontFamily: "var(--font-body)",
-            fontSize: "0.875rem",
-            letterSpacing: "0.1em",
-            textTransform: "uppercase",
-            color: "var(--color-mid)",
-            margin: 0,
-          }}
-        >
-          An Afro-Brazilian Martial Art
-        </p>
+      <section className="cap-hero">
+        <div className="cap-hero-scrim" />
+        <div className="cap-hero-content">
+          <p className="cap-hero-eyebrow">An Afro-Brazilian Martial Art</p>
+          <h1 className="cap-hero-h1">Capoeira</h1>
+          <p className="cap-hero-blurb">
+            Part martial art, part game, part music, part ritual. Born from a people who needed to move in ways that could not be taken from them.
+          </p>
+        </div>
       </section>
 
       {/* ── Section 1: What it is ── */}
@@ -325,6 +308,57 @@ export default function Capoeira() {
       </section>
 
       <style>{`
+        .cap-hero {
+          position: relative;
+          min-height: 100dvh;
+          display: flex;
+          align-items: flex-end;
+          justify-content: flex-start;
+          overflow: hidden;
+          background: url('https://images.unsplash.com/photo-1555597673-b21d5c935865?w=1600&q=80') center / cover no-repeat;
+        }
+        .cap-hero-scrim {
+          position: absolute;
+          inset: 0;
+          z-index: 1;
+          background: linear-gradient(to bottom, rgba(10,8,6,0.35) 0%, rgba(10,8,6,0.72) 100%);
+          pointer-events: none;
+        }
+        .cap-hero-content {
+          position: relative;
+          z-index: 2;
+          display: flex;
+          flex-direction: column;
+          gap: 1.25rem;
+          padding: 5rem max(2rem, calc((100vw - 1200px) / 2 + 1.5rem));
+          max-width: 680px;
+        }
+        .cap-hero-eyebrow {
+          font-family: var(--font-body);
+          font-size: 0.6875rem;
+          letter-spacing: 0.14em;
+          text-transform: uppercase;
+          color: var(--color-copper);
+          margin: 0;
+        }
+        .cap-hero-h1 {
+          font-family: var(--font-display);
+          font-size: clamp(3rem, 5.5vw, 5.5rem);
+          font-weight: 300;
+          font-style: italic;
+          line-height: 1.05;
+          color: #f0ebe3;
+          margin: 0;
+        }
+        .cap-hero-blurb {
+          font-family: var(--font-body);
+          font-size: 1rem;
+          line-height: 1.8;
+          color: rgba(240, 235, 227, 0.85);
+          margin: 0;
+          max-width: 42ch;
+          font-weight: 300;
+        }
         .cap-body {
           font-family: var(--font-body);
           font-size: clamp(1rem, 1.8vw, 1.0625rem);
