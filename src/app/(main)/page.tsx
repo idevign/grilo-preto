@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const PATHS = [
@@ -33,14 +34,17 @@ export default function Home() {
 
       {/* ── Hero ── */}
       <section className="h2-hero">
-        <div
-          className="h2-hero-bg"
-          style={{ backgroundImage: "url('/images/hero-hand.jpg')" }}
-        />
-        <div className="h2-hero-overlay" />
 
-        {/* Decorative blobs — right side, no images */}
-        <div className="h2-blob-main" />
+        {/* Decorative blobs — right side */}
+        <div className="h2-blob-main">
+          <Image
+            src="/images/hero-hand.jpg"
+            alt=""
+            fill
+            priority
+            style={{ objectFit: "cover", objectPosition: "60% center" }}
+          />
+        </div>
         <div className="h2-deco h2-deco--1" />
         <div className="h2-deco h2-deco--2" />
 
@@ -127,26 +131,20 @@ export default function Home() {
           display: flex;
           align-items: flex-end;
           overflow: hidden;
+          background: linear-gradient(to right, #e6dad0, #c5b7ab);
         }
-        .h2-hero-bg {
+        .h2-hero::before {
+          content: '';
           position: absolute;
           inset: 0;
-          background-size: cover;
-          background-position: center 30%;
-          background-repeat: no-repeat;
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+          background-repeat: repeat;
+          background-size: 200px 200px;
+          opacity: 0.50;
+          pointer-events: none;
           z-index: 0;
         }
-        .h2-hero-overlay {
-          position: absolute;
-          inset: 0;
-          background: linear-gradient(
-            to right,
-            rgba(0, 0, 0, 0.72) 0%,
-            rgba(0, 0, 0, 0.45) 55%,
-            rgba(0, 0, 0, 0.1) 100%
-          );
-          z-index: 1;
-        }
+
         .h2-hero-content {
           position: relative;
           z-index: 2;
@@ -163,14 +161,14 @@ export default function Home() {
           font-style: italic;
           line-height: 1.05;
           letter-spacing: -0.01em;
-          color: var(--color-base);
+          color: var(--color-dark);
           margin: 0;
         }
         .h2-sub {
           font-family: var(--font-body);
           font-size: 1rem;
           line-height: 1.8;
-          color: var(--color-base);
+          color: var(--color-dark);
           opacity: 0.65;
           margin: 0;
           max-width: 36ch;
@@ -188,19 +186,19 @@ export default function Home() {
           font-size: 0.75rem;
           letter-spacing: 0.12em;
           text-transform: uppercase;
-          color: var(--color-dark);
-          background: var(--color-base);
+          color: var(--color-base);
+          background: var(--color-dark);
           text-decoration: none;
           padding: 0.9rem 2rem;
-          transition: background 0.2s, color 0.2s;
+          transition: background 0.2s;
           white-space: nowrap;
         }
-        .h2-btn-primary:hover { background: var(--color-copper); color: var(--color-base); }
+        .h2-btn-primary:hover { background: var(--color-copper); }
         .h2-btn-text {
           font-family: var(--font-body);
           font-size: 0.8125rem;
           letter-spacing: 0.04em;
-          color: var(--color-base);
+          color: var(--color-dark);
           text-decoration: none;
           opacity: 0.6;
           transition: opacity 0.2s;
@@ -217,14 +215,12 @@ export default function Home() {
           width: clamp(300px, 38vw, 520px);
           height: clamp(380px, 68vh, 660px);
           border-radius: 54% 46% 38% 62% / 48% 56% 44% 52%;
-          background: rgba(245, 243, 240, 0.07);
-          border: 1px solid rgba(245, 243, 240, 0.15);
+          overflow: hidden;
           z-index: 2;
         }
         .h2-deco {
           position: absolute;
-          background: rgba(245, 243, 240, 0.05);
-          border: 1px solid rgba(245, 243, 240, 0.1);
+          background: #e4dfd8;
           z-index: 2;
         }
         .h2-deco--1 {
@@ -371,9 +367,6 @@ export default function Home() {
           .h2-hero-content {
             padding: 6rem 2rem 5rem;
             max-width: 100%;
-          }
-          .h2-hero-overlay {
-            background: rgba(0, 0, 0, 0.55);
           }
           .h2-phil {
             grid-template-columns: 1fr;
