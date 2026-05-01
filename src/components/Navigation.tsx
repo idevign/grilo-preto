@@ -24,7 +24,6 @@ export default function Navigation() {
   return (
     <header
       style={{
-        borderBottom: "1px solid var(--color-subtle)",
         backgroundColor: "var(--color-base)",
       }}
     >

@@ -5,10 +5,10 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 const links = [
-  { label: "The Practice", href: "/" },
   { label: "Guided", href: "/guided" },
   { label: "In-Person", href: "/in-person" },
   { label: "Personalized", href: "/personalized" },
+  { label: "Grilo", href: "/", mainSite: true },
   { label: "Find Your Starting Point", href: "/starting-point" },
 ];
 
@@ -32,11 +32,11 @@ export default function RmpNavigation() {
 
   // In dev, pages live at /rmp/*; on the subdomain they live at /*
   const basePath = pathname.startsWith("/rmp") ? "/rmp" : "";
+  const mainSiteHref = basePath ? "/" : "https://grilopreto.com";
 
   return (
     <header
       style={{
-        borderBottom: "1px solid var(--color-subtle)",
         backgroundColor: "var(--color-base)",
       }}
     >
@@ -78,25 +78,37 @@ export default function RmpNavigation() {
           }}
         >
           {links.map((link) => {
-            const active = isActive(link.href, pathname);
+            const active = !link.mainSite && isActive(link.href, pathname);
+            const linkStyle = {
+              fontFamily: "var(--font-body)",
+              fontSize: "0.9375rem",
+              color: "var(--color-dark)",
+              textDecoration: "none",
+              letterSpacing: "0.01em",
+              opacity: active ? 1 : 0.7,
+              transition: "opacity 0.2s",
+            };
             return (
               <li key={link.href}>
-                <Link
-                  href={resolveHref(link.href, basePath)}
-                  style={{
-                    fontFamily: "var(--font-body)",
-                    fontSize: "0.9375rem",
-                    color: "var(--color-dark)",
-                    textDecoration: "none",
-                    letterSpacing: "0.01em",
-                    opacity: active ? 1 : 0.7,
-                    transition: "opacity 0.2s",
-                  }}
-                  onMouseEnter={(e) => { if (!active) e.currentTarget.style.opacity = "1"; }}
-                  onMouseLeave={(e) => { if (!active) e.currentTarget.style.opacity = "0.7"; }}
-                >
-                  {link.label}
-                </Link>
+                {link.mainSite ? (
+                  <a
+                    href={mainSiteHref}
+                    style={linkStyle}
+                    onMouseEnter={(e) => { e.currentTarget.style.opacity = "1"; }}
+                    onMouseLeave={(e) => { e.currentTarget.style.opacity = "0.7"; }}
+                  >
+                    {link.label}
+                  </a>
+                ) : (
+                  <Link
+                    href={resolveHref(link.href, basePath)}
+                    style={linkStyle}
+                    onMouseEnter={(e) => { if (!active) e.currentTarget.style.opacity = "1"; }}
+                    onMouseLeave={(e) => { if (!active) e.currentTarget.style.opacity = "0.7"; }}
+                  >
+                    {link.label}
+                  </Link>
+                )}
               </li>
             );
           })}
@@ -134,22 +146,29 @@ export default function RmpNavigation() {
         <div style={{ borderTop: "1px solid var(--color-subtle)", padding: "1rem 1.5rem 1.5rem" }}>
           <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: "1rem" }}>
             {links.map((link) => {
-              const active = isActive(link.href, pathname);
+              const active = !link.mainSite && isActive(link.href, pathname);
+              const linkStyle = {
+                fontFamily: "var(--font-body)",
+                fontSize: "1rem",
+                color: "var(--color-dark)",
+                textDecoration: "none",
+                opacity: active ? 1 : 0.7,
+              };
               return (
                 <li key={link.href}>
-                  <Link
-                    href={resolveHref(link.href, basePath)}
-                    onClick={() => setOpen(false)}
-                    style={{
-                      fontFamily: "var(--font-body)",
-                      fontSize: "1rem",
-                      color: "var(--color-dark)",
-                      textDecoration: "none",
-                      opacity: active ? 1 : 0.7,
-                    }}
-                  >
-                    {link.label}
-                  </Link>
+                  {link.mainSite ? (
+                    <a href={mainSiteHref} onClick={() => setOpen(false)} style={linkStyle}>
+                      {link.label}
+                    </a>
+                  ) : (
+                    <Link
+                      href={resolveHref(link.href, basePath)}
+                      onClick={() => setOpen(false)}
+                      style={linkStyle}
+                    >
+                      {link.label}
+                    </Link>
+                  )}
                 </li>
               );
             })}

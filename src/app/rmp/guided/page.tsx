@@ -70,11 +70,9 @@ export default function RmpGuided() {
       {/* ── Section 1: No heading ── */}
       <section
         style={{
-          padding: "0 1.5rem 6rem",
+          padding: "4rem 1.5rem 6rem",
           maxWidth: "1200px",
           margin: "0 auto",
-          borderTop: "1px solid var(--color-subtle)",
-          paddingTop: "4rem",
         }}
       >
         <div style={{ maxWidth: "680px", display: "flex", flexDirection: "column", gap: "1.75rem" }}>

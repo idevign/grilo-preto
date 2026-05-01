@@ -31,7 +31,36 @@ export default function About() {
   return (
     <main>
 
-      {/* ── Desktop: two-column, full viewport height ── */}
+      {/* ── Header ── */}
+      <section style={{ padding: "5rem 1.5rem 4rem", maxWidth: "1200px", margin: "0 auto" }}>
+        <h1
+          style={{
+            fontFamily: "var(--font-display)",
+            fontSize: "clamp(2.5rem, 5vw, 4.5rem)",
+            fontWeight: 300,
+            fontStyle: "italic",
+            lineHeight: 1.1,
+            color: "var(--color-dark)",
+            margin: "0 0 1.25rem",
+          }}
+        >
+          About Grilo
+        </h1>
+        <p
+          style={{
+            fontFamily: "var(--font-body)",
+            fontSize: "0.875rem",
+            letterSpacing: "0.1em",
+            textTransform: "uppercase",
+            color: "var(--color-mid)",
+            margin: 0,
+          }}
+        >
+          Mestre. Movement teacher. The story behind the practice.
+        </p>
+      </section>
+
+      {/* ── Desktop: two-column ── */}
       <div className="about-desktop">
         <div className="about-inner">
 
@@ -227,10 +256,8 @@ export default function About() {
 
         /* ── Desktop ── */
         .about-desktop {
-          height: calc(100dvh - 4.5rem);
-          overflow: hidden;
           display: flex;
-          align-items: center;
+          align-items: flex-start;
         }
         .about-inner {
           display: flex;

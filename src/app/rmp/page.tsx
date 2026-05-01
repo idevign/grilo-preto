@@ -17,7 +17,7 @@ export default function RmpHome() {
             margin: "0 0 1.25rem",
           }}
         >
-          The Practice
+          Ritual
         </h1>
         <p
           style={{
@@ -29,18 +29,16 @@ export default function RmpHome() {
             margin: 0,
           }}
         >
-          A physical-first path to self mastery
+          Movement Practice. A physical-first path to self mastery.
         </p>
       </section>
 
       {/* ── Section 1: No heading ── */}
       <section
         style={{
-          padding: "0 1.5rem 6rem",
+          padding: "4rem 1.5rem 6rem",
           maxWidth: "1200px",
           margin: "0 auto",
-          borderTop: "1px solid var(--color-subtle)",
-          paddingTop: "4rem",
         }}
       >
         <div style={{ maxWidth: "680px", display: "flex", flexDirection: "column", gap: "1.25rem" }}>
