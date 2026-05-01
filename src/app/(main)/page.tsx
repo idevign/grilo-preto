@@ -1,6 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
-import HeroRippleCanvas from "@/components/HeroRippleCanvas";
+import HeroLensCanvas from "@/components/HeroLensCanvas";
 
 const PATHS = [
   {
@@ -36,20 +35,8 @@ export default function Home() {
       {/* ── Hero ── */}
       <section className="h2-hero">
 
-        <HeroRippleCanvas />
-
-        {/* Decorative blobs — right side */}
-        <div className="h2-blob-main">
-          <Image
-            src="/images/gp-dec012025-slide05.jpg"
-            alt=""
-            fill
-            priority
-            style={{ objectFit: "cover", objectPosition: "60% center" }}
-          />
-        </div>
-        <div className="h2-deco h2-deco--1" />
-        <div className="h2-deco h2-deco--2" />
+        <HeroLensCanvas />
+        <div className="h2-scrim" />
 
         <div className="h2-hero-content">
           <p className="h2-eyebrow">Rooted in tradition. Applied to life.</p>
@@ -133,18 +120,28 @@ export default function Home() {
           min-height: 100dvh;
           display: flex;
           align-items: flex-end;
+          justify-content: flex-end;
           overflow: hidden;
           background: url('/images/hero-hand.jpg') center / cover no-repeat;
         }
 
+        .h2-scrim {
+          position: absolute;
+          inset: 0;
+          z-index: 2;
+          background: linear-gradient(to right, transparent 20%, rgba(10,8,6,0.75) 55%, rgba(10,8,6,0.88) 100%);
+          pointer-events: none;
+        }
+
         .h2-hero-content {
           position: relative;
-          z-index: 2;
+          z-index: 3;
           display: flex;
           flex-direction: column;
           gap: 2rem;
-          padding: 7rem max(2.5rem, 5vw) 7rem max(2rem, calc((100vw - 1200px) / 2 + 2.5rem));
+          padding: 7rem max(2rem, calc((100vw - 1200px) / 2 + 2.5rem)) 7rem max(2.5rem, 5vw);
           max-width: 660px;
+          text-align: right;
         }
         .h2-heading {
           font-family: var(--font-display);
@@ -153,15 +150,14 @@ export default function Home() {
           font-style: italic;
           line-height: 1.05;
           letter-spacing: -0.01em;
-          color: var(--color-dark);
+          color: #f0ebe3;
           margin: 0;
         }
         .h2-sub {
           font-family: var(--font-body);
           font-size: 1rem;
           line-height: 1.8;
-          color: var(--color-dark);
-          opacity: 0.65;
+          color: rgba(240, 235, 227, 0.85);
           margin: 0;
           max-width: 36ch;
           font-weight: 300;
@@ -169,6 +165,7 @@ export default function Home() {
         .h2-actions {
           display: flex;
           align-items: center;
+          justify-content: flex-end;
           gap: 2.5rem;
           flex-wrap: wrap;
           margin-top: 0.5rem;
@@ -178,57 +175,25 @@ export default function Home() {
           font-size: 0.75rem;
           letter-spacing: 0.12em;
           text-transform: uppercase;
-          color: var(--color-base);
-          background: var(--color-dark);
+          color: #1a1a18;
+          background: #f0ebe3;
           text-decoration: none;
           padding: 0.9rem 2rem;
-          transition: background 0.2s;
+          transition: background 0.2s, color 0.2s;
           white-space: nowrap;
         }
-        .h2-btn-primary:hover { background: var(--color-copper); }
+        .h2-btn-primary:hover { background: var(--color-copper); color: #f0ebe3; }
         .h2-btn-text {
           font-family: var(--font-body);
           font-size: 0.8125rem;
           letter-spacing: 0.04em;
-          color: var(--color-dark);
+          color: #f0ebe3;
           text-decoration: none;
-          opacity: 0.6;
+          opacity: 0.7;
           transition: opacity 0.2s;
           white-space: nowrap;
         }
         .h2-btn-text:hover { opacity: 1; }
-
-        /* Hero blobs */
-        .h2-blob-main {
-          position: absolute;
-          right: 12%;
-          top: 50%;
-          transform: translateY(-50%);
-          width: clamp(300px, 38vw, 520px);
-          height: clamp(380px, 68vh, 660px);
-          border-radius: 54% 46% 38% 62% / 48% 56% 44% 52%;
-          overflow: hidden;
-          z-index: 2;
-        }
-        .h2-deco {
-          position: absolute;
-          background: #e4dfd8;
-          z-index: 2;
-        }
-        .h2-deco--1 {
-          top: 6%;
-          right: 4%;
-          width: clamp(180px, 22vw, 300px);
-          height: clamp(220px, 36vh, 400px);
-          border-radius: 62% 38% 52% 48% / 40% 66% 34% 60%;
-        }
-        .h2-deco--2 {
-          bottom: 10%;
-          right: 28%;
-          width: clamp(100px, 13vw, 190px);
-          height: clamp(120px, 20vh, 220px);
-          border-radius: 46% 54% 62% 38% / 60% 38% 62% 40%;
-        }
 
         /* ── Philosophy ── */
         .h2-phil {
@@ -356,9 +321,19 @@ export default function Home() {
 
         /* ── Responsive ── */
         @media (max-width: 900px) {
+          .h2-hero {
+            justify-content: flex-start;
+          }
+          .h2-scrim {
+            background: linear-gradient(to bottom, transparent 30%, rgba(10,8,6,0.78) 60%, rgba(10,8,6,0.92) 100%);
+          }
           .h2-hero-content {
             padding: 6rem 2rem 5rem;
             max-width: 100%;
+            text-align: left;
+          }
+          .h2-actions {
+            justify-content: flex-start;
           }
           .h2-phil {
             grid-template-columns: 1fr;
