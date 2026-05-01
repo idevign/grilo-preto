@@ -1,303 +1,406 @@
 import Image from "next/image";
 import Link from "next/link";
-import BlobNav from "@/components/BlobNav";
+
+const PATHS = [
+  {
+    num: "01",
+    title: "Movement Practice",
+    desc: "Functional movement, mobility, and embodied awareness.",
+    href: "/movement-practice",
+  },
+  {
+    num: "02",
+    title: "Capoeira",
+    desc: "The art of movement, music, and liberation.",
+    href: "/capoeira",
+  },
+  {
+    num: "03",
+    title: "Journal",
+    desc: "Reflections, lessons, and ongoing practice.",
+    href: "/journal",
+  },
+  {
+    num: "04",
+    title: "About",
+    desc: "Two decades of practice. One invitation to begin.",
+    href: "/about",
+  },
+];
 
 export default function Home() {
   return (
     <main>
-      <BlobNav />
 
       {/* ── Hero ── */}
-      <section
-        style={{
-          position: "relative",
-          minHeight: "92vh",
-          overflow: "hidden",
-        }}
-      >
-        {/* Background image */}
-        <Image
-          src="/images/gp_rmpBG_000.jpg"
-          alt=""
-          fill
-          priority
-          style={{ objectFit: "cover", objectPosition: "center center" }}
-        />
-
-        {/* Gradient overlay */}
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            background:
-              "linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.18) 60%, rgba(0,0,0,0.38) 100%)",
-          }}
-        />
-
-        {/* Text content */}
-        <div
-          style={{
-            position: "relative",
-            zIndex: 1,
-            maxWidth: "1200px",
-            margin: "0 auto",
-            width: "100%",
-            height: "100%",
-            minHeight: "92vh",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "flex-end",
-            padding: "0 1.5rem 5rem",
-          }}
-        >
-          <h1
-            style={{
-              fontFamily: "var(--font-display)",
-              fontSize: "clamp(3.5rem, 8vw, 7rem)",
-              fontWeight: 300,
-              fontStyle: "italic",
-              lineHeight: 1.05,
-              letterSpacing: "-0.01em",
-              color: "#ffffff",
-              margin: "0 0 2.75rem",
-              maxWidth: "18ch",
-            }}
-          >
-            Inviting a Return to Self.
+      <section className="h2-hero">
+        <div className="h2-hero-left">
+          <p className="h2-eyebrow">Rooted in tradition. Applied to life.</p>
+          <h1 className="h2-heading">
+            Inviting a<br />Return to Self.
           </h1>
-          <p
-            style={{
-              fontFamily: "var(--font-body)",
-              fontSize: "clamp(0.75rem, 1.5vw, 0.875rem)",
-              fontWeight: 400,
-              letterSpacing: "0.12em",
-              textTransform: "uppercase",
-              color: "rgba(255,255,255,0.72)",
-              margin: 0,
-            }}
-          >
-            Freedom through Discipline&nbsp;&nbsp;·&nbsp;&nbsp;A Sense of Mastery
+          <p className="h2-sub">
+            A path of movement, culture, and self-mastery. Capoeira. The Movement
+            Practice. A way of life.
           </p>
+          <div className="h2-actions">
+            <Link href="/movement-practice" className="h2-btn-primary">
+              Explore the Practice
+            </Link>
+            <Link href="/rmp/starting-point" className="h2-btn-text">
+              Find your starting point &rarr;
+            </Link>
+          </div>
+        </div>
+
+        <div className="h2-hero-right">
+          {/* Decorative companion blob, sits behind the image */}
+          <div className="h2-deco h2-deco--1" />
+          <div className="h2-deco h2-deco--2" />
+
+          {/* Main image blob */}
+          <div className="h2-blob-img">
+            <Image
+              src="/images/hero.jpg"
+              alt=""
+              fill
+              priority
+              style={{ objectFit: "cover", objectPosition: "60% center" }}
+            />
+          </div>
         </div>
       </section>
 
-      {/* ── Intro ── */}
-      <section
-        style={{
-          padding: "6rem 1.5rem",
-          maxWidth: "1200px",
-          margin: "0 auto",
-        }}
-      >
-        <div
-          style={{
-            maxWidth: "560px",
-            display: "flex",
-            flexDirection: "column",
-            gap: "1.5rem",
-          }}
-        >
-          <p
-            style={{
-              fontFamily: "var(--font-body)",
-              fontSize: "clamp(1rem, 1.8vw, 1.125rem)",
-              lineHeight: 1.8,
-              color: "var(--color-dark)",
-              margin: 0,
-              fontWeight: 300,
-            }}
-          >
-            I have lived inside this practice for two decades. Through capoeira
-            and movement. Not as techniques to master, but as a way of asking a
-            question I kept needing to return to.
+      {/* ── Philosophy ── */}
+      <section className="h2-phil">
+        <div className="h2-phil-left">
+          <p className="h2-label">The Practice</p>
+          <h2 className="h2-phil-heading">
+            Freedom through<br />
+            <em className="h2-copper">Discipline.</em>
+          </h2>
+          <p className="h2-phil-body">
+            I have lived inside this practice for two decades. Through capoeira and
+            movement. Not as techniques to master, but as a way of asking a question
+            I kept needing to return to: what does it mean to truly be free?
           </p>
-
-          <p
-            style={{
-              fontFamily: "var(--font-display)",
-              fontStyle: "italic",
-              fontSize: "clamp(1.25rem, 2.5vw, 1.5rem)",
-              lineHeight: 1.4,
-              color: "var(--color-dark)",
-              margin: 0,
-              fontWeight: 300,
-            }}
-          >
-            What does it mean to truly be free?
-          </p>
-
-          <p
-            style={{
-              fontFamily: "var(--font-body)",
-              fontSize: "clamp(1rem, 1.8vw, 1.125rem)",
-              lineHeight: 1.8,
-              color: "var(--color-dark)",
-              margin: 0,
-              fontWeight: 300,
-            }}
-          >
-            What I found is that the strength, awareness, and adaptability we
-            are looking for was never missing. It was buried. Under routine,
-            under performance, under lives shaped more by habit than by choice.
-          </p>
-
-          <p
-            style={{
-              fontFamily: "var(--font-body)",
-              fontSize: "clamp(1rem, 1.8vw, 1.125rem)",
-              lineHeight: 1.8,
-              color: "var(--color-dark)",
-              margin: 0,
-              fontWeight: 300,
-            }}
-          >
-            What I offer is a way back to it.
-          </p>
+          <Link href="/about" className="h2-btn-text" style={{ marginTop: "2.5rem", display: "inline-flex" }}>
+            Our story &rarr;
+          </Link>
+        </div>
+        <div className="h2-phil-right">
+          <blockquote className="h2-quote">
+            <span className="h2-quote-mark">&ldquo;</span>
+            <p>
+              Discipline creates freedom.<br />
+              Freedom reveals who you are.
+            </p>
+            <footer className="h2-quote-attr">Grilo Preto</footer>
+          </blockquote>
         </div>
       </section>
 
-      {/* ── Practice Cards ── */}
-      <section
-        style={{
-          padding: "2rem 1.5rem 8rem",
-          maxWidth: "1200px",
-          margin: "0 auto",
-        }}
-      >
-        <div className="cards-grid">
-          <PracticeCard
-            title="The Movement Practice"
-            description="A physical-first path to self mastery. Two decades of study distilled into one practice."
-            href="/movement-practice"
-          />
-          <PracticeCard
-            title="Capoeira"
-            description="Train with me in Denver or connect online through YouTube."
-            href="/capoeira"
-          />
+      {/* ── Paths grid ── */}
+      <section className="h2-paths">
+        <div className="h2-paths-grid">
+          {PATHS.map((p) => (
+            <div key={p.href} className="h2-path-item">
+              <span className="h2-path-num">{p.num}</span>
+              <h3 className="h2-path-title">{p.title}</h3>
+              <p className="h2-path-desc">{p.desc}</p>
+              <Link href={p.href} className="h2-path-arrow" aria-label={`Go to ${p.title}`}>
+                &rarr;
+              </Link>
+            </div>
+          ))}
         </div>
-      </section>
-
-      {/* ── CTA ── */}
-      <section
-        style={{
-          padding: "8rem 1.5rem",
-          textAlign: "center",
-          borderTop: "none",
-        }}
-      >
-        <h2
-          style={{
-            fontFamily: "var(--font-display)",
-            fontSize: "clamp(2rem, 5vw, 3.5rem)",
-            fontWeight: 300,
-            fontStyle: "italic",
-            color: "var(--color-dark)",
-            margin: "0 0 2rem",
-            letterSpacing: "-0.01em",
-          }}
-        >
-          Find Your Starting Point
-        </h2>
-        <Link href="/rmp/starting-point" className="cta-link">
-          Begin here
-        </Link>
       </section>
 
       <style>{`
-        .cards-grid {
+        /* ── Shared ── */
+        .h2-eyebrow, .h2-label {
+          font-family: var(--font-body);
+          font-size: 0.6875rem;
+          letter-spacing: 0.14em;
+          text-transform: uppercase;
+          color: var(--color-copper);
+          margin: 0;
+        }
+
+        /* ── Hero ── */
+        .h2-hero {
           display: grid;
           grid-template-columns: 1fr 1fr;
-          gap: 1.5rem;
+          min-height: 100dvh;
+          align-items: center;
+          overflow: hidden;
         }
-        @media (max-width: 640px) {
-          .cards-grid { grid-template-columns: 1fr; }
+        .h2-hero-left {
+          display: flex;
+          flex-direction: column;
+          gap: 2rem;
+          padding: 7rem max(2.5rem, 5vw) 7rem max(2rem, calc((100vw - 1200px) / 2 + 2.5rem));
         }
-
-        .card-link {
+        .h2-heading {
+          font-family: var(--font-display);
+          font-size: clamp(3rem, 5.5vw, 5.5rem);
+          font-weight: 300;
+          font-style: italic;
+          line-height: 1.05;
+          letter-spacing: -0.01em;
+          color: var(--color-dark);
+          margin: 0;
+        }
+        .h2-sub {
           font-family: var(--font-body);
-          font-size: 0.8rem;
-          letter-spacing: 0.08em;
+          font-size: 1rem;
+          line-height: 1.8;
+          color: var(--color-dark);
+          opacity: 0.65;
+          margin: 0;
+          max-width: 36ch;
+          font-weight: 300;
+        }
+        .h2-actions {
+          display: flex;
+          align-items: center;
+          gap: 2.5rem;
+          flex-wrap: wrap;
+          margin-top: 0.5rem;
+        }
+        .h2-btn-primary {
+          font-family: var(--font-body);
+          font-size: 0.75rem;
+          letter-spacing: 0.12em;
           text-transform: uppercase;
+          color: var(--color-base);
+          background: var(--color-dark);
+          text-decoration: none;
+          padding: 0.9rem 2rem;
+          transition: background 0.2s;
+          white-space: nowrap;
+        }
+        .h2-btn-primary:hover { background: var(--color-copper); }
+        .h2-btn-text {
+          font-family: var(--font-body);
+          font-size: 0.8125rem;
+          letter-spacing: 0.04em;
           color: var(--color-dark);
           text-decoration: none;
-          border-bottom: 1px solid currentColor;
-          padding-bottom: 1px;
-          align-self: flex-start;
           opacity: 0.6;
           transition: opacity 0.2s;
+          white-space: nowrap;
         }
-        .card-link:hover { opacity: 1; }
+        .h2-btn-text:hover { opacity: 1; }
 
-        .cta-link {
+        /* Hero right: blobs */
+        .h2-hero-right {
+          position: relative;
+          height: 100dvh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          overflow: visible;
+        }
+        .h2-blob-img {
+          position: relative;
+          width: clamp(300px, 40vw, 540px);
+          height: clamp(380px, 70vh, 680px);
+          border-radius: 54% 46% 38% 62% / 48% 56% 44% 52%;
+          overflow: hidden;
+          flex-shrink: 0;
+          z-index: 1;
+        }
+        .h2-deco {
+          position: absolute;
+          background: #e4dfd8;
+          z-index: 0;
+        }
+        .h2-deco--1 {
+          top: 3%;
+          right: -4%;
+          width: clamp(180px, 24vw, 320px);
+          height: clamp(220px, 38vh, 420px);
+          border-radius: 62% 38% 52% 48% / 40% 66% 34% 60%;
+        }
+        .h2-deco--2 {
+          bottom: 8%;
+          left: 2%;
+          width: clamp(100px, 14vw, 200px);
+          height: clamp(120px, 22vh, 240px);
+          border-radius: 46% 54% 62% 38% / 60% 38% 62% 40%;
+        }
+
+        /* ── Philosophy ── */
+        .h2-phil {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 5rem;
+          padding: 8rem max(2rem, calc((100vw - 1200px) / 2 + 2.5rem));
+        }
+        .h2-phil-left {
+          display: flex;
+          flex-direction: column;
+          gap: 1.5rem;
+        }
+        .h2-phil-heading {
+          font-family: var(--font-display);
+          font-size: clamp(2.25rem, 3.5vw, 3.5rem);
+          font-weight: 300;
+          line-height: 1.1;
+          color: var(--color-dark);
+          margin: 0;
+          font-style: normal;
+        }
+        .h2-copper {
+          color: var(--color-copper);
+          font-style: italic;
+        }
+        .h2-phil-body {
+          font-family: var(--font-body);
+          font-size: 0.9375rem;
+          line-height: 1.85;
+          color: var(--color-dark);
+          opacity: 0.72;
+          margin: 0;
+          font-weight: 300;
+        }
+        .h2-phil-right {
+          display: flex;
+          align-items: center;
+          padding-left: 3rem;
+          border-left: 1px solid var(--color-subtle);
+        }
+        .h2-quote { margin: 0; padding: 0; border: none; }
+        .h2-quote-mark {
+          font-family: var(--font-display);
+          font-size: 5rem;
+          color: var(--color-copper);
+          line-height: 0.8;
+          display: block;
+          margin-bottom: 1.25rem;
+        }
+        .h2-quote p {
+          font-family: var(--font-display);
+          font-size: clamp(1.5rem, 2.8vw, 2.25rem);
+          font-style: italic;
+          font-weight: 300;
+          line-height: 1.35;
+          color: var(--color-dark);
+          margin: 0 0 1.75rem;
+        }
+        .h2-quote-attr {
+          font-family: var(--font-body);
+          font-size: 0.625rem;
+          letter-spacing: 0.16em;
+          text-transform: uppercase;
+          color: var(--color-copper);
+          border-top: 1px solid var(--color-subtle);
+          padding-top: 1.25rem;
+          display: block;
+          width: 8rem;
+        }
+
+        /* ── Paths grid ── */
+        .h2-paths {
+          border-top: 1px solid var(--color-subtle);
+          padding: 0 max(2rem, calc((100vw - 1200px) / 2 + 2.5rem));
+        }
+        .h2-paths-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+        }
+        .h2-path-item {
+          padding: 4rem 2.5rem;
+          border-right: 1px solid var(--color-subtle);
+          display: flex;
+          flex-direction: column;
+          gap: 0.75rem;
+        }
+        .h2-path-item:first-child { padding-left: 0; }
+        .h2-path-item:last-child { border-right: none; padding-right: 0; }
+        .h2-path-num {
+          font-family: var(--font-body);
+          font-size: 0.75rem;
+          letter-spacing: 0.08em;
+          color: var(--color-copper);
+        }
+        .h2-path-title {
+          font-family: var(--font-body);
+          font-size: 0.625rem;
+          font-weight: 500;
+          letter-spacing: 0.16em;
+          text-transform: uppercase;
+          color: var(--color-dark);
+          margin: 0;
+        }
+        .h2-path-desc {
           font-family: var(--font-body);
           font-size: 0.875rem;
-          letter-spacing: 0.1em;
-          text-transform: uppercase;
-          color: var(--color-mid);
-          text-decoration: none;
-          border-bottom: 1px solid var(--color-subtle);
-          padding-bottom: 2px;
-          transition: color 0.2s, border-color 0.2s;
-        }
-        .cta-link:hover {
+          line-height: 1.7;
           color: var(--color-dark);
-          border-color: var(--color-dark);
+          opacity: 0.6;
+          margin: 0;
+          font-weight: 300;
+          flex: 1;
+        }
+        .h2-path-arrow {
+          font-size: 1rem;
+          color: var(--color-dark);
+          text-decoration: none;
+          opacity: 0.4;
+          display: inline-block;
+          margin-top: 0.5rem;
+          transition: opacity 0.2s, color 0.2s;
+        }
+        .h2-path-arrow:hover { opacity: 1; color: var(--color-copper); }
+
+        /* ── Responsive ── */
+        @media (max-width: 900px) {
+          .h2-hero {
+            grid-template-columns: 1fr;
+            min-height: auto;
+          }
+          .h2-hero-left {
+            padding: 6rem 2rem 3rem;
+            max-width: 100%;
+          }
+          .h2-hero-right {
+            height: 60vw;
+          }
+          .h2-blob-img {
+            width: 68vw;
+            height: 56vw;
+          }
+          .h2-phil {
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            padding: 5rem 2rem;
+          }
+          .h2-phil-right {
+            padding-left: 0;
+            border-left: none;
+            padding-top: 3rem;
+            border-top: 1px solid var(--color-subtle);
+          }
+          .h2-paths-grid {
+            grid-template-columns: 1fr 1fr;
+          }
+          .h2-path-item:nth-child(2) { border-right: none; }
+          .h2-path-item:nth-child(3) { padding-left: 0; }
+          .h2-path-item:nth-child(3),
+          .h2-path-item:nth-child(4) { border-top: 1px solid var(--color-subtle); }
+        }
+        @media (max-width: 560px) {
+          .h2-paths-grid { grid-template-columns: 1fr; }
+          .h2-path-item {
+            border-right: none;
+            border-top: 1px solid var(--color-subtle);
+            padding: 2.5rem 0;
+          }
+          .h2-path-item:nth-child(3) { border-top: 1px solid var(--color-subtle); }
         }
       `}</style>
     </main>
-  );
-}
-
-function PracticeCard({
-  title,
-  description,
-  href,
-}: {
-  title: string;
-  description: string;
-  href: string;
-}) {
-  return (
-    <div
-      style={{
-        backgroundColor: "var(--color-base)",
-        border: "1px solid var(--color-subtle)",
-        padding: "3rem 2.5rem",
-        display: "flex",
-        flexDirection: "column",
-        gap: "1rem",
-        minHeight: "280px",
-      }}
-    >
-      <h3
-        style={{
-          fontFamily: "var(--font-display)",
-          fontSize: "clamp(1.5rem, 2.5vw, 2rem)",
-          fontWeight: 400,
-          color: "var(--color-dark)",
-          margin: 0,
-          lineHeight: 1.2,
-        }}
-      >
-        {title}
-      </h3>
-      <p
-        style={{
-          fontFamily: "var(--font-body)",
-          fontSize: "0.9rem",
-          color: "var(--color-dark)",
-          margin: 0,
-          lineHeight: 1.7,
-          opacity: 0.75,
-          flexGrow: 1,
-        }}
-      >
-        {description}
-      </p>
-      <Link href={href} className="card-link">
-        Explore
-      </Link>
-    </div>
   );
 }
