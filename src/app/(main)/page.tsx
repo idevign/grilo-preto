@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 
 const PATHS = [
@@ -34,7 +33,18 @@ export default function Home() {
 
       {/* ── Hero ── */}
       <section className="h2-hero">
-        <div className="h2-hero-left">
+        <div
+          className="h2-hero-bg"
+          style={{ backgroundImage: "url('/images/hero-hand.jpg')" }}
+        />
+        <div className="h2-hero-overlay" />
+
+        {/* Decorative blobs — right side, no images */}
+        <div className="h2-blob-main" />
+        <div className="h2-deco h2-deco--1" />
+        <div className="h2-deco h2-deco--2" />
+
+        <div className="h2-hero-content">
           <p className="h2-eyebrow">Rooted in tradition. Applied to life.</p>
           <h1 className="h2-heading">
             Inviting a<br />Return to Self.
@@ -50,23 +60,6 @@ export default function Home() {
             <Link href="/rmp/starting-point" className="h2-btn-text">
               Find your starting point &rarr;
             </Link>
-          </div>
-        </div>
-
-        <div className="h2-hero-right">
-          {/* Decorative companion blob, sits behind the image */}
-          <div className="h2-deco h2-deco--1" />
-          <div className="h2-deco h2-deco--2" />
-
-          {/* Main image blob */}
-          <div className="h2-blob-img">
-            <Image
-              src="/images/hero.jpg"
-              alt=""
-              fill
-              priority
-              style={{ objectFit: "cover", objectPosition: "60% center" }}
-            />
           </div>
         </div>
       </section>
@@ -129,17 +122,39 @@ export default function Home() {
 
         /* ── Hero ── */
         .h2-hero {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
+          position: relative;
           min-height: 100dvh;
-          align-items: center;
+          display: flex;
+          align-items: flex-end;
           overflow: hidden;
         }
-        .h2-hero-left {
+        .h2-hero-bg {
+          position: absolute;
+          inset: 0;
+          background-size: cover;
+          background-position: center 30%;
+          background-repeat: no-repeat;
+          z-index: 0;
+        }
+        .h2-hero-overlay {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(
+            to right,
+            rgba(0, 0, 0, 0.72) 0%,
+            rgba(0, 0, 0, 0.45) 55%,
+            rgba(0, 0, 0, 0.1) 100%
+          );
+          z-index: 1;
+        }
+        .h2-hero-content {
+          position: relative;
+          z-index: 2;
           display: flex;
           flex-direction: column;
           gap: 2rem;
           padding: 7rem max(2.5rem, 5vw) 7rem max(2rem, calc((100vw - 1200px) / 2 + 2.5rem));
+          max-width: 660px;
         }
         .h2-heading {
           font-family: var(--font-display);
@@ -148,14 +163,14 @@ export default function Home() {
           font-style: italic;
           line-height: 1.05;
           letter-spacing: -0.01em;
-          color: var(--color-dark);
+          color: var(--color-base);
           margin: 0;
         }
         .h2-sub {
           font-family: var(--font-body);
           font-size: 1rem;
           line-height: 1.8;
-          color: var(--color-dark);
+          color: var(--color-base);
           opacity: 0.65;
           margin: 0;
           max-width: 36ch;
@@ -173,19 +188,19 @@ export default function Home() {
           font-size: 0.75rem;
           letter-spacing: 0.12em;
           text-transform: uppercase;
-          color: var(--color-base);
-          background: var(--color-dark);
+          color: var(--color-dark);
+          background: var(--color-base);
           text-decoration: none;
           padding: 0.9rem 2rem;
-          transition: background 0.2s;
+          transition: background 0.2s, color 0.2s;
           white-space: nowrap;
         }
-        .h2-btn-primary:hover { background: var(--color-copper); }
+        .h2-btn-primary:hover { background: var(--color-copper); color: var(--color-base); }
         .h2-btn-text {
           font-family: var(--font-body);
           font-size: 0.8125rem;
           letter-spacing: 0.04em;
-          color: var(--color-dark);
+          color: var(--color-base);
           text-decoration: none;
           opacity: 0.6;
           transition: opacity 0.2s;
@@ -193,41 +208,37 @@ export default function Home() {
         }
         .h2-btn-text:hover { opacity: 1; }
 
-        /* Hero right: blobs */
-        .h2-hero-right {
-          position: relative;
-          height: 100dvh;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          overflow: visible;
-        }
-        .h2-blob-img {
-          position: relative;
-          width: clamp(300px, 40vw, 540px);
-          height: clamp(380px, 70vh, 680px);
+        /* Hero blobs */
+        .h2-blob-main {
+          position: absolute;
+          right: 12%;
+          top: 50%;
+          transform: translateY(-50%);
+          width: clamp(300px, 38vw, 520px);
+          height: clamp(380px, 68vh, 660px);
           border-radius: 54% 46% 38% 62% / 48% 56% 44% 52%;
-          overflow: hidden;
-          flex-shrink: 0;
-          z-index: 1;
+          background: rgba(245, 243, 240, 0.07);
+          border: 1px solid rgba(245, 243, 240, 0.15);
+          z-index: 2;
         }
         .h2-deco {
           position: absolute;
-          background: #e4dfd8;
-          z-index: 0;
+          background: rgba(245, 243, 240, 0.05);
+          border: 1px solid rgba(245, 243, 240, 0.1);
+          z-index: 2;
         }
         .h2-deco--1 {
-          top: 3%;
-          right: -4%;
-          width: clamp(180px, 24vw, 320px);
-          height: clamp(220px, 38vh, 420px);
+          top: 6%;
+          right: 4%;
+          width: clamp(180px, 22vw, 300px);
+          height: clamp(220px, 36vh, 400px);
           border-radius: 62% 38% 52% 48% / 40% 66% 34% 60%;
         }
         .h2-deco--2 {
-          bottom: 8%;
-          left: 2%;
-          width: clamp(100px, 14vw, 200px);
-          height: clamp(120px, 22vh, 240px);
+          bottom: 10%;
+          right: 28%;
+          width: clamp(100px, 13vw, 190px);
+          height: clamp(120px, 20vh, 220px);
           border-radius: 46% 54% 62% 38% / 60% 38% 62% 40%;
         }
 
@@ -357,20 +368,12 @@ export default function Home() {
 
         /* ── Responsive ── */
         @media (max-width: 900px) {
-          .h2-hero {
-            grid-template-columns: 1fr;
-            min-height: auto;
-          }
-          .h2-hero-left {
-            padding: 6rem 2rem 3rem;
+          .h2-hero-content {
+            padding: 6rem 2rem 5rem;
             max-width: 100%;
           }
-          .h2-hero-right {
-            height: 60vw;
-          }
-          .h2-blob-img {
-            width: 68vw;
-            height: 56vw;
+          .h2-hero-overlay {
+            background: rgba(0, 0, 0, 0.55);
           }
           .h2-phil {
             grid-template-columns: 1fr;
