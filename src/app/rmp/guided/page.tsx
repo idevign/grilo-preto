@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 
 type Status = "idle" | "submitting" | "success" | "error";
@@ -76,17 +77,8 @@ export default function RmpGuided() {
         }}
       >
         <div style={{ maxWidth: "680px", display: "flex", flexDirection: "column", gap: "1.75rem" }}>
-          <p
-            style={{
-              fontFamily: "var(--font-display)",
-              fontStyle: "italic",
-              fontSize: "clamp(1.125rem, 2vw, 1.375rem)",
-              fontWeight: 300,
-              color: "var(--color-dark)",
-              margin: 0,
-              lineHeight: 1.45,
-            }}
-          >
+          <p className="rg-label">Practice Without Borders</p>
+          <p className="rg-italic-sub">
             Two decades of practice, distilled into something you can return to daily.
           </p>
 
@@ -382,6 +374,34 @@ export default function RmpGuided() {
         </div>
       </section>
 
+      {/* ── Closing CTA ── */}
+      <section
+        style={{
+          padding: "6rem 1.5rem 8rem",
+          maxWidth: "1200px",
+          margin: "0 auto",
+          borderTop: "1px solid var(--color-subtle)",
+          textAlign: "center",
+        }}
+      >
+        <p
+          style={{
+            fontFamily: "var(--font-display)",
+            fontStyle: "italic",
+            fontSize: "clamp(1.5rem, 3vw, 2.25rem)",
+            fontWeight: 300,
+            color: "var(--color-dark)",
+            margin: "0 0 2rem",
+            lineHeight: 1.35,
+          }}
+        >
+          Not sure where to begin?
+        </p>
+        <Link href="/rmp/starting-point" className="rg-cta-link">
+          Find Your Starting Point
+        </Link>
+      </section>
+
       <style>{`
         .rg-body {
           font-family: var(--font-body);
@@ -398,6 +418,15 @@ export default function RmpGuided() {
           text-transform: uppercase;
           color: var(--color-mid);
           margin: 0;
+        }
+        .rg-italic-sub {
+          font-family: var(--font-display);
+          font-style: italic;
+          font-size: clamp(1.125rem, 2vw, 1.375rem);
+          font-weight: 300;
+          color: var(--color-dark);
+          margin: 0;
+          line-height: 1.45;
         }
         .rg-section-heading {
           font-family: var(--font-display);
@@ -416,6 +445,21 @@ export default function RmpGuided() {
         }
         @media (max-width: 560px) {
           .rg-grid-2 { grid-template-columns: 1fr; gap: 2rem; }
+        }
+        .rg-cta-link {
+          font-family: var(--font-body);
+          font-size: 0.875rem;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          color: var(--color-mid);
+          text-decoration: none;
+          border-bottom: 1px solid var(--color-subtle);
+          padding-bottom: 2px;
+          transition: color 0.2s, border-color 0.2s;
+        }
+        .rg-cta-link:hover {
+          color: var(--color-dark);
+          border-color: var(--color-dark);
         }
       `}</style>
     </main>
