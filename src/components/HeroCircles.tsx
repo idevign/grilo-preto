@@ -102,9 +102,11 @@ export default function HeroCircles({ src }: Props) {
       // Step 1: draw full image as the base layer.
       drawCover();
 
-      // Step 2: dark overlay on top of the full image.
+      // Step 2: dark scrim on top of the full image.
+      ctx!.globalCompositeOperation = "overlay";
       ctx!.fillStyle = `rgba(10, 9, 8, ${OVERLAY_ALPHA})`;
       ctx!.fillRect(0, 0, w, h);
+      ctx!.globalCompositeOperation = "source-over";
 
       // Step 3: for each ring, clip to the annular region and redraw the
       // image at full brightness, cutting through the dark overlay.
