@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import HeroRippleCanvas from "@/components/HeroRippleCanvas";
 
 const PATHS = [
   {
@@ -35,10 +36,12 @@ export default function Home() {
       {/* ── Hero ── */}
       <section className="h2-hero">
 
+        <HeroRippleCanvas />
+
         {/* Decorative blobs — right side */}
         <div className="h2-blob-main">
           <Image
-            src="/images/hero-hand.jpg"
+            src="/images/gp-dec012025-slide05.jpg"
             alt=""
             fill
             priority
@@ -131,18 +134,7 @@ export default function Home() {
           display: flex;
           align-items: flex-end;
           overflow: hidden;
-          background: linear-gradient(to right, #e6dad0, #c5b7ab);
-        }
-        .h2-hero::before {
-          content: '';
-          position: absolute;
-          inset: 0;
-          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-          background-repeat: repeat;
-          background-size: 200px 200px;
-          opacity: 0.50;
-          pointer-events: none;
-          z-index: 0;
+          background: url('/images/hero-hand.jpg') center / cover no-repeat;
         }
 
         .h2-hero-content {
