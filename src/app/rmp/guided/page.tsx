@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { EASE, REVEAL_TR, useReveal, StaggerItem } from "@/components/animations";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
@@ -9,6 +10,23 @@ export default function RmpGuided() {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<Status>("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const [loaded, setLoaded] = useState(false);
+
+  const s1Ref = useRef<HTMLDivElement>(null);
+  const s2Ref = useRef<HTMLDivElement>(null);
+  const bqRef = useRef<HTMLDivElement>(null);
+  const s3Ref = useRef<HTMLDivElement>(null);
+  const s4Ref = useRef<HTMLDivElement>(null);
+  const s5Ref = useRef<HTMLDivElement>(null);
+
+  const r1 = useReveal(s1Ref);
+  const r2 = useReveal(s2Ref);
+  const rBq = useReveal(bqRef);
+  const r3 = useReveal(s3Ref);
+  const r4 = useReveal(s4Ref);
+  const r5 = useReveal(s5Ref);
+
+  useEffect(() => { setLoaded(true); }, []);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -49,9 +67,36 @@ export default function RmpGuided() {
         />
         <div className="rg-hero-scrim" />
         <div className="rg-hero-content">
-          <p className="rg-hero-eyebrow">Ritual Movement Practice</p>
-          <h1 className="rg-hero-h1">RMP⁺ Guided</h1>
-          <p className="rg-hero-blurb">The foundation, in your own space.</p>
+          <p
+            className="rg-hero-eyebrow"
+            style={{
+              opacity: loaded ? 1 : 0,
+              transform: loaded ? "translateY(0)" : "translateY(18px)",
+              transition: `opacity 0.8s ${EASE} 0.1s, transform 0.8s ${EASE} 0.1s`,
+            }}
+          >
+            Ritual Movement Practice
+          </p>
+          <h1
+            className="rg-hero-h1"
+            style={{
+              opacity: loaded ? 1 : 0,
+              transform: loaded ? "translateY(0)" : "translateY(18px)",
+              transition: `opacity 0.9s ${EASE} 0.35s, transform 0.9s ${EASE} 0.35s`,
+            }}
+          >
+            RMP⁺ Guided
+          </h1>
+          <p
+            className="rg-hero-blurb"
+            style={{
+              opacity: loaded ? 1 : 0,
+              transform: loaded ? "translateY(0)" : "translateY(18px)",
+              transition: `opacity 0.8s ${EASE} 0.6s, transform 0.8s ${EASE} 0.6s`,
+            }}
+          >
+            The foundation, in your own space.
+          </p>
         </div>
       </section>
 
@@ -65,7 +110,19 @@ export default function RmpGuided() {
           padding: "6rem max(2rem, 5vw)",
         }}
       >
-        <div style={{ maxWidth: "900px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "1.75rem" }}>
+        <div
+          ref={s1Ref}
+          style={{
+            maxWidth: "900px",
+            margin: "0 auto",
+            display: "flex",
+            flexDirection: "column",
+            gap: "1.75rem",
+            opacity: r1 ? 1 : 0,
+            transform: r1 ? "none" : "translateY(24px)",
+            transition: REVEAL_TR,
+          }}
+        >
           <p className="rg-label">Practice Without Borders</p>
           <p className="rg-italic-sub">
             Two decades of practice, distilled into something you can return to daily.
@@ -102,7 +159,19 @@ export default function RmpGuided() {
           padding: "6rem max(2rem, 5vw)",
         }}
       >
-        <div style={{ maxWidth: "900px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "2.5rem" }}>
+        <div
+          ref={s2Ref}
+          style={{
+            maxWidth: "900px",
+            margin: "0 auto",
+            display: "flex",
+            flexDirection: "column",
+            gap: "2.5rem",
+            opacity: r2 ? 1 : 0,
+            transform: r2 ? "none" : "translateY(24px)",
+            transition: REVEAL_TR,
+          }}
+        >
           <div>
             <p className="rg-label" style={{ marginBottom: "0.5rem" }}>Inside the Platform</p>
             <h2 className="rg-section-heading">What You Get</h2>
@@ -126,35 +195,37 @@ export default function RmpGuided() {
                 title: "Platform",
                 body: "Everfit app. iOS and Android. Track sessions and progress. Add personal notes to movements.",
               },
-            ].map((item) => (
-              <div key={item.title} style={{ display: "flex", flexDirection: "column", gap: "0.625rem" }}>
-                <p
-                  style={{
-                    fontFamily: "var(--font-body)",
-                    fontSize: "0.75rem",
-                    letterSpacing: "0.08em",
-                    textTransform: "uppercase",
-                    color: "var(--color-dark)",
-                    margin: 0,
-                    fontWeight: 400,
-                  }}
-                >
-                  {item.title}
-                </p>
-                <p
-                  style={{
-                    fontFamily: "var(--font-body)",
-                    fontSize: "0.9375rem",
-                    lineHeight: 1.7,
-                    color: "var(--color-dark)",
-                    margin: 0,
-                    fontWeight: 300,
-                    opacity: 0.75,
-                  }}
-                >
-                  {item.body}
-                </p>
-              </div>
+            ].map((item, i) => (
+              <StaggerItem key={item.title} index={i}>
+                <div style={{ display: "flex", flexDirection: "column", gap: "0.625rem" }}>
+                  <p
+                    style={{
+                      fontFamily: "var(--font-body)",
+                      fontSize: "0.75rem",
+                      letterSpacing: "0.08em",
+                      textTransform: "uppercase",
+                      color: "var(--color-dark)",
+                      margin: 0,
+                      fontWeight: 400,
+                    }}
+                  >
+                    {item.title}
+                  </p>
+                  <p
+                    style={{
+                      fontFamily: "var(--font-body)",
+                      fontSize: "0.9375rem",
+                      lineHeight: 1.7,
+                      color: "var(--color-dark)",
+                      margin: 0,
+                      fontWeight: 300,
+                      opacity: 0.75,
+                    }}
+                  >
+                    {item.body}
+                  </p>
+                </div>
+              </StaggerItem>
             ))}
           </div>
         </div>
@@ -170,7 +241,19 @@ export default function RmpGuided() {
           padding: "6rem max(2rem, 5vw)",
         }}
       >
-        <div style={{ maxWidth: "900px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "1.75rem" }}>
+        <div
+          ref={s3Ref}
+          style={{
+            maxWidth: "900px",
+            margin: "0 auto",
+            display: "flex",
+            flexDirection: "column",
+            gap: "1.75rem",
+            opacity: r3 ? 1 : 0,
+            transform: r3 ? "none" : "translateY(24px)",
+            transition: REVEAL_TR,
+          }}
+        >
           <div>
             <p className="rg-label" style={{ marginBottom: "0.5rem" }}>Phase Structure and Access</p>
             <h2 className="rg-section-heading">How It Works</h2>
@@ -194,21 +277,39 @@ export default function RmpGuided() {
             </p>
           </div>
 
-          <blockquote
+          <div
+            ref={bqRef}
             style={{
-              fontFamily: "var(--font-display)",
-              fontStyle: "italic",
-              fontSize: "clamp(1.125rem, 2vw, 1.375rem)",
-              fontWeight: 300,
-              color: "var(--color-dark)",
+              position: "relative",
               margin: "0.5rem 0 0",
-              lineHeight: 1.45,
-              borderLeft: "2px solid var(--color-copper)",
               paddingLeft: "1.5rem",
             }}
           >
-            The practice unfolds in phases. Each one builds on what came before.
-          </blockquote>
+            <div
+              style={{
+                position: "absolute",
+                left: 0,
+                top: 0,
+                width: "2px",
+                backgroundColor: "var(--color-copper)",
+                height: rBq ? "100%" : "0%",
+                transition: `height 0.6s ${EASE} 0.2s`,
+              }}
+            />
+            <blockquote
+              style={{
+                fontFamily: "var(--font-display)",
+                fontStyle: "italic",
+                fontSize: "clamp(1.125rem, 2vw, 1.375rem)",
+                fontWeight: 300,
+                color: "var(--color-dark)",
+                margin: 0,
+                lineHeight: 1.45,
+              }}
+            >
+              The practice unfolds in phases. Each one builds on what came before.
+            </blockquote>
+          </div>
         </div>
       </section>
 
@@ -222,7 +323,19 @@ export default function RmpGuided() {
           padding: "6rem max(2rem, 5vw)",
         }}
       >
-        <div style={{ maxWidth: "900px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "2.5rem" }}>
+        <div
+          ref={s4Ref}
+          style={{
+            maxWidth: "900px",
+            margin: "0 auto",
+            display: "flex",
+            flexDirection: "column",
+            gap: "2.5rem",
+            opacity: r4 ? 1 : 0,
+            transform: r4 ? "none" : "translateY(24px)",
+            transition: REVEAL_TR,
+          }}
+        >
           <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
             <h2
               style={{
@@ -378,22 +491,35 @@ export default function RmpGuided() {
           textAlign: "center",
         }}
       >
-        <p
+        <div
+          ref={s5Ref}
           style={{
-            fontFamily: "var(--font-display)",
-            fontStyle: "italic",
-            fontSize: "clamp(1.5rem, 3vw, 2.25rem)",
-            fontWeight: 300,
-            color: "var(--color-dark)",
-            margin: "0 0 2rem",
-            lineHeight: 1.35,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: "2rem",
+            opacity: r5 ? 1 : 0,
+            transform: r5 ? "none" : "translateY(24px)",
+            transition: REVEAL_TR,
           }}
         >
-          Not sure where to begin?
-        </p>
-        <Link href="/rmp/starting-point" className="rg-cta-link">
-          Find Your Starting Point
-        </Link>
+          <p
+            style={{
+              fontFamily: "var(--font-display)",
+              fontStyle: "italic",
+              fontSize: "clamp(1.5rem, 3vw, 2.25rem)",
+              fontWeight: 300,
+              color: "var(--color-dark)",
+              margin: 0,
+              lineHeight: 1.35,
+            }}
+          >
+            Not sure where to begin?
+          </p>
+          <Link href="/rmp/starting-point" className="rg-cta-link">
+            Find Your Starting Point
+          </Link>
+        </div>
       </section>
 
       <style>{`
@@ -441,7 +567,7 @@ export default function RmpGuided() {
         .rg-hero-h1 {
           font-family: var(--font-display);
           font-size: clamp(3rem, 5.5vw, 5.5rem);
-          font-weight: 300;
+          font-weight: 600;
           font-style: italic;
           line-height: 1.05;
           color: #f0ebe3;

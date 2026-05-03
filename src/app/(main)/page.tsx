@@ -156,7 +156,7 @@ export default function Home() {
         .h2-heading {
           font-family: var(--font-display);
           font-size: clamp(3rem, 5.5vw, 5.5rem);
-          font-weight: 300;
+          font-weight: 600;
           font-style: italic;
           line-height: 1.05;
           letter-spacing: -0.01em;

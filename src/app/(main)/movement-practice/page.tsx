@@ -1,4 +1,8 @@
+"use client";
+
 import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
+import { EASE, REVEAL_TR, useReveal, StaggerItem } from "@/components/animations";
 
 const paths = [
   {
@@ -19,6 +23,13 @@ const paths = [
 ];
 
 export default function MovementPractice() {
+  const [loaded, setLoaded] = useState(false);
+
+  const s1Ref = useRef<HTMLDivElement>(null);
+  const r1 = useReveal(s1Ref);
+
+  useEffect(() => { setLoaded(true); }, []);
+
   return (
     <main>
       {/* ── Hero ── */}
@@ -31,9 +42,34 @@ export default function MovementPractice() {
         />
         <div className="mp-hero-scrim" />
         <div className="mp-hero-content">
-          <p className="mp-hero-eyebrow">A physical-first path to self mastery</p>
-          <h1 className="mp-hero-h1">The Movement Practice</h1>
-          <p className="mp-hero-blurb">
+          <p
+            className="mp-hero-eyebrow"
+            style={{
+              opacity: loaded ? 1 : 0,
+              transform: loaded ? "translateY(0)" : "translateY(18px)",
+              transition: `opacity 0.8s ${EASE} 0.1s, transform 0.8s ${EASE} 0.1s`,
+            }}
+          >
+            A physical-first path to self mastery
+          </p>
+          <h1
+            className="mp-hero-h1"
+            style={{
+              opacity: loaded ? 1 : 0,
+              transform: loaded ? "translateY(0)" : "translateY(18px)",
+              transition: `opacity 0.9s ${EASE} 0.35s, transform 0.9s ${EASE} 0.35s`,
+            }}
+          >
+            The Movement Practice
+          </h1>
+          <p
+            className="mp-hero-blurb"
+            style={{
+              opacity: loaded ? 1 : 0,
+              transform: loaded ? "translateY(0)" : "translateY(18px)",
+              transition: `opacity 0.8s ${EASE} 0.6s, transform 0.8s ${EASE} 0.6s`,
+            }}
+          >
             Ritual Movement Practice develops the whole person through the body. Not the body in isolation from everything else, but as one integrated system.
           </p>
         </div>
@@ -41,55 +77,68 @@ export default function MovementPractice() {
 
       {/* ── Path cards ── */}
       <section style={{ minHeight: "100dvh", display: "flex", flexDirection: "column", justifyContent: "center", padding: "6rem max(2rem, 5vw)" }}>
-        <div className="mp-grid" style={{ maxWidth: "1200px", margin: "0 auto" }}>
-          {paths.map((path) => (
-            <div
-              key={path.href}
-              style={{
-                backgroundColor: "var(--color-base)",
-                border: "1px solid var(--color-subtle)",
-                padding: "3rem 2.5rem",
-                display: "flex",
-                flexDirection: "column",
-                gap: "1rem",
-                minHeight: "280px",
-              }}
-            >
-              <h2
-                style={{
-                  fontFamily: "var(--font-display)",
-                  fontSize: "clamp(1.5rem, 2.5vw, 2rem)",
-                  fontWeight: 400,
-                  color: "var(--color-dark)",
-                  margin: 0,
-                  lineHeight: 1.2,
-                }}
-              >
-                {path.title}
-              </h2>
-              <p
-                style={{
-                  fontFamily: "var(--font-body)",
-                  fontSize: "0.9rem",
-                  color: "var(--color-dark)",
-                  margin: 0,
-                  lineHeight: 1.7,
-                  opacity: 0.75,
-                  flexGrow: 1,
-                }}
-              >
-                {path.description}
-              </p>
-              <Link href={path.href} className="mp-card-link">
-                Explore
-              </Link>
-            </div>
-          ))}
-        </div>
-        <div style={{ maxWidth: "1200px", margin: "3rem auto 0", textAlign: "center", width: "100%" }}>
-          <Link href="/rmp" className="mp-full-link">
-            Explore the full practice →
-          </Link>
+        <div
+          ref={s1Ref}
+          style={{
+            maxWidth: "1200px",
+            margin: "0 auto",
+            width: "100%",
+            opacity: r1 ? 1 : 0,
+            transform: r1 ? "none" : "translateY(24px)",
+            transition: REVEAL_TR,
+          }}
+        >
+          <div className="mp-grid">
+            {paths.map((path, i) => (
+              <StaggerItem key={path.href} index={i}>
+                <div
+                  style={{
+                    backgroundColor: "var(--color-base)",
+                    border: "1px solid var(--color-subtle)",
+                    padding: "3rem 2.5rem",
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "1rem",
+                    minHeight: "280px",
+                  }}
+                >
+                  <h2
+                    style={{
+                      fontFamily: "var(--font-display)",
+                      fontSize: "clamp(1.5rem, 2.5vw, 2rem)",
+                      fontWeight: 400,
+                      color: "var(--color-dark)",
+                      margin: 0,
+                      lineHeight: 1.2,
+                    }}
+                  >
+                    {path.title}
+                  </h2>
+                  <p
+                    style={{
+                      fontFamily: "var(--font-body)",
+                      fontSize: "0.9rem",
+                      color: "var(--color-dark)",
+                      margin: 0,
+                      lineHeight: 1.7,
+                      opacity: 0.75,
+                      flexGrow: 1,
+                    }}
+                  >
+                    {path.description}
+                  </p>
+                  <Link href={path.href} className="mp-card-link">
+                    Explore
+                  </Link>
+                </div>
+              </StaggerItem>
+            ))}
+          </div>
+          <div style={{ margin: "3rem 0 0", textAlign: "center" }}>
+            <Link href="/rmp" className="mp-full-link">
+              Explore the full practice →
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -138,7 +187,7 @@ export default function MovementPractice() {
         .mp-hero-h1 {
           font-family: var(--font-display);
           font-size: clamp(3rem, 5.5vw, 5.5rem);
-          font-weight: 300;
+          font-weight: 600;
           font-style: italic;
           line-height: 1.05;
           color: #f0ebe3;

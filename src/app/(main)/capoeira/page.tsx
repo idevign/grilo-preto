@@ -1,4 +1,25 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import { EASE, REVEAL_TR, useReveal, StaggerItem } from "@/components/animations";
+
 export default function Capoeira() {
+  const [loaded, setLoaded] = useState(false);
+
+  const s1Ref = useRef<HTMLDivElement>(null);
+  const bqRef = useRef<HTMLDivElement>(null);
+  const s2Ref = useRef<HTMLDivElement>(null);
+  const s3Ref = useRef<HTMLDivElement>(null);
+  const s4Ref = useRef<HTMLDivElement>(null);
+
+  const r1 = useReveal(s1Ref);
+  const rBq = useReveal(bqRef);
+  const r2 = useReveal(s2Ref);
+  const r3 = useReveal(s3Ref);
+  const r4 = useReveal(s4Ref);
+
+  useEffect(() => { setLoaded(true); }, []);
+
   return (
     <main>
 
@@ -6,9 +27,34 @@ export default function Capoeira() {
       <section className="cap-hero">
         <div className="cap-hero-scrim" />
         <div className="cap-hero-content">
-          <p className="cap-hero-eyebrow">An Afro-Brazilian Martial Art</p>
-          <h1 className="cap-hero-h1">Capoeira</h1>
-          <p className="cap-hero-blurb">
+          <p
+            className="cap-hero-eyebrow"
+            style={{
+              opacity: loaded ? 1 : 0,
+              transform: loaded ? "translateY(0)" : "translateY(18px)",
+              transition: `opacity 0.8s ${EASE} 0.1s, transform 0.8s ${EASE} 0.1s`,
+            }}
+          >
+            An Afro-Brazilian Martial Art
+          </p>
+          <h1
+            className="cap-hero-h1"
+            style={{
+              opacity: loaded ? 1 : 0,
+              transform: loaded ? "translateY(0)" : "translateY(18px)",
+              transition: `opacity 0.9s ${EASE} 0.35s, transform 0.9s ${EASE} 0.35s`,
+            }}
+          >
+            Capoeira
+          </h1>
+          <p
+            className="cap-hero-blurb"
+            style={{
+              opacity: loaded ? 1 : 0,
+              transform: loaded ? "translateY(0)" : "translateY(18px)",
+              transition: `opacity 0.8s ${EASE} 0.6s, transform 0.8s ${EASE} 0.6s`,
+            }}
+          >
             Part martial art, part game, part music, part ritual. Born from a people who needed to move in ways that could not be taken from them.
           </p>
         </div>
@@ -24,35 +70,66 @@ export default function Capoeira() {
           padding: "6rem max(2rem, 5vw)",
         }}
       >
-        <div style={{ maxWidth: "1200px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "2rem" }}>
+        <div
+          ref={s1Ref}
+          style={{
+            maxWidth: "1200px",
+            margin: "0 auto",
+            display: "flex",
+            flexDirection: "column",
+            gap: "2rem",
+            opacity: r1 ? 1 : 0,
+            transform: r1 ? "none" : "translateY(24px)",
+            transition: REVEAL_TR,
+          }}
+        >
 
-          {/* Pull quote */}
-          <blockquote
+          {/* Pull quote with copper line */}
+          <div
+            ref={bqRef}
             style={{
-              fontFamily: "var(--font-display)",
-              fontStyle: "italic",
-              fontSize: "clamp(1.375rem, 2.5vw, 1.75rem)",
-              fontWeight: 300,
-              color: "var(--color-dark)",
-              margin: 0,
-              lineHeight: 1.4,
+              position: "relative",
+              paddingLeft: "1.5rem",
             }}
           >
-            "A fight like dance, a dance like fight."
-            <cite
+            <div
               style={{
-                display: "block",
-                fontFamily: "var(--font-body)",
-                fontStyle: "normal",
-                fontSize: "0.8125rem",
-                letterSpacing: "0.06em",
-                color: "var(--color-mid)",
-                marginTop: "0.75rem",
+                position: "absolute",
+                left: 0,
+                top: 0,
+                width: "2px",
+                backgroundColor: "var(--color-copper)",
+                height: rBq ? "100%" : "0%",
+                transition: `height 0.6s ${EASE} 0.2s`,
+              }}
+            />
+            <blockquote
+              style={{
+                fontFamily: "var(--font-display)",
+                fontStyle: "italic",
+                fontSize: "clamp(1.375rem, 2.5vw, 1.75rem)",
+                fontWeight: 300,
+                color: "var(--color-dark)",
+                margin: 0,
+                lineHeight: 1.4,
               }}
             >
-              — Mestre Acordeon
-            </cite>
-          </blockquote>
+              &ldquo;A fight like dance, a dance like fight.&rdquo;
+              <cite
+                style={{
+                  display: "block",
+                  fontFamily: "var(--font-body)",
+                  fontStyle: "normal",
+                  fontSize: "0.8125rem",
+                  letterSpacing: "0.06em",
+                  color: "var(--color-mid)",
+                  marginTop: "0.75rem",
+                }}
+              >
+                — Mestre Acordeon
+              </cite>
+            </blockquote>
+          </div>
 
           {/* Body */}
           <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
@@ -103,7 +180,19 @@ export default function Capoeira() {
           padding: "6rem max(2rem, 5vw)",
         }}
       >
-        <div style={{ maxWidth: "1200px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "1.75rem" }}>
+        <div
+          ref={s2Ref}
+          style={{
+            maxWidth: "1200px",
+            margin: "0 auto",
+            display: "flex",
+            flexDirection: "column",
+            gap: "1.75rem",
+            opacity: r2 ? 1 : 0,
+            transform: r2 ? "none" : "translateY(24px)",
+            transition: REVEAL_TR,
+          }}
+        >
           <h2
             style={{
               fontFamily: "var(--font-display)",
@@ -144,7 +233,7 @@ export default function Capoeira() {
               margin: 0,
             }}
           >
-            Mestre Acordeon&nbsp;&nbsp;·&nbsp;&nbsp;Mestre Rã&nbsp;&nbsp;·&nbsp;&nbsp;Mestra Suelly
+            Mestre Acordeon&nbsp;&nbsp;&middot;&nbsp;&nbsp;Mestre Rã&nbsp;&nbsp;&middot;&nbsp;&nbsp;Mestra Suelly
           </p>
         </div>
       </section>
@@ -159,7 +248,19 @@ export default function Capoeira() {
           padding: "6rem max(2rem, 5vw)",
         }}
       >
-        <div style={{ maxWidth: "1200px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "4rem" }}>
+        <div
+          ref={s3Ref}
+          style={{
+            maxWidth: "1200px",
+            margin: "0 auto",
+            display: "flex",
+            flexDirection: "column",
+            gap: "4rem",
+            opacity: r3 ? 1 : 0,
+            transform: r3 ? "none" : "translateY(24px)",
+            transition: REVEAL_TR,
+          }}
+        >
           <h2
             style={{
               fontFamily: "var(--font-display)",
@@ -220,49 +321,57 @@ export default function Capoeira() {
             <p className="cap-subheading">In-Person — Globally</p>
             <h3 className="cap-subsubheading">Upcoming Events</h3>
             <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
-              <p style={{ margin: 0 }}>
-                <a
-                  href="https://www.miamicapoeirasolelua.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="cap-event-link cap-event-passed"
-                >
-                  Sol e Lua Cultural Arts Center Encounter &amp; Belt Ceremony&nbsp;&nbsp;·&nbsp;&nbsp;Miami, FL&nbsp;&nbsp;·&nbsp;&nbsp;Feb 25th – March 1st, 2025{" "}
-                  <span className="cap-event-passed-tag">(passed)</span>
-                </a>
-              </p>
-              <p style={{ margin: 0 }}>
-                <a
-                  href="https://www.ucahayward.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="cap-event-link cap-event-passed"
-                >
-                  UCA Hayward Batizado 2026&nbsp;&nbsp;·&nbsp;&nbsp;Hayward, CA&nbsp;&nbsp;·&nbsp;&nbsp;April 2026{" "}
-                  <span className="cap-event-passed-tag">(passed)</span>
-                </a>
-              </p>
-              <p style={{ margin: 0 }}>
-                <a
-                  href="https://www.maplevalleycapoeira.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="cap-event-link cap-event-passed"
-                >
-                  Maple Valley Capoeira&nbsp;&nbsp;·&nbsp;&nbsp;Maple Valley, WA&nbsp;&nbsp;·&nbsp;&nbsp;April 24th–25th{" "}
-                  <span className="cap-event-passed-tag">(passed)</span>
-                </a>
-              </p>
-              <p style={{ margin: 0 }}>
-                <a
-                  href="https://ucacolorado.com/batizado"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="cap-event-link"
-                >
-                  Denver Batizado&nbsp;&nbsp;·&nbsp;&nbsp;Denver, CO&nbsp;&nbsp;·&nbsp;&nbsp;June 4th–7th
-                </a>
-              </p>
+              <StaggerItem index={0}>
+                <p style={{ margin: 0 }}>
+                  <a
+                    href="https://www.miamicapoeirasolelua.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="cap-event-link cap-event-passed"
+                  >
+                    Sol e Lua Cultural Arts Center Encounter &amp; Belt Ceremony&nbsp;&nbsp;&middot;&nbsp;&nbsp;Miami, FL&nbsp;&nbsp;&middot;&nbsp;&nbsp;Feb 25th – March 1st, 2025{" "}
+                    <span className="cap-event-passed-tag">(passed)</span>
+                  </a>
+                </p>
+              </StaggerItem>
+              <StaggerItem index={1}>
+                <p style={{ margin: 0 }}>
+                  <a
+                    href="https://www.ucahayward.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="cap-event-link cap-event-passed"
+                  >
+                    UCA Hayward Batizado 2026&nbsp;&nbsp;&middot;&nbsp;&nbsp;Hayward, CA&nbsp;&nbsp;&middot;&nbsp;&nbsp;April 2026{" "}
+                    <span className="cap-event-passed-tag">(passed)</span>
+                  </a>
+                </p>
+              </StaggerItem>
+              <StaggerItem index={2}>
+                <p style={{ margin: 0 }}>
+                  <a
+                    href="https://www.maplevalleycapoeira.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="cap-event-link cap-event-passed"
+                  >
+                    Maple Valley Capoeira&nbsp;&nbsp;&middot;&nbsp;&nbsp;Maple Valley, WA&nbsp;&nbsp;&middot;&nbsp;&nbsp;April 24th–25th{" "}
+                    <span className="cap-event-passed-tag">(passed)</span>
+                  </a>
+                </p>
+              </StaggerItem>
+              <StaggerItem index={3}>
+                <p style={{ margin: 0 }}>
+                  <a
+                    href="https://ucacolorado.com/batizado"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="cap-event-link"
+                  >
+                    Denver Batizado&nbsp;&nbsp;&middot;&nbsp;&nbsp;Denver, CO&nbsp;&nbsp;&middot;&nbsp;&nbsp;June 4th–7th
+                  </a>
+                </p>
+              </StaggerItem>
             </div>
           </div>
         </div>
@@ -280,36 +389,49 @@ export default function Capoeira() {
           textAlign: "center",
         }}
       >
-        <p
+        <div
+          ref={s4Ref}
           style={{
-            fontFamily: "var(--font-display)",
-            fontStyle: "italic",
-            fontSize: "clamp(1.25rem, 2.5vw, 1.75rem)",
-            fontWeight: 300,
-            color: "var(--color-dark)",
-            margin: "0 0 2rem",
-            lineHeight: 1.4,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: "2rem",
+            opacity: r4 ? 1 : 0,
+            transform: r4 ? "none" : "translateY(24px)",
+            transition: REVEAL_TR,
           }}
         >
-          Whether you begin online or step into the studio, the art is waiting.
-        </p>
-        <div style={{ display: "flex", justifyContent: "center", gap: "2.5rem", flexWrap: "wrap" }}>
-          <a
-            href="https://www.youtube.com/@grilopretocapoeira"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="cap-cta-link"
+          <p
+            style={{
+              fontFamily: "var(--font-display)",
+              fontStyle: "italic",
+              fontSize: "clamp(1.25rem, 2.5vw, 1.75rem)",
+              fontWeight: 300,
+              color: "var(--color-dark)",
+              margin: 0,
+              lineHeight: 1.4,
+            }}
           >
-            Start online
-          </a>
-          <a
-            href="https://ucacolorado.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="cap-cta-link"
-          >
-            Train in Denver
-          </a>
+            Whether you begin online or step into the studio, the art is waiting.
+          </p>
+          <div style={{ display: "flex", justifyContent: "center", gap: "2.5rem", flexWrap: "wrap" }}>
+            <a
+              href="https://www.youtube.com/@grilopretocapoeira"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="cap-cta-link"
+            >
+              Start online
+            </a>
+            <a
+              href="https://ucacolorado.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="cap-cta-link"
+            >
+              Train in Denver
+            </a>
+          </div>
         </div>
       </section>
 
@@ -350,7 +472,7 @@ export default function Capoeira() {
         .cap-hero-h1 {
           font-family: var(--font-display);
           font-size: clamp(3rem, 5.5vw, 5.5rem);
-          font-weight: 300;
+          font-weight: 600;
           font-style: italic;
           line-height: 1.05;
           color: #f0ebe3;

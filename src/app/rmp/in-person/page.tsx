@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { EASE, REVEAL_TR, useReveal, StaggerItem } from "@/components/animations";
 
 type LogisticsItem = {
   title: string;
@@ -89,6 +90,25 @@ const faqs = [
 
 export default function RmpInPerson() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [loaded, setLoaded] = useState(false);
+
+  const s1Ref = useRef<HTMLDivElement>(null);
+  const s2Ref = useRef<HTMLDivElement>(null);
+  const s3Ref = useRef<HTMLDivElement>(null);
+  const s4Ref = useRef<HTMLDivElement>(null);
+  const s5Ref = useRef<HTMLDivElement>(null);
+  const s6Ref = useRef<HTMLDivElement>(null);
+  const s7Ref = useRef<HTMLDivElement>(null);
+
+  const r1 = useReveal(s1Ref);
+  const r2 = useReveal(s2Ref);
+  const r3 = useReveal(s3Ref);
+  const r4 = useReveal(s4Ref);
+  const r5 = useReveal(s5Ref);
+  const r6 = useReveal(s6Ref);
+  const r7 = useReveal(s7Ref);
+
+  useEffect(() => { setLoaded(true); }, []);
 
   return (
     <main>
@@ -103,9 +123,36 @@ export default function RmpInPerson() {
         />
         <div className="ip-hero-scrim" />
         <div className="ip-hero-content">
-          <p className="ip-hero-eyebrow">Ritual Movement Practice</p>
-          <h1 className="ip-hero-h1">RMP⁺ In-Person</h1>
-          <p className="ip-hero-blurb">In-person. Denver. Monday and Wednesday at noon.</p>
+          <p
+            className="ip-hero-eyebrow"
+            style={{
+              opacity: loaded ? 1 : 0,
+              transform: loaded ? "translateY(0)" : "translateY(18px)",
+              transition: `opacity 0.8s ${EASE} 0.1s, transform 0.8s ${EASE} 0.1s`,
+            }}
+          >
+            Ritual Movement Practice
+          </p>
+          <h1
+            className="ip-hero-h1"
+            style={{
+              opacity: loaded ? 1 : 0,
+              transform: loaded ? "translateY(0)" : "translateY(18px)",
+              transition: `opacity 0.9s ${EASE} 0.35s, transform 0.9s ${EASE} 0.35s`,
+            }}
+          >
+            RMP⁺ In-Person
+          </h1>
+          <p
+            className="ip-hero-blurb"
+            style={{
+              opacity: loaded ? 1 : 0,
+              transform: loaded ? "translateY(0)" : "translateY(18px)",
+              transition: `opacity 0.8s ${EASE} 0.6s, transform 0.8s ${EASE} 0.6s`,
+            }}
+          >
+            In-person. Denver. Monday and Wednesday at noon.
+          </p>
         </div>
       </section>
 
@@ -119,7 +166,19 @@ export default function RmpInPerson() {
           padding: "6rem max(2rem, 5vw)",
         }}
       >
-        <div style={{ maxWidth: "900px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "1.75rem" }}>
+        <div
+          ref={s1Ref}
+          style={{
+            maxWidth: "900px",
+            margin: "0 auto",
+            display: "flex",
+            flexDirection: "column",
+            gap: "1.75rem",
+            opacity: r1 ? 1 : 0,
+            transform: r1 ? "none" : "translateY(24px)",
+            transition: REVEAL_TR,
+          }}
+        >
           <p className="ip-label">Being in Collective Practice</p>
           <p className="ip-italic-sub">
             This is not a class you drop into. It is a practice you use to explore and refine who
@@ -157,7 +216,19 @@ export default function RmpInPerson() {
           padding: "6rem max(2rem, 5vw)",
         }}
       >
-        <div style={{ maxWidth: "900px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "1.75rem" }}>
+        <div
+          ref={s2Ref}
+          style={{
+            maxWidth: "900px",
+            margin: "0 auto",
+            display: "flex",
+            flexDirection: "column",
+            gap: "1.75rem",
+            opacity: r2 ? 1 : 0,
+            transform: r2 ? "none" : "translateY(24px)",
+            transition: REVEAL_TR,
+          }}
+        >
           <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
             <p className="ip-label">What a Typical Session Is Like</p>
             <h2 className="ip-section-heading">A Session</h2>
@@ -206,7 +277,19 @@ export default function RmpInPerson() {
           padding: "6rem max(2rem, 5vw)",
         }}
       >
-        <div style={{ maxWidth: "900px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "1.75rem" }}>
+        <div
+          ref={s3Ref}
+          style={{
+            maxWidth: "900px",
+            margin: "0 auto",
+            display: "flex",
+            flexDirection: "column",
+            gap: "1.75rem",
+            opacity: r3 ? 1 : 0,
+            transform: r3 ? "none" : "translateY(24px)",
+            transition: REVEAL_TR,
+          }}
+        >
           <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
             <p className="ip-label">What to Expect</p>
             <h2 className="ip-section-heading">Your First Session</h2>
@@ -246,33 +329,47 @@ export default function RmpInPerson() {
           padding: "6rem max(2rem, 5vw)",
         }}
       >
-        <div style={{ maxWidth: "900px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "2.5rem" }}>
+        <div
+          ref={s4Ref}
+          style={{
+            maxWidth: "900px",
+            margin: "0 auto",
+            display: "flex",
+            flexDirection: "column",
+            gap: "2.5rem",
+            opacity: r4 ? 1 : 0,
+            transform: r4 ? "none" : "translateY(24px)",
+            transition: REVEAL_TR,
+          }}
+        >
           <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
             <p className="ip-label">Session Details</p>
             <h2 className="ip-section-heading">Logistics</h2>
           </div>
 
           <div className="ip-logistics-grid">
-            {logistics.map((item) => (
-              <div key={item.title} className={item.highlight ? "ip-logistics-item ip-logistics-item--highlight" : "ip-logistics-item"}>
-                <p className="ip-logistics-title">{item.title}</p>
-                {item.body && <p className="ip-logistics-body">{item.body}</p>}
-                {item.list && (
-                  <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: "0.375rem" }}>
-                    {item.list.map((entry) => (
-                      <li key={entry} style={{ display: "flex", gap: "0.625rem", alignItems: "baseline" }}>
-                        <span style={{ fontFamily: "var(--font-body)", fontSize: "0.6875rem", color: "var(--color-mid)", flexShrink: 0 }}>+</span>
-                        <span className="ip-logistics-body">{entry}</span>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-                {item.link && (
-                  <a href={item.link.href} className="ip-logistics-link">
-                    {item.link.text}
-                  </a>
-                )}
-              </div>
+            {logistics.map((item, i) => (
+              <StaggerItem key={item.title} index={i}>
+                <div className={item.highlight ? "ip-logistics-item ip-logistics-item--highlight" : "ip-logistics-item"}>
+                  <p className="ip-logistics-title">{item.title}</p>
+                  {item.body && <p className="ip-logistics-body">{item.body}</p>}
+                  {item.list && (
+                    <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: "0.375rem" }}>
+                      {item.list.map((entry) => (
+                        <li key={entry} style={{ display: "flex", gap: "0.625rem", alignItems: "baseline" }}>
+                          <span style={{ fontFamily: "var(--font-body)", fontSize: "0.6875rem", color: "var(--color-mid)", flexShrink: 0 }}>+</span>
+                          <span className="ip-logistics-body">{entry}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                  {item.link && (
+                    <a href={item.link.href} className="ip-logistics-link">
+                      {item.link.text}
+                    </a>
+                  )}
+                </div>
+              </StaggerItem>
             ))}
           </div>
         </div>
@@ -288,41 +385,55 @@ export default function RmpInPerson() {
           padding: "6rem max(2rem, 5vw)",
         }}
       >
-        <div style={{ maxWidth: "900px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "2.5rem" }}>
+        <div
+          ref={s5Ref}
+          style={{
+            maxWidth: "900px",
+            margin: "0 auto",
+            display: "flex",
+            flexDirection: "column",
+            gap: "2.5rem",
+            opacity: r5 ? 1 : 0,
+            transform: r5 ? "none" : "translateY(24px)",
+            transition: REVEAL_TR,
+          }}
+        >
           <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
             <p className="ip-label">Membership Standards</p>
             <h2 className="ip-section-heading">Collective Culture Agreements</h2>
           </div>
 
           <div className="ip-culture-grid">
-            {cultureItems.map((item) => (
-              <div key={item.title} style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
-                <p
-                  style={{
-                    fontFamily: "var(--font-body)",
-                    fontSize: "0.8125rem",
-                    letterSpacing: "0.06em",
-                    textTransform: "uppercase",
-                    color: "var(--color-dark)",
-                    margin: 0,
-                    fontWeight: 400,
-                  }}
-                >
-                  {item.title}
-                </p>
-                <p
-                  style={{
-                    fontFamily: "var(--font-body)",
-                    fontSize: "0.9375rem",
-                    lineHeight: 1.75,
-                    color: "var(--color-dark)",
-                    margin: 0,
-                    fontWeight: 300,
-                  }}
-                >
-                  {item.body}
-                </p>
-              </div>
+            {cultureItems.map((item, i) => (
+              <StaggerItem key={item.title} index={i}>
+                <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+                  <p
+                    style={{
+                      fontFamily: "var(--font-body)",
+                      fontSize: "0.8125rem",
+                      letterSpacing: "0.06em",
+                      textTransform: "uppercase",
+                      color: "var(--color-dark)",
+                      margin: 0,
+                      fontWeight: 400,
+                    }}
+                  >
+                    {item.title}
+                  </p>
+                  <p
+                    style={{
+                      fontFamily: "var(--font-body)",
+                      fontSize: "0.9375rem",
+                      lineHeight: 1.75,
+                      color: "var(--color-dark)",
+                      margin: 0,
+                      fontWeight: 300,
+                    }}
+                  >
+                    {item.body}
+                  </p>
+                </div>
+              </StaggerItem>
             ))}
           </div>
         </div>
@@ -338,68 +449,79 @@ export default function RmpInPerson() {
           padding: "6rem max(2rem, 5vw)",
         }}
       >
-        <div style={{ maxWidth: "900px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "2rem" }}>
+        <div
+          ref={s6Ref}
+          style={{
+            maxWidth: "900px",
+            margin: "0 auto",
+            display: "flex",
+            flexDirection: "column",
+            gap: "2rem",
+            opacity: r6 ? 1 : 0,
+            transform: r6 ? "none" : "translateY(24px)",
+            transition: REVEAL_TR,
+          }}
+        >
           <h2 className="ip-section-heading">FAQ</h2>
 
           <div style={{ display: "flex", flexDirection: "column" }}>
             {faqs.map((faq, i) => (
-              <div
-                key={i}
-                style={{ borderTop: "1px solid var(--color-subtle)" }}
-              >
-                <button
-                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                  style={{
-                    all: "unset",
-                    display: "flex",
-                    alignItems: "baseline",
-                    justifyContent: "space-between",
-                    width: "100%",
-                    padding: "1.25rem 0",
-                    cursor: "pointer",
-                    gap: "1rem",
-                  }}
-                >
-                  <span
+              <StaggerItem key={i} index={i}>
+                <div style={{ borderTop: "1px solid var(--color-subtle)" }}>
+                  <button
+                    onClick={() => setOpenFaq(openFaq === i ? null : i)}
                     style={{
-                      fontFamily: "var(--font-body)",
-                      fontSize: "0.9375rem",
-                      fontWeight: 400,
-                      color: "var(--color-dark)",
-                      lineHeight: 1.4,
+                      all: "unset",
+                      display: "flex",
+                      alignItems: "baseline",
+                      justifyContent: "space-between",
+                      width: "100%",
+                      padding: "1.25rem 0",
+                      cursor: "pointer",
+                      gap: "1rem",
                     }}
                   >
-                    {faq.q}
-                  </span>
-                  <span
-                    style={{
-                      fontFamily: "var(--font-body)",
-                      fontSize: "1rem",
-                      color: "var(--color-mid)",
-                      flexShrink: 0,
-                      lineHeight: 1,
-                    }}
-                  >
-                    {openFaq === i ? "—" : "+"}
-                  </span>
-                </button>
+                    <span
+                      style={{
+                        fontFamily: "var(--font-body)",
+                        fontSize: "0.9375rem",
+                        fontWeight: 400,
+                        color: "var(--color-dark)",
+                        lineHeight: 1.4,
+                      }}
+                    >
+                      {faq.q}
+                    </span>
+                    <span
+                      style={{
+                        fontFamily: "var(--font-body)",
+                        fontSize: "1rem",
+                        color: "var(--color-mid)",
+                        flexShrink: 0,
+                        lineHeight: 1,
+                      }}
+                    >
+                      {openFaq === i ? "—" : "+"}
+                    </span>
+                  </button>
 
-                {openFaq === i && (
-                  <p
-                    style={{
-                      fontFamily: "var(--font-body)",
-                      fontSize: "0.9375rem",
-                      lineHeight: 1.75,
-                      color: "var(--color-dark)",
-                      fontWeight: 300,
-                      margin: "0 0 1.5rem",
-                      maxWidth: "56ch",
-                    }}
-                  >
-                    {faq.a}
-                  </p>
-                )}
-              </div>
+                  {openFaq === i && (
+                    <p
+                      style={{
+                        fontFamily: "var(--font-body)",
+                        fontSize: "0.9375rem",
+                        lineHeight: 1.75,
+                        color: "var(--color-dark)",
+                        fontWeight: 300,
+                        margin: "0 0 1.5rem",
+                        maxWidth: "56ch",
+                      }}
+                    >
+                      {faq.a}
+                    </p>
+                  )}
+                </div>
+              </StaggerItem>
             ))}
             <div style={{ borderTop: "1px solid var(--color-subtle)" }} />
           </div>
@@ -418,22 +540,35 @@ export default function RmpInPerson() {
           textAlign: "center",
         }}
       >
-        <p
+        <div
+          ref={s7Ref}
           style={{
-            fontFamily: "var(--font-display)",
-            fontStyle: "italic",
-            fontSize: "clamp(1.5rem, 3vw, 2.25rem)",
-            fontWeight: 300,
-            color: "var(--color-dark)",
-            margin: "0 0 2rem",
-            lineHeight: 1.35,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: "2rem",
+            opacity: r7 ? 1 : 0,
+            transform: r7 ? "none" : "translateY(24px)",
+            transition: REVEAL_TR,
           }}
         >
-          Not sure where to begin?
-        </p>
-        <a href="https://grilopreto.com/rmp/starting-point" className="ip-cta-link">
-          Find Your Starting Point
-        </a>
+          <p
+            style={{
+              fontFamily: "var(--font-display)",
+              fontStyle: "italic",
+              fontSize: "clamp(1.5rem, 3vw, 2.25rem)",
+              fontWeight: 300,
+              color: "var(--color-dark)",
+              margin: 0,
+              lineHeight: 1.35,
+            }}
+          >
+            Not sure where to begin?
+          </p>
+          <a href="/rmp/starting-point" className="ip-cta-link">
+            Find Your Starting Point
+          </a>
+        </div>
       </section>
 
       <style>{`
@@ -481,7 +616,7 @@ export default function RmpInPerson() {
         .ip-hero-h1 {
           font-family: var(--font-display);
           font-size: clamp(3rem, 5.5vw, 5.5rem);
-          font-weight: 300;
+          font-weight: 600;
           font-style: italic;
           line-height: 1.05;
           color: #f0ebe3;
@@ -543,7 +678,7 @@ export default function RmpInPerson() {
           padding: 2.5rem 3rem 2.5rem 0;
           border-bottom: 1px solid var(--color-subtle);
         }
-        .ip-logistics-item:nth-child(even) {
+        .ip-logistics-grid > div:nth-child(even) .ip-logistics-item {
           padding-left: 3rem;
           padding-right: 0;
           border-left: 1px solid var(--color-subtle);
@@ -586,7 +721,7 @@ export default function RmpInPerson() {
         @media (max-width: 640px) {
           .ip-logistics-grid { grid-template-columns: 1fr; }
           .ip-logistics-item { padding: 2rem 0; }
-          .ip-logistics-item:nth-child(even) {
+          .ip-logistics-grid > div:nth-child(even) .ip-logistics-item {
             padding-left: 0;
             border-left: none;
           }

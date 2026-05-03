@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { EASE, REVEAL_TR, useReveal, StaggerItem } from "@/components/animations";
 
 const chapters = [
   {
@@ -27,6 +28,12 @@ const chapters = [
 
 export default function About() {
   const [active, setActive] = useState(0);
+  const [loaded, setLoaded] = useState(false);
+
+  const rightRef = useRef<HTMLDivElement>(null);
+  const rRight = useReveal(rightRef);
+
+  useEffect(() => { setLoaded(true); }, []);
 
   return (
     <main>
@@ -35,9 +42,34 @@ export default function About() {
       <section className="about-hero">
         <div className="about-hero-scrim" />
         <div className="about-hero-content">
-          <p className="about-hero-eyebrow">Mestre. Movement Teacher.</p>
-          <h1 className="about-hero-h1">About Grilo</h1>
-          <p className="about-hero-blurb">
+          <p
+            className="about-hero-eyebrow"
+            style={{
+              opacity: loaded ? 1 : 0,
+              transform: loaded ? "translateY(0)" : "translateY(18px)",
+              transition: `opacity 0.8s ${EASE} 0.1s, transform 0.8s ${EASE} 0.1s`,
+            }}
+          >
+            Mestre. Movement Teacher.
+          </p>
+          <h1
+            className="about-hero-h1"
+            style={{
+              opacity: loaded ? 1 : 0,
+              transform: loaded ? "translateY(0)" : "translateY(18px)",
+              transition: `opacity 0.9s ${EASE} 0.35s, transform 0.9s ${EASE} 0.35s`,
+            }}
+          >
+            About Grilo
+          </h1>
+          <p
+            className="about-hero-blurb"
+            style={{
+              opacity: loaded ? 1 : 0,
+              transform: loaded ? "translateY(0)" : "translateY(18px)",
+              transition: `opacity 0.8s ${EASE} 0.6s, transform 0.8s ${EASE} 0.6s`,
+            }}
+          >
             Two decades inside a practice that asks for all of you. This is the story behind it.
           </p>
         </div>
@@ -56,55 +88,67 @@ export default function About() {
 
             <nav style={{ display: "flex", flexDirection: "column" }}>
               {chapters.map((ch, i) => (
-                <button
-                  key={ch.numeral}
-                  onClick={() => setActive(i)}
-                  style={{
-                    all: "unset",
-                    display: "flex",
-                    alignItems: "baseline",
-                    gap: "0.875rem",
-                    padding: "1rem 0 1rem 1.25rem",
-                    borderLeft: i === active
-                      ? "2px solid var(--color-copper)"
-                      : "2px solid transparent",
-                    cursor: "pointer",
-                    transition: "border-color 0.2s",
-                  }}
-                >
-                  <span
+                <StaggerItem key={ch.numeral} index={i}>
+                  <button
+                    onClick={() => setActive(i)}
                     style={{
-                      fontFamily: "var(--font-body)",
-                      fontSize: "0.75rem",
-                      letterSpacing: "0.06em",
-                      color: i === active ? "var(--color-copper)" : "var(--color-mid)",
-                      transition: "color 0.2s",
-                      flexShrink: 0,
+                      all: "unset",
+                      display: "flex",
+                      alignItems: "baseline",
+                      gap: "0.875rem",
+                      padding: "1rem 0 1rem 1.25rem",
+                      borderLeft: i === active
+                        ? "2px solid var(--color-copper)"
+                        : "2px solid transparent",
+                      cursor: "pointer",
+                      transition: "border-color 0.2s",
+                      width: "100%",
                     }}
                   >
-                    {ch.numeral}.
-                  </span>
-                  <span
-                    style={{
-                      fontFamily: "var(--font-display)",
-                      fontStyle: "italic",
-                      fontSize: "1.0625rem",
-                      fontWeight: 400,
-                      color: i === active ? "var(--color-dark)" : "var(--color-mid)",
-                      transition: "color 0.2s",
-                      lineHeight: 1.3,
-                    }}
-                  >
-                    {ch.title}
-                  </span>
-                </button>
+                    <span
+                      style={{
+                        fontFamily: "var(--font-body)",
+                        fontSize: "0.75rem",
+                        letterSpacing: "0.06em",
+                        color: i === active ? "var(--color-copper)" : "var(--color-mid)",
+                        transition: "color 0.2s",
+                        flexShrink: 0,
+                      }}
+                    >
+                      {ch.numeral}.
+                    </span>
+                    <span
+                      style={{
+                        fontFamily: "var(--font-display)",
+                        fontStyle: "italic",
+                        fontSize: "1.0625rem",
+                        fontWeight: 400,
+                        color: i === active ? "var(--color-dark)" : "var(--color-mid)",
+                        transition: "color 0.2s",
+                        lineHeight: 1.3,
+                      }}
+                    >
+                      {ch.title}
+                    </span>
+                  </button>
+                </StaggerItem>
               ))}
             </nav>
           </aside>
 
           {/* Right: content pane */}
           <div className="about-right">
-            <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+            <div
+              ref={rightRef}
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "1.5rem",
+                opacity: rRight ? 1 : 0,
+                transform: rRight ? "none" : "translateY(24px)",
+                transition: REVEAL_TR,
+              }}
+            >
               <div
                 style={{
                   width: "28px",
@@ -162,69 +206,71 @@ export default function About() {
 
         <div style={{ display: "flex", flexDirection: "column" }}>
           {chapters.map((ch, i) => (
-            <div key={ch.numeral} style={{ borderTop: "1px solid var(--color-subtle)" }}>
-              <button
-                onClick={() => setActive(active === i ? -1 : i)}
-                style={{
-                  all: "unset",
-                  display: "flex",
-                  alignItems: "baseline",
-                  gap: "0.875rem",
-                  width: "100%",
-                  padding: "1.25rem 0",
-                  cursor: "pointer",
-                }}
-              >
-                <span
+            <StaggerItem key={ch.numeral} index={i}>
+              <div style={{ borderTop: "1px solid var(--color-subtle)" }}>
+                <button
+                  onClick={() => setActive(active === i ? -1 : i)}
                   style={{
-                    fontFamily: "var(--font-body)",
-                    fontSize: "0.75rem",
-                    letterSpacing: "0.06em",
-                    color: i === active ? "var(--color-copper)" : "var(--color-mid)",
-                    flexShrink: 0,
-                  }}
-                >
-                  {ch.numeral}.
-                </span>
-                <span
-                  style={{
-                    fontFamily: "var(--font-display)",
-                    fontStyle: "italic",
-                    fontSize: "1.125rem",
-                    fontWeight: 400,
-                    color: i === active ? "var(--color-dark)" : "var(--color-mid)",
-                    lineHeight: 1.3,
-                  }}
-                >
-                  {ch.title}
-                </span>
-              </button>
-
-              {active === i && (
-                <div
-                  style={{
-                    paddingBottom: "2rem",
+                    all: "unset",
                     display: "flex",
-                    flexDirection: "column",
-                    gap: "1.25rem",
+                    alignItems: "baseline",
+                    gap: "0.875rem",
+                    width: "100%",
+                    padding: "1.25rem 0",
+                    cursor: "pointer",
                   }}
                 >
-                  <div style={{ width: "28px", height: "1px", backgroundColor: "var(--color-copper)" }} />
-                  <p
+                  <span
                     style={{
                       fontFamily: "var(--font-body)",
-                      fontSize: "1rem",
-                      lineHeight: 1.85,
-                      color: "var(--color-dark)",
-                      margin: 0,
-                      fontWeight: 300,
+                      fontSize: "0.75rem",
+                      letterSpacing: "0.06em",
+                      color: i === active ? "var(--color-copper)" : "var(--color-mid)",
+                      flexShrink: 0,
                     }}
                   >
-                    {ch.body}
-                  </p>
-                </div>
-              )}
-            </div>
+                    {ch.numeral}.
+                  </span>
+                  <span
+                    style={{
+                      fontFamily: "var(--font-display)",
+                      fontStyle: "italic",
+                      fontSize: "1.125rem",
+                      fontWeight: 400,
+                      color: i === active ? "var(--color-dark)" : "var(--color-mid)",
+                      lineHeight: 1.3,
+                    }}
+                  >
+                    {ch.title}
+                  </span>
+                </button>
+
+                {active === i && (
+                  <div
+                    style={{
+                      paddingBottom: "2rem",
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: "1.25rem",
+                    }}
+                  >
+                    <div style={{ width: "28px", height: "1px", backgroundColor: "var(--color-copper)" }} />
+                    <p
+                      style={{
+                        fontFamily: "var(--font-body)",
+                        fontSize: "1rem",
+                        lineHeight: 1.85,
+                        color: "var(--color-dark)",
+                        margin: 0,
+                        fontWeight: 300,
+                      }}
+                    >
+                      {ch.body}
+                    </p>
+                  </div>
+                )}
+              </div>
+            </StaggerItem>
           ))}
         </div>
       </div>
@@ -268,7 +314,7 @@ export default function About() {
         .about-hero-h1 {
           font-family: var(--font-display);
           font-size: clamp(3rem, 5.5vw, 5.5rem);
-          font-weight: 300;
+          font-weight: 600;
           font-style: italic;
           line-height: 1.05;
           color: #f0ebe3;

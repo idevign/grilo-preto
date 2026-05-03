@@ -1,4 +1,8 @@
+"use client";
+
 import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
+import { EASE, REVEAL_TR, useReveal, StaggerItem } from "@/components/animations";
 
 const formatItems = [
   {
@@ -20,6 +24,26 @@ const formatItems = [
 ];
 
 export default function RmpPersonalized() {
+  const [loaded, setLoaded] = useState(false);
+
+  const s1Ref = useRef<HTMLDivElement>(null);
+  const bqRef = useRef<HTMLDivElement>(null);
+  const s2Ref = useRef<HTMLDivElement>(null);
+  const s3Ref = useRef<HTMLDivElement>(null);
+  const s4Ref = useRef<HTMLDivElement>(null);
+  const s5Ref = useRef<HTMLDivElement>(null);
+  const s6Ref = useRef<HTMLDivElement>(null);
+
+  const r1 = useReveal(s1Ref);
+  const rBq = useReveal(bqRef);
+  const r2 = useReveal(s2Ref);
+  const r3 = useReveal(s3Ref);
+  const r4 = useReveal(s4Ref);
+  const r5 = useReveal(s5Ref);
+  const r6 = useReveal(s6Ref);
+
+  useEffect(() => { setLoaded(true); }, []);
+
   return (
     <main>
 
@@ -33,9 +57,36 @@ export default function RmpPersonalized() {
         />
         <div className="pp-hero-scrim" />
         <div className="pp-hero-content">
-          <p className="pp-hero-eyebrow">Ritual Movement Practice</p>
-          <h1 className="pp-hero-h1">RMP⁺ Personalized</h1>
-          <p className="pp-hero-blurb">Private. Bespoke. Built entirely around you.</p>
+          <p
+            className="pp-hero-eyebrow"
+            style={{
+              opacity: loaded ? 1 : 0,
+              transform: loaded ? "translateY(0)" : "translateY(18px)",
+              transition: `opacity 0.8s ${EASE} 0.1s, transform 0.8s ${EASE} 0.1s`,
+            }}
+          >
+            Ritual Movement Practice
+          </p>
+          <h1
+            className="pp-hero-h1"
+            style={{
+              opacity: loaded ? 1 : 0,
+              transform: loaded ? "translateY(0)" : "translateY(18px)",
+              transition: `opacity 0.9s ${EASE} 0.35s, transform 0.9s ${EASE} 0.35s`,
+            }}
+          >
+            RMP⁺ Personalized
+          </h1>
+          <p
+            className="pp-hero-blurb"
+            style={{
+              opacity: loaded ? 1 : 0,
+              transform: loaded ? "translateY(0)" : "translateY(18px)",
+              transition: `opacity 0.8s ${EASE} 0.6s, transform 0.8s ${EASE} 0.6s`,
+            }}
+          >
+            Private. Bespoke. Built entirely around you.
+          </p>
         </div>
       </section>
 
@@ -49,7 +100,19 @@ export default function RmpPersonalized() {
           padding: "6rem max(2rem, 5vw)",
         }}
       >
-        <div style={{ maxWidth: "900px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "1.75rem" }}>
+        <div
+          ref={s1Ref}
+          style={{
+            maxWidth: "900px",
+            margin: "0 auto",
+            display: "flex",
+            flexDirection: "column",
+            gap: "1.75rem",
+            opacity: r1 ? 1 : 0,
+            transform: r1 ? "none" : "translateY(24px)",
+            transition: REVEAL_TR,
+          }}
+        >
           <p className="pp-label">Who This Is Designed For</p>
           <p className="pp-italic-sub">
             Capable in almost every context. And still carrying something that has not yet been
@@ -70,22 +133,40 @@ export default function RmpPersonalized() {
             </p>
           </div>
 
-          <blockquote
+          <div
+            ref={bqRef}
             style={{
-              fontFamily: "var(--font-display)",
-              fontStyle: "italic",
-              fontSize: "clamp(1.25rem, 2.2vw, 1.625rem)",
-              fontWeight: 300,
-              color: "var(--color-dark)",
+              position: "relative",
               margin: "0.5rem 0 0",
-              lineHeight: 1.45,
-              borderLeft: "2px solid var(--color-copper)",
               paddingLeft: "1.5rem",
             }}
           >
-            "You are not looking to become someone different. You are looking to stop being governed
-            by standards and definitions that were never yours to begin with."
-          </blockquote>
+            <div
+              style={{
+                position: "absolute",
+                left: 0,
+                top: 0,
+                width: "2px",
+                backgroundColor: "var(--color-copper)",
+                height: rBq ? "100%" : "0%",
+                transition: `height 0.6s ${EASE} 0.2s`,
+              }}
+            />
+            <blockquote
+              style={{
+                fontFamily: "var(--font-display)",
+                fontStyle: "italic",
+                fontSize: "clamp(1.25rem, 2.2vw, 1.625rem)",
+                fontWeight: 300,
+                color: "var(--color-dark)",
+                margin: 0,
+                lineHeight: 1.45,
+              }}
+            >
+              &ldquo;You are not looking to become someone different. You are looking to stop being governed
+              by standards and definitions that were never yours to begin with.&rdquo;
+            </blockquote>
+          </div>
         </div>
       </section>
 
@@ -99,7 +180,19 @@ export default function RmpPersonalized() {
           padding: "6rem max(2rem, 5vw)",
         }}
       >
-        <div style={{ maxWidth: "900px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "1.75rem" }}>
+        <div
+          ref={s2Ref}
+          style={{
+            maxWidth: "900px",
+            margin: "0 auto",
+            display: "flex",
+            flexDirection: "column",
+            gap: "1.75rem",
+            opacity: r2 ? 1 : 0,
+            transform: r2 ? "none" : "translateY(24px)",
+            transition: REVEAL_TR,
+          }}
+        >
           <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
             <p className="pp-label">What This Actually Is</p>
             <h2 className="pp-section-heading">The Work</h2>
@@ -139,7 +232,19 @@ export default function RmpPersonalized() {
           padding: "6rem max(2rem, 5vw)",
         }}
       >
-        <div style={{ maxWidth: "900px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "1.75rem" }}>
+        <div
+          ref={s3Ref}
+          style={{
+            maxWidth: "900px",
+            margin: "0 auto",
+            display: "flex",
+            flexDirection: "column",
+            gap: "1.75rem",
+            opacity: r3 ? 1 : 0,
+            transform: r3 ? "none" : "translateY(24px)",
+            transition: REVEAL_TR,
+          }}
+        >
           <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
             <p className="pp-label">This Will Not Stay Comfortable</p>
             <h2 className="pp-section-heading">What It Asks</h2>
@@ -175,7 +280,19 @@ export default function RmpPersonalized() {
           padding: "6rem max(2rem, 5vw)",
         }}
       >
-        <div style={{ maxWidth: "900px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "2.5rem" }}>
+        <div
+          ref={s4Ref}
+          style={{
+            maxWidth: "900px",
+            margin: "0 auto",
+            display: "flex",
+            flexDirection: "column",
+            gap: "2.5rem",
+            opacity: r4 ? 1 : 0,
+            transform: r4 ? "none" : "translateY(24px)",
+            transition: REVEAL_TR,
+          }}
+        >
           <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
             <p className="pp-label">Format, Frequency, and Access</p>
             <h2 className="pp-section-heading">How It Works</h2>
@@ -185,35 +302,37 @@ export default function RmpPersonalized() {
           </p>
 
           <div className="pp-grid-2">
-            {formatItems.map((item) => (
-              <div key={item.title} style={{ display: "flex", flexDirection: "column", gap: "0.625rem" }}>
-                <p
-                  style={{
-                    fontFamily: "var(--font-body)",
-                    fontSize: "0.75rem",
-                    letterSpacing: "0.08em",
-                    textTransform: "uppercase",
-                    color: "var(--color-dark)",
-                    margin: 0,
-                    fontWeight: 400,
-                  }}
-                >
-                  {item.title}
-                </p>
-                <p
-                  style={{
-                    fontFamily: "var(--font-body)",
-                    fontSize: "0.9375rem",
-                    lineHeight: 1.7,
-                    color: "var(--color-dark)",
-                    margin: 0,
-                    fontWeight: 300,
-                    opacity: 0.75,
-                  }}
-                >
-                  {item.body}
-                </p>
-              </div>
+            {formatItems.map((item, i) => (
+              <StaggerItem key={item.title} index={i}>
+                <div style={{ display: "flex", flexDirection: "column", gap: "0.625rem" }}>
+                  <p
+                    style={{
+                      fontFamily: "var(--font-body)",
+                      fontSize: "0.75rem",
+                      letterSpacing: "0.08em",
+                      textTransform: "uppercase",
+                      color: "var(--color-dark)",
+                      margin: 0,
+                      fontWeight: 400,
+                    }}
+                  >
+                    {item.title}
+                  </p>
+                  <p
+                    style={{
+                      fontFamily: "var(--font-body)",
+                      fontSize: "0.9375rem",
+                      lineHeight: 1.7,
+                      color: "var(--color-dark)",
+                      margin: 0,
+                      fontWeight: 300,
+                      opacity: 0.75,
+                    }}
+                  >
+                    {item.body}
+                  </p>
+                </div>
+              </StaggerItem>
             ))}
           </div>
         </div>
@@ -229,7 +348,19 @@ export default function RmpPersonalized() {
           padding: "6rem max(2rem, 5vw)",
         }}
       >
-        <div style={{ maxWidth: "900px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "1.75rem" }}>
+        <div
+          ref={s5Ref}
+          style={{
+            maxWidth: "900px",
+            margin: "0 auto",
+            display: "flex",
+            flexDirection: "column",
+            gap: "1.75rem",
+            opacity: r5 ? 1 : 0,
+            transform: r5 ? "none" : "translateY(24px)",
+            transition: REVEAL_TR,
+          }}
+        >
           <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
             <p className="pp-label">A Recommended Starting Point</p>
             <h2 className="pp-section-heading">Before You Begin</h2>
@@ -263,22 +394,35 @@ export default function RmpPersonalized() {
           textAlign: "center",
         }}
       >
-        <p
+        <div
+          ref={s6Ref}
           style={{
-            fontFamily: "var(--font-display)",
-            fontStyle: "italic",
-            fontSize: "clamp(1.5rem, 3vw, 2.25rem)",
-            fontWeight: 300,
-            color: "var(--color-dark)",
-            margin: "0 0 2rem",
-            lineHeight: 1.35,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: "2rem",
+            opacity: r6 ? 1 : 0,
+            transform: r6 ? "none" : "translateY(24px)",
+            transition: REVEAL_TR,
           }}
         >
-          Not sure where to begin?
-        </p>
-        <Link href="/rmp/starting-point" className="pp-cta-link">
-          Find Your Starting Point
-        </Link>
+          <p
+            style={{
+              fontFamily: "var(--font-display)",
+              fontStyle: "italic",
+              fontSize: "clamp(1.5rem, 3vw, 2.25rem)",
+              fontWeight: 300,
+              color: "var(--color-dark)",
+              margin: 0,
+              lineHeight: 1.35,
+            }}
+          >
+            Not sure where to begin?
+          </p>
+          <Link href="/rmp/starting-point" className="pp-cta-link">
+            Find Your Starting Point
+          </Link>
+        </div>
       </section>
 
       <style>{`
@@ -326,7 +470,7 @@ export default function RmpPersonalized() {
         .pp-hero-h1 {
           font-family: var(--font-display);
           font-size: clamp(3rem, 5.5vw, 5.5rem);
-          font-weight: 300;
+          font-weight: 600;
           font-style: italic;
           line-height: 1.05;
           color: #f0ebe3;

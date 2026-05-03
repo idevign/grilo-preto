@@ -1,10 +1,40 @@
+"use client";
+
 import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
+import { EASE, REVEAL_TR, useReveal, StaggerItem } from "@/components/animations";
 
 export default function RmpHome() {
+  const [loaded, setLoaded] = useState(false);
+
+  const s1Ref = useRef<HTMLDivElement>(null);
+  const bqRef = useRef<HTMLDivElement>(null);
+  const s2Ref = useRef<HTMLDivElement>(null);
+  const s3Ref = useRef<HTMLDivElement>(null);
+  const s4Ref = useRef<HTMLDivElement>(null);
+  const s5Ref = useRef<HTMLDivElement>(null);
+  const s6Ref = useRef<HTMLDivElement>(null);
+  const s7Ref = useRef<HTMLDivElement>(null);
+  const s8Ref = useRef<HTMLDivElement>(null);
+  const s9Ref = useRef<HTMLDivElement>(null);
+
+  const r1 = useReveal(s1Ref);
+  const rBq = useReveal(bqRef);
+  const r2 = useReveal(s2Ref);
+  const r3 = useReveal(s3Ref);
+  const r4 = useReveal(s4Ref);
+  const r5 = useReveal(s5Ref);
+  const r6 = useReveal(s6Ref);
+  const r7 = useReveal(s7Ref);
+  const r8 = useReveal(s8Ref);
+  const r9 = useReveal(s9Ref);
+
+  useEffect(() => { setLoaded(true); }, []);
+
   return (
     <main>
 
-      {/* ── Hero ── */}
+      {/* Hero */}
       <section className="rmp-hero">
         <img
           src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=1600&q=80"
@@ -14,13 +44,40 @@ export default function RmpHome() {
         />
         <div className="rmp-hero-scrim" />
         <div className="rmp-hero-content">
-          <p className="rmp-hero-eyebrow">Movement Practice</p>
-          <h1 className="rmp-hero-h1">Ritual</h1>
-          <p className="rmp-hero-blurb">A physical-first path to self mastery.</p>
+          <p
+            className="rmp-hero-eyebrow"
+            style={{
+              opacity: loaded ? 1 : 0,
+              transform: loaded ? "translateY(0)" : "translateY(18px)",
+              transition: `opacity 0.8s ${EASE} 0.1s, transform 0.8s ${EASE} 0.1s`,
+            }}
+          >
+            Movement Practice
+          </p>
+          <h1
+            className="rmp-hero-h1"
+            style={{
+              opacity: loaded ? 1 : 0,
+              transform: loaded ? "translateY(0)" : "translateY(18px)",
+              transition: `opacity 0.9s ${EASE} 0.35s, transform 0.9s ${EASE} 0.35s`,
+            }}
+          >
+            Ritual
+          </h1>
+          <p
+            className="rmp-hero-blurb"
+            style={{
+              opacity: loaded ? 1 : 0,
+              transform: loaded ? "translateY(0)" : "translateY(18px)",
+              transition: `opacity 0.8s ${EASE} 0.6s, transform 0.8s ${EASE} 0.6s`,
+            }}
+          >
+            A physical-first path to self mastery.
+          </p>
         </div>
       </section>
 
-      {/* ── Section 1: No heading ── */}
+      {/* Section 1: No heading */}
       <section
         style={{
           minHeight: "100dvh",
@@ -30,7 +87,19 @@ export default function RmpHome() {
           padding: "6rem max(2rem, 5vw)",
         }}
       >
-        <div style={{ maxWidth: "900px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "1.25rem" }}>
+        <div
+          ref={s1Ref}
+          style={{
+            maxWidth: "900px",
+            margin: "0 auto",
+            display: "flex",
+            flexDirection: "column",
+            gap: "1.25rem",
+            opacity: r1 ? 1 : 0,
+            transform: r1 ? "translateY(0)" : "translateY(24px)",
+            transition: REVEAL_TR,
+          }}
+        >
           <p className="rmp-body">
             People arrive here expecting a workout. What they find goes further than that.
           </p>
@@ -49,26 +118,42 @@ export default function RmpHome() {
             That is what changes here.
           </p>
 
-          <blockquote
-            style={{
-              fontFamily: "var(--font-display)",
-              fontStyle: "italic",
-              fontSize: "clamp(1.25rem, 2.2vw, 1.625rem)",
-              fontWeight: 300,
-              color: "var(--color-dark)",
-              margin: "1.25rem 0 0",
-              lineHeight: 1.45,
-              borderLeft: "2px solid var(--color-copper)",
-              paddingLeft: "1.5rem",
-            }}
+          {/* Blockquote with animated copper line */}
+          <div
+            ref={bqRef}
+            style={{ position: "relative", marginTop: "1.25rem" }}
           >
-            "The way you move reveals the way you live. Most people find that confronting at first.
-            The right person finds it clarifying."
-          </blockquote>
+            <div
+              style={{
+                position: "absolute",
+                left: 0,
+                top: 0,
+                width: "2px",
+                backgroundColor: "var(--color-copper)",
+                height: rBq ? "100%" : "0%",
+                transition: `height 0.6s ${EASE} 0.2s`,
+              }}
+            />
+            <blockquote
+              style={{
+                fontFamily: "var(--font-display)",
+                fontStyle: "italic",
+                fontSize: "clamp(1.25rem, 2.2vw, 1.625rem)",
+                fontWeight: 300,
+                color: "var(--color-dark)",
+                margin: 0,
+                lineHeight: 1.45,
+                paddingLeft: "1.5rem",
+              }}
+            >
+              "The way you move reveals the way you live. Most people find that confronting at first.
+              The right person finds it clarifying."
+            </blockquote>
+          </div>
         </div>
       </section>
 
-      {/* ── Section 2: What Develops ── */}
+      {/* Section 2: What Develops */}
       <section
         style={{
           minHeight: "100dvh",
@@ -78,7 +163,19 @@ export default function RmpHome() {
           padding: "6rem max(2rem, 5vw)",
         }}
       >
-        <div style={{ maxWidth: "900px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "1.75rem" }}>
+        <div
+          ref={s2Ref}
+          style={{
+            maxWidth: "900px",
+            margin: "0 auto",
+            display: "flex",
+            flexDirection: "column",
+            gap: "1.75rem",
+            opacity: r2 ? 1 : 0,
+            transform: r2 ? "translateY(0)" : "translateY(24px)",
+            transition: REVEAL_TR,
+          }}
+        >
           <p className="rmp-section-label">What Develops</p>
           <h2 className="rmp-section-heading">What Develops</h2>
 
@@ -103,7 +200,7 @@ export default function RmpHome() {
         </div>
       </section>
 
-      {/* ── Section 3: On Ritual ── */}
+      {/* Section 3: On Ritual */}
       <section
         style={{
           minHeight: "100dvh",
@@ -113,7 +210,19 @@ export default function RmpHome() {
           padding: "6rem max(2rem, 5vw)",
         }}
       >
-        <div style={{ maxWidth: "900px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "1.75rem" }}>
+        <div
+          ref={s3Ref}
+          style={{
+            maxWidth: "900px",
+            margin: "0 auto",
+            display: "flex",
+            flexDirection: "column",
+            gap: "1.75rem",
+            opacity: r3 ? 1 : 0,
+            transform: r3 ? "translateY(0)" : "translateY(24px)",
+            transition: REVEAL_TR,
+          }}
+        >
           <h2 className="rmp-section-heading">On Ritual</h2>
 
           <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
@@ -135,7 +244,7 @@ export default function RmpHome() {
         </div>
       </section>
 
-      {/* ── Section 4: The Structure ── */}
+      {/* Section 4: The Structure */}
       <section
         style={{
           minHeight: "100dvh",
@@ -145,7 +254,19 @@ export default function RmpHome() {
           padding: "6rem max(2rem, 5vw)",
         }}
       >
-        <div style={{ maxWidth: "900px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "1.75rem" }}>
+        <div
+          ref={s4Ref}
+          style={{
+            maxWidth: "900px",
+            margin: "0 auto",
+            display: "flex",
+            flexDirection: "column",
+            gap: "1.75rem",
+            opacity: r4 ? 1 : 0,
+            transform: r4 ? "translateY(0)" : "translateY(24px)",
+            transition: REVEAL_TR,
+          }}
+        >
           <h2 className="rmp-section-heading">The Structure</h2>
 
           <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
@@ -178,8 +299,12 @@ export default function RmpHome() {
                 title: "Articulation",
                 body: "Refined coordination that integrates the other three areas into something coherent.",
               },
-            ].map((item) => (
-              <div key={item.title} style={{ display: "flex", flexDirection: "column", gap: "0.625rem" }}>
+            ].map((item, i) => (
+              <StaggerItem
+                key={item.title}
+                index={i}
+                style={{ display: "flex", flexDirection: "column", gap: "0.625rem" }}
+              >
                 <p
                   style={{
                     fontFamily: "var(--font-body)",
@@ -206,13 +331,13 @@ export default function RmpHome() {
                 >
                   {item.body}
                 </p>
-              </div>
+              </StaggerItem>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── Section 5: The Paths ── */}
+      {/* Section 5: The Paths */}
       <section
         style={{
           minHeight: "100dvh",
@@ -222,7 +347,19 @@ export default function RmpHome() {
           padding: "6rem max(2rem, 5vw)",
         }}
       >
-        <div style={{ maxWidth: "900px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "2.5rem" }}>
+        <div
+          ref={s5Ref}
+          style={{
+            maxWidth: "900px",
+            margin: "0 auto",
+            display: "flex",
+            flexDirection: "column",
+            gap: "2.5rem",
+            opacity: r5 ? 1 : 0,
+            transform: r5 ? "translateY(0)" : "translateY(24px)",
+            transition: REVEAL_TR,
+          }}
+        >
           <h2 className="rmp-section-heading">The Paths</h2>
 
           <div className="rmp-paths-grid">
@@ -245,9 +382,10 @@ export default function RmpHome() {
                   "A bespoke curriculum built entirely around you. Weekly or biweekly sessions in-person or remote. Starting at $333/month.",
                 href: "/rmp/personalized",
               },
-            ].map((path) => (
-              <div
+            ].map((path, i) => (
+              <StaggerItem
                 key={path.href}
+                index={i}
                 style={{
                   backgroundColor: "var(--color-base)",
                   border: "1px solid var(--color-subtle)",
@@ -287,13 +425,13 @@ export default function RmpHome() {
                 <Link href={path.href} className="rmp-card-link">
                   Explore
                 </Link>
-              </div>
+              </StaggerItem>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── Section 6: A Brief Origin ── */}
+      {/* Section 6: A Brief Origin */}
       <section
         style={{
           minHeight: "100dvh",
@@ -303,7 +441,19 @@ export default function RmpHome() {
           padding: "6rem max(2rem, 5vw)",
         }}
       >
-        <div style={{ maxWidth: "900px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "1.75rem" }}>
+        <div
+          ref={s6Ref}
+          style={{
+            maxWidth: "900px",
+            margin: "0 auto",
+            display: "flex",
+            flexDirection: "column",
+            gap: "1.75rem",
+            opacity: r6 ? 1 : 0,
+            transform: r6 ? "translateY(0)" : "translateY(24px)",
+            transition: REVEAL_TR,
+          }}
+        >
           <h2 className="rmp-section-heading">A Brief Origin</h2>
 
           <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
@@ -330,7 +480,7 @@ export default function RmpHome() {
         </div>
       </section>
 
-      {/* ── Section 7: What It Is ── */}
+      {/* Section 7: What It Is */}
       <section
         style={{
           minHeight: "100dvh",
@@ -340,7 +490,19 @@ export default function RmpHome() {
           padding: "6rem max(2rem, 5vw)",
         }}
       >
-        <div style={{ maxWidth: "900px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "1.75rem" }}>
+        <div
+          ref={s7Ref}
+          style={{
+            maxWidth: "900px",
+            margin: "0 auto",
+            display: "flex",
+            flexDirection: "column",
+            gap: "1.75rem",
+            opacity: r7 ? 1 : 0,
+            transform: r7 ? "translateY(0)" : "translateY(24px)",
+            transition: REVEAL_TR,
+          }}
+        >
           <h2 className="rmp-section-heading">What It Is</h2>
           <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
             <p className="rmp-body">
@@ -358,7 +520,7 @@ export default function RmpHome() {
         </div>
       </section>
 
-      {/* ── Section 8: What It Is For ── */}
+      {/* Section 8: What It Is For */}
       <section
         style={{
           minHeight: "100dvh",
@@ -368,7 +530,19 @@ export default function RmpHome() {
           padding: "6rem max(2rem, 5vw)",
         }}
       >
-        <div style={{ maxWidth: "900px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "1.75rem" }}>
+        <div
+          ref={s8Ref}
+          style={{
+            maxWidth: "900px",
+            margin: "0 auto",
+            display: "flex",
+            flexDirection: "column",
+            gap: "1.75rem",
+            opacity: r8 ? 1 : 0,
+            transform: r8 ? "translateY(0)" : "translateY(24px)",
+            transition: REVEAL_TR,
+          }}
+        >
           <h2 className="rmp-section-heading">What It Is For</h2>
           <p className="rmp-body">
             People who are ready to be honest about how they move and what that reveals. People who
@@ -378,7 +552,7 @@ export default function RmpHome() {
         </div>
       </section>
 
-      {/* ── Section 9: CTA ── */}
+      {/* Section 9: CTA */}
       <section
         style={{
           minHeight: "100dvh",
@@ -390,25 +564,34 @@ export default function RmpHome() {
           textAlign: "center",
         }}
       >
-        <p
+        <div
+          ref={s9Ref}
           style={{
-            fontFamily: "var(--font-display)",
-            fontStyle: "italic",
-            fontSize: "clamp(1.5rem, 3vw, 2.25rem)",
-            fontWeight: 300,
-            color: "var(--color-dark)",
-            margin: "0 0 2rem",
-            lineHeight: 1.35,
+            opacity: r9 ? 1 : 0,
+            transform: r9 ? "translateY(0)" : "translateY(24px)",
+            transition: REVEAL_TR,
           }}
         >
-          Not sure where to begin?
-        </p>
-        <a
-          href="https://grilopreto.com/rmp/starting-point"
-          className="rmp-cta-link"
-        >
-          Find Your Starting Point
-        </a>
+          <p
+            style={{
+              fontFamily: "var(--font-display)",
+              fontStyle: "italic",
+              fontSize: "clamp(1.5rem, 3vw, 2.25rem)",
+              fontWeight: 300,
+              color: "var(--color-dark)",
+              margin: "0 0 2rem",
+              lineHeight: 1.35,
+            }}
+          >
+            Not sure where to begin?
+          </p>
+          <a
+            href="https://grilopreto.com/rmp/starting-point"
+            className="rmp-cta-link"
+          >
+            Find Your Starting Point
+          </a>
+        </div>
       </section>
 
       <style>{`
@@ -456,7 +639,7 @@ export default function RmpHome() {
         .rmp-hero-h1 {
           font-family: var(--font-display);
           font-size: clamp(3rem, 5.5vw, 5.5rem);
-          font-weight: 300;
+          font-weight: 600;
           font-style: italic;
           line-height: 1.05;
           color: #f0ebe3;
