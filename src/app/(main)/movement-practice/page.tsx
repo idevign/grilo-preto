@@ -40,8 +40,8 @@ export default function MovementPractice() {
       </section>
 
       {/* ── Path cards ── */}
-      <section style={{ padding: "5rem 1.5rem 4rem", maxWidth: "1200px", margin: "0 auto" }}>
-        <div className="mp-grid">
+      <section style={{ minHeight: "100dvh", display: "flex", flexDirection: "column", justifyContent: "center", padding: "6rem max(2rem, 5vw)" }}>
+        <div className="mp-grid" style={{ maxWidth: "1200px", margin: "0 auto" }}>
           {paths.map((path) => (
             <div
               key={path.href}
@@ -86,20 +86,11 @@ export default function MovementPractice() {
             </div>
           ))}
         </div>
-      </section>
-
-      {/* ── Full practice link ── */}
-      <section
-        style={{
-          padding: "0 1.5rem 8rem",
-          maxWidth: "1200px",
-          margin: "0 auto",
-          textAlign: "center",
-        }}
-      >
-        <Link href="/rmp" className="mp-full-link">
-          Explore the full practice →
-        </Link>
+        <div style={{ maxWidth: "1200px", margin: "3rem auto 0", textAlign: "center", width: "100%" }}>
+          <Link href="/rmp" className="mp-full-link">
+            Explore the full practice →
+          </Link>
+        </div>
       </section>
 
       <style>{`

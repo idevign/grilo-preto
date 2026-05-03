@@ -24,43 +24,32 @@ export default function RmpPersonalized() {
     <main>
 
       {/* ── Hero ── */}
-      <section style={{ padding: "5rem 1.5rem 4rem", maxWidth: "1200px", margin: "0 auto" }}>
-        <h1
-          style={{
-            fontFamily: "var(--font-display)",
-            fontSize: "clamp(2.5rem, 5vw, 4.5rem)",
-            fontWeight: 300,
-            fontStyle: "italic",
-            lineHeight: 1.1,
-            color: "var(--color-dark)",
-            margin: "0 0 1.25rem",
-          }}
-        >
-          RMP⁺ Personalized
-        </h1>
-        <p
-          style={{
-            fontFamily: "var(--font-body)",
-            fontSize: "0.875rem",
-            letterSpacing: "0.1em",
-            textTransform: "uppercase",
-            color: "var(--color-mid)",
-            margin: 0,
-          }}
-        >
-          Private. Bespoke. Built entirely around you.
-        </p>
+      <section className="pp-hero">
+        <img
+          src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=1600&q=80"
+          alt=""
+          aria-hidden="true"
+          className="pp-hero-img"
+        />
+        <div className="pp-hero-scrim" />
+        <div className="pp-hero-content">
+          <p className="pp-hero-eyebrow">Ritual Movement Practice</p>
+          <h1 className="pp-hero-h1">RMP⁺ Personalized</h1>
+          <p className="pp-hero-blurb">Private. Bespoke. Built entirely around you.</p>
+        </div>
       </section>
 
       {/* ── Section 1: No heading ── */}
       <section
         style={{
-          padding: "4rem 1.5rem 6rem",
-          maxWidth: "1200px",
-          margin: "0 auto",
+          minHeight: "100dvh",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          padding: "6rem max(2rem, 5vw)",
         }}
       >
-        <div style={{ maxWidth: "680px", display: "flex", flexDirection: "column", gap: "1.75rem" }}>
+        <div style={{ maxWidth: "900px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "1.75rem" }}>
           <p className="pp-label">Who This Is Designed For</p>
           <p className="pp-italic-sub">
             Capable in almost every context. And still carrying something that has not yet been
@@ -103,13 +92,14 @@ export default function RmpPersonalized() {
       {/* ── Section 2: The Work ── */}
       <section
         style={{
-          padding: "4rem 1.5rem 6rem",
-          maxWidth: "1200px",
-          margin: "0 auto",
-          borderTop: "1px solid var(--color-subtle)",
+          minHeight: "100dvh",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          padding: "6rem max(2rem, 5vw)",
         }}
       >
-        <div style={{ maxWidth: "680px", display: "flex", flexDirection: "column", gap: "1.75rem" }}>
+        <div style={{ maxWidth: "900px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "1.75rem" }}>
           <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
             <p className="pp-label">What This Actually Is</p>
             <h2 className="pp-section-heading">The Work</h2>
@@ -142,13 +132,14 @@ export default function RmpPersonalized() {
       {/* ── Section 3: What It Asks ── */}
       <section
         style={{
-          padding: "4rem 1.5rem 6rem",
-          maxWidth: "1200px",
-          margin: "0 auto",
-          borderTop: "1px solid var(--color-subtle)",
+          minHeight: "100dvh",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          padding: "6rem max(2rem, 5vw)",
         }}
       >
-        <div style={{ maxWidth: "680px", display: "flex", flexDirection: "column", gap: "1.75rem" }}>
+        <div style={{ maxWidth: "900px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "1.75rem" }}>
           <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
             <p className="pp-label">This Will Not Stay Comfortable</p>
             <h2 className="pp-section-heading">What It Asks</h2>
@@ -177,18 +168,19 @@ export default function RmpPersonalized() {
       {/* ── Section 4: How It Works ── */}
       <section
         style={{
-          padding: "4rem 1.5rem 6rem",
-          maxWidth: "1200px",
-          margin: "0 auto",
-          borderTop: "1px solid var(--color-subtle)",
+          minHeight: "100dvh",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          padding: "6rem max(2rem, 5vw)",
         }}
       >
-        <div style={{ display: "flex", flexDirection: "column", gap: "2.5rem" }}>
+        <div style={{ maxWidth: "900px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "2.5rem" }}>
           <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
             <p className="pp-label">Format, Frequency, and Access</p>
             <h2 className="pp-section-heading">How It Works</h2>
           </div>
-          <p className="pp-italic-sub" style={{ maxWidth: "680px" }}>
+          <p className="pp-italic-sub">
             In-person in Denver or remote. Weekly or biweekly. Directly with me.
           </p>
 
@@ -230,13 +222,14 @@ export default function RmpPersonalized() {
       {/* ── Section 5: Before You Begin ── */}
       <section
         style={{
-          padding: "4rem 1.5rem 6rem",
-          maxWidth: "1200px",
-          margin: "0 auto",
-          borderTop: "1px solid var(--color-subtle)",
+          minHeight: "100dvh",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          padding: "6rem max(2rem, 5vw)",
         }}
       >
-        <div style={{ maxWidth: "680px", display: "flex", flexDirection: "column", gap: "1.75rem" }}>
+        <div style={{ maxWidth: "900px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "1.75rem" }}>
           <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
             <p className="pp-label">A Recommended Starting Point</p>
             <h2 className="pp-section-heading">Before You Begin</h2>
@@ -261,10 +254,12 @@ export default function RmpPersonalized() {
       {/* ── Closing CTA ── */}
       <section
         style={{
-          padding: "6rem 1.5rem 8rem",
-          maxWidth: "1200px",
-          margin: "0 auto",
-          borderTop: "1px solid var(--color-subtle)",
+          minHeight: "100dvh",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "6rem max(2rem, 5vw)",
           textAlign: "center",
         }}
       >
@@ -287,6 +282,65 @@ export default function RmpPersonalized() {
       </section>
 
       <style>{`
+        .pp-hero {
+          position: relative;
+          min-height: 100dvh;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          overflow: hidden;
+        }
+        .pp-hero-img {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center;
+          z-index: 0;
+        }
+        .pp-hero-scrim {
+          position: absolute;
+          inset: 0;
+          z-index: 1;
+          background: linear-gradient(to bottom, rgba(10,8,6,0.35) 0%, rgba(10,8,6,0.72) 100%);
+          pointer-events: none;
+        }
+        .pp-hero-content {
+          position: relative;
+          z-index: 2;
+          display: flex;
+          flex-direction: column;
+          gap: 1.25rem;
+          padding: 0 max(2rem, 5vw) 6rem;
+          max-width: 680px;
+        }
+        .pp-hero-eyebrow {
+          font-family: var(--font-body);
+          font-size: 0.6875rem;
+          letter-spacing: 0.14em;
+          text-transform: uppercase;
+          color: var(--color-copper);
+          margin: 0;
+        }
+        .pp-hero-h1 {
+          font-family: var(--font-display);
+          font-size: clamp(3rem, 5.5vw, 5.5rem);
+          font-weight: 300;
+          font-style: italic;
+          line-height: 1.05;
+          color: #f0ebe3;
+          margin: 0;
+        }
+        .pp-hero-blurb {
+          font-family: var(--font-body);
+          font-size: 1rem;
+          line-height: 1.8;
+          color: rgba(240, 235, 227, 0.85);
+          margin: 0;
+          max-width: 42ch;
+          font-weight: 300;
+        }
         .pp-body {
           font-family: var(--font-body);
           font-size: clamp(1rem, 1.8vw, 1.0625rem);

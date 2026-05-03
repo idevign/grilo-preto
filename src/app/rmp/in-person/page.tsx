@@ -94,43 +94,32 @@ export default function RmpInPerson() {
     <main>
 
       {/* ── Hero ── */}
-      <section style={{ padding: "5rem 1.5rem 4rem", maxWidth: "1200px", margin: "0 auto" }}>
-        <h1
-          style={{
-            fontFamily: "var(--font-display)",
-            fontSize: "clamp(2.5rem, 5vw, 4.5rem)",
-            fontWeight: 300,
-            fontStyle: "italic",
-            lineHeight: 1.1,
-            color: "var(--color-dark)",
-            margin: "0 0 1.25rem",
-          }}
-        >
-          RMP⁺ In-Person
-        </h1>
-        <p
-          style={{
-            fontFamily: "var(--font-body)",
-            fontSize: "0.875rem",
-            letterSpacing: "0.1em",
-            textTransform: "uppercase",
-            color: "var(--color-mid)",
-            margin: 0,
-          }}
-        >
-          In-person. Denver. Monday and Wednesday at noon.
-        </p>
+      <section className="ip-hero">
+        <img
+          src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1600&q=80"
+          alt=""
+          aria-hidden="true"
+          className="ip-hero-img"
+        />
+        <div className="ip-hero-scrim" />
+        <div className="ip-hero-content">
+          <p className="ip-hero-eyebrow">Ritual Movement Practice</p>
+          <h1 className="ip-hero-h1">RMP⁺ In-Person</h1>
+          <p className="ip-hero-blurb">In-person. Denver. Monday and Wednesday at noon.</p>
+        </div>
       </section>
 
       {/* ── Section 1: No heading ── */}
       <section
         style={{
-          padding: "4rem 1.5rem 6rem",
-          maxWidth: "1200px",
-          margin: "0 auto",
+          minHeight: "100dvh",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          padding: "6rem max(2rem, 5vw)",
         }}
       >
-        <div style={{ maxWidth: "680px", display: "flex", flexDirection: "column", gap: "1.75rem" }}>
+        <div style={{ maxWidth: "900px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "1.75rem" }}>
           <p className="ip-label">Being in Collective Practice</p>
           <p className="ip-italic-sub">
             This is not a class you drop into. It is a practice you use to explore and refine who
@@ -161,13 +150,14 @@ export default function RmpInPerson() {
       {/* ── Section 2: A Session ── */}
       <section
         style={{
-          padding: "4rem 1.5rem 6rem",
-          maxWidth: "1200px",
-          margin: "0 auto",
-          borderTop: "1px solid var(--color-subtle)",
+          minHeight: "100dvh",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          padding: "6rem max(2rem, 5vw)",
         }}
       >
-        <div style={{ maxWidth: "680px", display: "flex", flexDirection: "column", gap: "1.75rem" }}>
+        <div style={{ maxWidth: "900px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "1.75rem" }}>
           <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
             <p className="ip-label">What a Typical Session Is Like</p>
             <h2 className="ip-section-heading">A Session</h2>
@@ -209,13 +199,14 @@ export default function RmpInPerson() {
       {/* ── Section 3: Your First Session ── */}
       <section
         style={{
-          padding: "4rem 1.5rem 6rem",
-          maxWidth: "1200px",
-          margin: "0 auto",
-          borderTop: "1px solid var(--color-subtle)",
+          minHeight: "100dvh",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          padding: "6rem max(2rem, 5vw)",
         }}
       >
-        <div style={{ maxWidth: "680px", display: "flex", flexDirection: "column", gap: "1.75rem" }}>
+        <div style={{ maxWidth: "900px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "1.75rem" }}>
           <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
             <p className="ip-label">What to Expect</p>
             <h2 className="ip-section-heading">Your First Session</h2>
@@ -248,13 +239,14 @@ export default function RmpInPerson() {
       {/* ── Section 4: Logistics ── */}
       <section
         style={{
-          padding: "4rem 1.5rem 6rem",
-          maxWidth: "1200px",
-          margin: "0 auto",
-          borderTop: "1px solid var(--color-subtle)",
+          minHeight: "100dvh",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          padding: "6rem max(2rem, 5vw)",
         }}
       >
-        <div style={{ display: "flex", flexDirection: "column", gap: "2.5rem" }}>
+        <div style={{ maxWidth: "900px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "2.5rem" }}>
           <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
             <p className="ip-label">Session Details</p>
             <h2 className="ip-section-heading">Logistics</h2>
@@ -289,13 +281,14 @@ export default function RmpInPerson() {
       {/* ── Section 5: Collective Culture Agreements ── */}
       <section
         style={{
-          padding: "4rem 1.5rem 6rem",
-          maxWidth: "1200px",
-          margin: "0 auto",
-          borderTop: "1px solid var(--color-subtle)",
+          minHeight: "100dvh",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          padding: "6rem max(2rem, 5vw)",
         }}
       >
-        <div style={{ display: "flex", flexDirection: "column", gap: "2.5rem" }}>
+        <div style={{ maxWidth: "900px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "2.5rem" }}>
           <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
             <p className="ip-label">Membership Standards</p>
             <h2 className="ip-section-heading">Collective Culture Agreements</h2>
@@ -338,13 +331,14 @@ export default function RmpInPerson() {
       {/* ── Section 6: FAQ ── */}
       <section
         style={{
-          padding: "4rem 1.5rem 6rem",
-          maxWidth: "1200px",
-          margin: "0 auto",
-          borderTop: "1px solid var(--color-subtle)",
+          minHeight: "100dvh",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          padding: "6rem max(2rem, 5vw)",
         }}
       >
-        <div style={{ maxWidth: "680px", display: "flex", flexDirection: "column", gap: "2rem" }}>
+        <div style={{ maxWidth: "900px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "2rem" }}>
           <h2 className="ip-section-heading">FAQ</h2>
 
           <div style={{ display: "flex", flexDirection: "column" }}>
@@ -415,10 +409,12 @@ export default function RmpInPerson() {
       {/* ── Closing CTA ── */}
       <section
         style={{
-          padding: "6rem 1.5rem 8rem",
-          maxWidth: "1200px",
-          margin: "0 auto",
-          borderTop: "1px solid var(--color-subtle)",
+          minHeight: "100dvh",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "6rem max(2rem, 5vw)",
           textAlign: "center",
         }}
       >
@@ -441,6 +437,65 @@ export default function RmpInPerson() {
       </section>
 
       <style>{`
+        .ip-hero {
+          position: relative;
+          min-height: 100dvh;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          overflow: hidden;
+        }
+        .ip-hero-img {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center;
+          z-index: 0;
+        }
+        .ip-hero-scrim {
+          position: absolute;
+          inset: 0;
+          z-index: 1;
+          background: linear-gradient(to bottom, rgba(10,8,6,0.35) 0%, rgba(10,8,6,0.72) 100%);
+          pointer-events: none;
+        }
+        .ip-hero-content {
+          position: relative;
+          z-index: 2;
+          display: flex;
+          flex-direction: column;
+          gap: 1.25rem;
+          padding: 0 max(2rem, 5vw) 6rem;
+          max-width: 680px;
+        }
+        .ip-hero-eyebrow {
+          font-family: var(--font-body);
+          font-size: 0.6875rem;
+          letter-spacing: 0.14em;
+          text-transform: uppercase;
+          color: var(--color-copper);
+          margin: 0;
+        }
+        .ip-hero-h1 {
+          font-family: var(--font-display);
+          font-size: clamp(3rem, 5.5vw, 5.5rem);
+          font-weight: 300;
+          font-style: italic;
+          line-height: 1.05;
+          color: #f0ebe3;
+          margin: 0;
+        }
+        .ip-hero-blurb {
+          font-family: var(--font-body);
+          font-size: 1rem;
+          line-height: 1.8;
+          color: rgba(240, 235, 227, 0.85);
+          margin: 0;
+          max-width: 42ch;
+          font-weight: 300;
+        }
         .ip-body {
           font-family: var(--font-body);
           font-size: clamp(1rem, 1.8vw, 1.0625rem);

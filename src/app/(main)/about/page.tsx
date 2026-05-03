@@ -43,6 +43,9 @@ export default function About() {
         </div>
       </section>
 
+      {/* ── Chapters ── */}
+      <section style={{ minHeight: "100dvh", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+
       {/* ── Desktop: two-column ── */}
       <div className="about-desktop">
         <div className="about-inner">
@@ -226,6 +229,8 @@ export default function About() {
         </div>
       </div>
 
+      </section>
+
       <style>{`
         .about-hero {
           position: relative;
@@ -300,7 +305,7 @@ export default function About() {
           width: 100%;
           max-width: 1200px;
           margin: 0 auto;
-          padding: 3rem 1.5rem;
+          padding: 6rem max(2rem, 5vw);
           gap: 5rem;
         }
         .about-left {
@@ -318,7 +323,7 @@ export default function About() {
           .about-desktop { display: none; }
           .about-mobile {
             display: block;
-            padding: 4rem 1.5rem 6rem;
+            padding: 6rem max(2rem, 5vw);
           }
         }
       `}</style>

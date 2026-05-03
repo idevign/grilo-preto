@@ -17,12 +17,14 @@ export default function Capoeira() {
       {/* ── Section 1: What it is ── */}
       <section
         style={{
-          padding: "4rem 1.5rem 6rem",
-          maxWidth: "1200px",
-          margin: "0 auto",
+          minHeight: "100dvh",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          padding: "6rem max(2rem, 5vw)",
         }}
       >
-        <div style={{ maxWidth: "680px", display: "flex", flexDirection: "column", gap: "2rem" }}>
+        <div style={{ maxWidth: "1200px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "2rem" }}>
 
           {/* Pull quote */}
           <blockquote
@@ -94,13 +96,14 @@ export default function Capoeira() {
       {/* ── Section 2: Lineage ── */}
       <section
         style={{
-          padding: "4rem 1.5rem 6rem",
-          maxWidth: "1200px",
-          margin: "0 auto",
-          borderTop: "1px solid var(--color-subtle)",
+          minHeight: "100dvh",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          padding: "6rem max(2rem, 5vw)",
         }}
       >
-        <div style={{ maxWidth: "680px", display: "flex", flexDirection: "column", gap: "1.75rem" }}>
+        <div style={{ maxWidth: "1200px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "1.75rem" }}>
           <h2
             style={{
               fontFamily: "var(--font-display)",
@@ -149,13 +152,14 @@ export default function Capoeira() {
       {/* ── Section 3: Train & Play ── */}
       <section
         style={{
-          padding: "4rem 1.5rem 6rem",
-          maxWidth: "1200px",
-          margin: "0 auto",
-          borderTop: "1px solid var(--color-subtle)",
+          minHeight: "100dvh",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          padding: "6rem max(2rem, 5vw)",
         }}
       >
-        <div style={{ maxWidth: "680px", display: "flex", flexDirection: "column", gap: "4rem" }}>
+        <div style={{ maxWidth: "1200px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "4rem" }}>
           <h2
             style={{
               fontFamily: "var(--font-display)",
@@ -267,10 +271,12 @@ export default function Capoeira() {
       {/* ── Section 4: Closing CTA ── */}
       <section
         style={{
-          padding: "4rem 1.5rem 8rem",
-          maxWidth: "1200px",
-          margin: "0 auto",
-          borderTop: "1px solid var(--color-subtle)",
+          minHeight: "100dvh",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "6rem max(2rem, 5vw)",
           textAlign: "center",
         }}
       >

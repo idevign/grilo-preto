@@ -5,43 +5,32 @@ export default function RmpHome() {
     <main>
 
       {/* ── Hero ── */}
-      <section style={{ padding: "5rem 1.5rem 4rem", maxWidth: "1200px", margin: "0 auto" }}>
-        <h1
-          style={{
-            fontFamily: "var(--font-display)",
-            fontSize: "clamp(2.5rem, 5vw, 4.5rem)",
-            fontWeight: 300,
-            fontStyle: "italic",
-            lineHeight: 1.1,
-            color: "var(--color-dark)",
-            margin: "0 0 1.25rem",
-          }}
-        >
-          Ritual
-        </h1>
-        <p
-          style={{
-            fontFamily: "var(--font-body)",
-            fontSize: "0.875rem",
-            letterSpacing: "0.1em",
-            textTransform: "uppercase",
-            color: "var(--color-mid)",
-            margin: 0,
-          }}
-        >
-          Movement Practice. A physical-first path to self mastery.
-        </p>
+      <section className="rmp-hero">
+        <img
+          src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=1600&q=80"
+          alt=""
+          aria-hidden="true"
+          className="rmp-hero-img"
+        />
+        <div className="rmp-hero-scrim" />
+        <div className="rmp-hero-content">
+          <p className="rmp-hero-eyebrow">Movement Practice</p>
+          <h1 className="rmp-hero-h1">Ritual</h1>
+          <p className="rmp-hero-blurb">A physical-first path to self mastery.</p>
+        </div>
       </section>
 
       {/* ── Section 1: No heading ── */}
       <section
         style={{
-          padding: "4rem 1.5rem 6rem",
-          maxWidth: "1200px",
-          margin: "0 auto",
+          minHeight: "100dvh",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          padding: "6rem max(2rem, 5vw)",
         }}
       >
-        <div style={{ maxWidth: "680px", display: "flex", flexDirection: "column", gap: "1.25rem" }}>
+        <div style={{ maxWidth: "900px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "1.25rem" }}>
           <p className="rmp-body">
             People arrive here expecting a workout. What they find goes further than that.
           </p>
@@ -82,13 +71,14 @@ export default function RmpHome() {
       {/* ── Section 2: What Develops ── */}
       <section
         style={{
-          padding: "4rem 1.5rem 6rem",
-          maxWidth: "1200px",
-          margin: "0 auto",
-          borderTop: "1px solid var(--color-subtle)",
+          minHeight: "100dvh",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          padding: "6rem max(2rem, 5vw)",
         }}
       >
-        <div style={{ maxWidth: "680px", display: "flex", flexDirection: "column", gap: "1.75rem" }}>
+        <div style={{ maxWidth: "900px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "1.75rem" }}>
           <p className="rmp-section-label">What Develops</p>
           <h2 className="rmp-section-heading">What Develops</h2>
 
@@ -116,13 +106,14 @@ export default function RmpHome() {
       {/* ── Section 3: On Ritual ── */}
       <section
         style={{
-          padding: "4rem 1.5rem 6rem",
-          maxWidth: "1200px",
-          margin: "0 auto",
-          borderTop: "1px solid var(--color-subtle)",
+          minHeight: "100dvh",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          padding: "6rem max(2rem, 5vw)",
         }}
       >
-        <div style={{ maxWidth: "680px", display: "flex", flexDirection: "column", gap: "1.75rem" }}>
+        <div style={{ maxWidth: "900px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "1.75rem" }}>
           <h2 className="rmp-section-heading">On Ritual</h2>
 
           <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
@@ -147,13 +138,14 @@ export default function RmpHome() {
       {/* ── Section 4: The Structure ── */}
       <section
         style={{
-          padding: "4rem 1.5rem 6rem",
-          maxWidth: "1200px",
-          margin: "0 auto",
-          borderTop: "1px solid var(--color-subtle)",
+          minHeight: "100dvh",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          padding: "6rem max(2rem, 5vw)",
         }}
       >
-        <div style={{ maxWidth: "680px", display: "flex", flexDirection: "column", gap: "1.75rem" }}>
+        <div style={{ maxWidth: "900px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "1.75rem" }}>
           <h2 className="rmp-section-heading">The Structure</h2>
 
           <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
@@ -167,152 +159,151 @@ export default function RmpHome() {
               compliance and the other produces understanding.
             </p>
           </div>
-        </div>
 
-        <div className="rmp-curriculum-grid">
-          {[
-            {
-              title: "Expressive skill",
-              body: "A primary movement quality that gives each phase its character and direction.",
-            },
-            {
-              title: "Mobility",
-              body: "Range and tissue work that opens the body toward the phase direction.",
-            },
-            {
-              title: "Physical capacity",
-              body: "Conditioning and strength work that supports what the phase asks of the body.",
-            },
-            {
-              title: "Articulation",
-              body: "Refined coordination that integrates the other three areas into something coherent.",
-            },
-          ].map((item) => (
-            <div key={item.title} style={{ display: "flex", flexDirection: "column", gap: "0.625rem" }}>
-              <p
-                style={{
-                  fontFamily: "var(--font-body)",
-                  fontSize: "0.75rem",
-                  letterSpacing: "0.08em",
-                  textTransform: "uppercase",
-                  color: "var(--color-dark)",
-                  margin: 0,
-                  fontWeight: 400,
-                }}
-              >
-                {item.title}
-              </p>
-              <p
-                style={{
-                  fontFamily: "var(--font-body)",
-                  fontSize: "0.9375rem",
-                  lineHeight: 1.7,
-                  color: "var(--color-dark)",
-                  margin: 0,
-                  fontWeight: 300,
-                  opacity: 0.75,
-                }}
-              >
-                {item.body}
-              </p>
-            </div>
-          ))}
+          <div className="rmp-curriculum-grid">
+            {[
+              {
+                title: "Expressive skill",
+                body: "A primary movement quality that gives each phase its character and direction.",
+              },
+              {
+                title: "Mobility",
+                body: "Range and tissue work that opens the body toward the phase direction.",
+              },
+              {
+                title: "Physical capacity",
+                body: "Conditioning and strength work that supports what the phase asks of the body.",
+              },
+              {
+                title: "Articulation",
+                body: "Refined coordination that integrates the other three areas into something coherent.",
+              },
+            ].map((item) => (
+              <div key={item.title} style={{ display: "flex", flexDirection: "column", gap: "0.625rem" }}>
+                <p
+                  style={{
+                    fontFamily: "var(--font-body)",
+                    fontSize: "0.75rem",
+                    letterSpacing: "0.08em",
+                    textTransform: "uppercase",
+                    color: "var(--color-dark)",
+                    margin: 0,
+                    fontWeight: 400,
+                  }}
+                >
+                  {item.title}
+                </p>
+                <p
+                  style={{
+                    fontFamily: "var(--font-body)",
+                    fontSize: "0.9375rem",
+                    lineHeight: 1.7,
+                    color: "var(--color-dark)",
+                    margin: 0,
+                    fontWeight: 300,
+                    opacity: 0.75,
+                  }}
+                >
+                  {item.body}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* ── Section 5: The Paths ── */}
       <section
         style={{
-          padding: "4rem 1.5rem 6rem",
-          maxWidth: "1200px",
-          margin: "0 auto",
-          borderTop: "1px solid var(--color-subtle)",
+          minHeight: "100dvh",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          padding: "6rem max(2rem, 5vw)",
         }}
       >
-        <h2
-          className="rmp-section-heading"
-          style={{ marginBottom: "2.5rem" }}
-        >
-          The Paths
-        </h2>
+        <div style={{ maxWidth: "900px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "2.5rem" }}>
+          <h2 className="rmp-section-heading">The Paths</h2>
 
-        <div className="rmp-paths-grid">
-          {[
-            {
-              title: "RMP⁺ Guided",
-              description:
-                "The foundation. Available anywhere. Three sessions per week plus a daily movement ritual. $88/month. First Wave founding rate $44/month.",
-              href: "/rmp/guided",
-            },
-            {
-              title: "RMP⁺ In-Person",
-              description:
-                "Weekly group sessions at Movement Ritual in Denver. Monday and Wednesday at noon. Includes RMP⁺ Guided. $222/month recommended contribution.",
-              href: "/rmp/in-person",
-            },
-            {
-              title: "RMP⁺ Personalized",
-              description:
-                "A bespoke curriculum built entirely around you. Weekly or biweekly sessions in-person or remote. Starting at $333/month.",
-              href: "/rmp/personalized",
-            },
-          ].map((path) => (
-            <div
-              key={path.href}
-              style={{
-                backgroundColor: "var(--color-base)",
-                border: "1px solid var(--color-subtle)",
-                padding: "2.5rem 2rem",
-                display: "flex",
-                flexDirection: "column",
-                gap: "1rem",
-                minHeight: "240px",
-              }}
-            >
-              <h3
+          <div className="rmp-paths-grid">
+            {[
+              {
+                title: "RMP⁺ Guided",
+                description:
+                  "The foundation. Available anywhere. Three sessions per week plus a daily movement ritual. $88/month. First Wave founding rate $44/month.",
+                href: "/rmp/guided",
+              },
+              {
+                title: "RMP⁺ In-Person",
+                description:
+                  "Weekly group sessions at Movement Ritual in Denver. Monday and Wednesday at noon. Includes RMP⁺ Guided. $222/month recommended contribution.",
+                href: "/rmp/in-person",
+              },
+              {
+                title: "RMP⁺ Personalized",
+                description:
+                  "A bespoke curriculum built entirely around you. Weekly or biweekly sessions in-person or remote. Starting at $333/month.",
+                href: "/rmp/personalized",
+              },
+            ].map((path) => (
+              <div
+                key={path.href}
                 style={{
-                  fontFamily: "var(--font-display)",
-                  fontSize: "clamp(1.375rem, 2vw, 1.75rem)",
-                  fontWeight: 400,
-                  color: "var(--color-dark)",
-                  margin: 0,
-                  lineHeight: 1.2,
+                  backgroundColor: "var(--color-base)",
+                  border: "1px solid var(--color-subtle)",
+                  padding: "2.5rem 2rem",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "1rem",
+                  minHeight: "240px",
                 }}
               >
-                {path.title}
-              </h3>
-              <p
-                style={{
-                  fontFamily: "var(--font-body)",
-                  fontSize: "0.9rem",
-                  color: "var(--color-dark)",
-                  margin: 0,
-                  lineHeight: 1.7,
-                  opacity: 0.75,
-                  fontWeight: 300,
-                  flexGrow: 1,
-                }}
-              >
-                {path.description}
-              </p>
-              <Link href={path.href} className="rmp-card-link">
-                Explore
-              </Link>
-            </div>
-          ))}
+                <h3
+                  style={{
+                    fontFamily: "var(--font-display)",
+                    fontSize: "clamp(1.375rem, 2vw, 1.75rem)",
+                    fontWeight: 400,
+                    color: "var(--color-dark)",
+                    margin: 0,
+                    lineHeight: 1.2,
+                  }}
+                >
+                  {path.title}
+                </h3>
+                <p
+                  style={{
+                    fontFamily: "var(--font-body)",
+                    fontSize: "0.9rem",
+                    color: "var(--color-dark)",
+                    margin: 0,
+                    lineHeight: 1.7,
+                    opacity: 0.75,
+                    fontWeight: 300,
+                    flexGrow: 1,
+                  }}
+                >
+                  {path.description}
+                </p>
+                <Link href={path.href} className="rmp-card-link">
+                  Explore
+                </Link>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* ── Section 6: A Brief Origin ── */}
       <section
         style={{
-          padding: "4rem 1.5rem 6rem",
-          maxWidth: "1200px",
-          margin: "0 auto",
-          borderTop: "1px solid var(--color-subtle)",
+          minHeight: "100dvh",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          padding: "6rem max(2rem, 5vw)",
         }}
       >
-        <div style={{ maxWidth: "680px", display: "flex", flexDirection: "column", gap: "1.75rem" }}>
+        <div style={{ maxWidth: "900px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "1.75rem" }}>
           <h2 className="rmp-section-heading">A Brief Origin</h2>
 
           <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
@@ -342,13 +333,14 @@ export default function RmpHome() {
       {/* ── Section 7: What It Is ── */}
       <section
         style={{
-          padding: "4rem 1.5rem 6rem",
-          maxWidth: "1200px",
-          margin: "0 auto",
-          borderTop: "1px solid var(--color-subtle)",
+          minHeight: "100dvh",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          padding: "6rem max(2rem, 5vw)",
         }}
       >
-        <div style={{ maxWidth: "680px", display: "flex", flexDirection: "column", gap: "1.75rem" }}>
+        <div style={{ maxWidth: "900px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "1.75rem" }}>
           <h2 className="rmp-section-heading">What It Is</h2>
           <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
             <p className="rmp-body">
@@ -369,13 +361,14 @@ export default function RmpHome() {
       {/* ── Section 8: What It Is For ── */}
       <section
         style={{
-          padding: "4rem 1.5rem 6rem",
-          maxWidth: "1200px",
-          margin: "0 auto",
-          borderTop: "1px solid var(--color-subtle)",
+          minHeight: "100dvh",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          padding: "6rem max(2rem, 5vw)",
         }}
       >
-        <div style={{ maxWidth: "680px", display: "flex", flexDirection: "column", gap: "1.75rem" }}>
+        <div style={{ maxWidth: "900px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "1.75rem" }}>
           <h2 className="rmp-section-heading">What It Is For</h2>
           <p className="rmp-body">
             People who are ready to be honest about how they move and what that reveals. People who
@@ -388,10 +381,12 @@ export default function RmpHome() {
       {/* ── Section 9: CTA ── */}
       <section
         style={{
-          padding: "6rem 1.5rem 8rem",
-          maxWidth: "1200px",
-          margin: "0 auto",
-          borderTop: "1px solid var(--color-subtle)",
+          minHeight: "100dvh",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "6rem max(2rem, 5vw)",
           textAlign: "center",
         }}
       >
@@ -417,6 +412,65 @@ export default function RmpHome() {
       </section>
 
       <style>{`
+        .rmp-hero {
+          position: relative;
+          min-height: 100dvh;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          overflow: hidden;
+        }
+        .rmp-hero-img {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center;
+          z-index: 0;
+        }
+        .rmp-hero-scrim {
+          position: absolute;
+          inset: 0;
+          z-index: 1;
+          background: linear-gradient(to bottom, rgba(10,8,6,0.35) 0%, rgba(10,8,6,0.72) 100%);
+          pointer-events: none;
+        }
+        .rmp-hero-content {
+          position: relative;
+          z-index: 2;
+          display: flex;
+          flex-direction: column;
+          gap: 1.25rem;
+          padding: 0 max(2rem, 5vw) 6rem;
+          max-width: 680px;
+        }
+        .rmp-hero-eyebrow {
+          font-family: var(--font-body);
+          font-size: 0.6875rem;
+          letter-spacing: 0.14em;
+          text-transform: uppercase;
+          color: var(--color-copper);
+          margin: 0;
+        }
+        .rmp-hero-h1 {
+          font-family: var(--font-display);
+          font-size: clamp(3rem, 5.5vw, 5.5rem);
+          font-weight: 300;
+          font-style: italic;
+          line-height: 1.05;
+          color: #f0ebe3;
+          margin: 0;
+        }
+        .rmp-hero-blurb {
+          font-family: var(--font-body);
+          font-size: 1rem;
+          line-height: 1.8;
+          color: rgba(240, 235, 227, 0.85);
+          margin: 0;
+          max-width: 42ch;
+          font-weight: 300;
+        }
         .rmp-body {
           font-family: var(--font-body);
           font-size: clamp(1rem, 1.8vw, 1.0625rem);
@@ -447,7 +501,7 @@ export default function RmpHome() {
           display: grid;
           grid-template-columns: 1fr 1fr;
           gap: 2.5rem 4rem;
-          margin-top: 3rem;
+          margin-top: 1rem;
           max-width: 680px;
         }
         @media (max-width: 560px) {
