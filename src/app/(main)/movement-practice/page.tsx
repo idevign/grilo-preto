@@ -76,7 +76,7 @@ export default function MovementPractice() {
       </section>
 
       {/* ── Path cards ── */}
-      <section style={{ minHeight: "100dvh", display: "flex", flexDirection: "column", justifyContent: "center", padding: "6rem max(2rem, 5vw)" }}>
+      <section style={{ minHeight: "100dvh", display: "flex", flexDirection: "column", justifyContent: "center", padding: "6rem max(1.5rem, calc((100vw - 1200px) / 2 + 1.5rem))" }}>
         <div
           ref={s1Ref}
           style={{
@@ -173,7 +173,7 @@ export default function MovementPractice() {
           display: flex;
           flex-direction: column;
           gap: 1.25rem;
-          padding: 0 max(2rem, 5vw) 6rem;
+          padding: 0 max(1.5rem, calc((100vw - 1200px) / 2 + 1.5rem)) 6rem max(1.5rem, calc((100vw - 1200px) / 2 + 1.5rem));
           max-width: 680px;
         }
         .mp-hero-eyebrow {

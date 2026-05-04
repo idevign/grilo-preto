@@ -14,10 +14,10 @@ export default function Footer() {
     <footer
       style={{
         backgroundColor: "#ece9e4",
-        padding: "5rem 1.5rem 0",
+        padding: "5rem 0 0",
       }}
     >
-      <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
+      <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 1.5rem" }}>
 
         {/* ── Top section: two columns ── */}
         <div className="footer-top">

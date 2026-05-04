@@ -12,6 +12,8 @@
   --font-display: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
   --font-body: var(--font-dm-sans), "DM Sans", system-ui, sans-serif;
   --font-hero: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+
+  --site-gutter: max(1.5rem, calc((100vw - 1200px) / 2 + 1.5rem));
 }
 
 @theme inline {

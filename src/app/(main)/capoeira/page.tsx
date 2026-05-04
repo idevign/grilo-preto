@@ -67,7 +67,7 @@ export default function Capoeira() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          padding: "6rem max(2rem, 5vw)",
+          padding: "6rem max(1.5rem, calc((100vw - 1200px) / 2 + 1.5rem))",
         }}
       >
         <div
@@ -177,7 +177,7 @@ export default function Capoeira() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          padding: "6rem max(2rem, 5vw)",
+          padding: "6rem max(1.5rem, calc((100vw - 1200px) / 2 + 1.5rem))",
         }}
       >
         <div
@@ -245,7 +245,7 @@ export default function Capoeira() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          padding: "6rem max(2rem, 5vw)",
+          padding: "6rem max(1.5rem, calc((100vw - 1200px) / 2 + 1.5rem))",
         }}
       >
         <div
@@ -385,7 +385,7 @@ export default function Capoeira() {
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
-          padding: "6rem max(2rem, 5vw)",
+          padding: "6rem max(1.5rem, calc((100vw - 1200px) / 2 + 1.5rem))",
           textAlign: "center",
         }}
       >
@@ -458,7 +458,7 @@ export default function Capoeira() {
           display: flex;
           flex-direction: column;
           gap: 1.25rem;
-          padding: 5rem max(2rem, calc((100vw - 1200px) / 2 + 1.5rem));
+          padding: 5rem max(2rem, calc((100vw - 1200px) / 2 + 1.5rem)) 5rem max(1.5rem, calc((100vw - 1200px) / 2 + 1.5rem));
           max-width: 680px;
         }
         .cap-hero-eyebrow {

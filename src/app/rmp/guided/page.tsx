@@ -107,13 +107,13 @@ export default function RmpGuided() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          padding: "6rem max(2rem, 5vw)",
+          padding: "6rem max(1.5rem, calc((100vw - 1200px) / 2 + 1.5rem))",
         }}
       >
         <div
           ref={s1Ref}
           style={{
-            maxWidth: "900px",
+            maxWidth: "1200px",
             margin: "0 auto",
             display: "flex",
             flexDirection: "column",
@@ -154,13 +154,13 @@ export default function RmpGuided() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          padding: "6rem max(2rem, 5vw)",
+          padding: "6rem max(1.5rem, calc((100vw - 1200px) / 2 + 1.5rem))",
         }}
       >
         <div
           ref={s2Ref}
           style={{
-            maxWidth: "900px",
+            maxWidth: "1200px",
             margin: "0 auto",
             display: "flex",
             flexDirection: "column",
@@ -236,13 +236,13 @@ export default function RmpGuided() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          padding: "6rem max(2rem, 5vw)",
+          padding: "6rem max(1.5rem, calc((100vw - 1200px) / 2 + 1.5rem))",
         }}
       >
         <div
           ref={s3Ref}
           style={{
-            maxWidth: "900px",
+            maxWidth: "1200px",
             margin: "0 auto",
             display: "flex",
             flexDirection: "column",
@@ -318,13 +318,13 @@ export default function RmpGuided() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          padding: "6rem max(2rem, 5vw)",
+          padding: "6rem max(1.5rem, calc((100vw - 1200px) / 2 + 1.5rem))",
         }}
       >
         <div
           ref={s4Ref}
           style={{
-            maxWidth: "900px",
+            maxWidth: "1200px",
             margin: "0 auto",
             display: "flex",
             flexDirection: "column",
@@ -460,7 +460,7 @@ export default function RmpGuided() {
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
-          padding: "6rem max(2rem, 5vw)",
+          padding: "6rem max(1.5rem, calc((100vw - 1200px) / 2 + 1.5rem))",
           textAlign: "center",
         }}
       >
@@ -526,7 +526,7 @@ export default function RmpGuided() {
           display: flex;
           flex-direction: column;
           gap: 1.25rem;
-          padding: 0 max(2rem, 5vw) 6rem;
+          padding: 0 max(1.5rem, calc((100vw - 1200px) / 2 + 1.5rem)) 6rem max(1.5rem, calc((100vw - 1200px) / 2 + 1.5rem));
           max-width: 680px;
         }
         .rg-hero-eyebrow {

@@ -75,7 +75,7 @@ export default function About() {
           display: flex;
           flex-direction: column;
           gap: 1.25rem;
-          padding: 5rem max(2rem, calc((100vw - 1200px) / 2 + 1.5rem));
+          padding: 5rem max(2rem, calc((100vw - 1200px) / 2 + 1.5rem)) 5rem max(1.5rem, calc((100vw - 1200px) / 2 + 1.5rem));
           max-width: 680px;
         }
         .about-hero-eyebrow {

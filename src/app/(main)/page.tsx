@@ -129,7 +129,7 @@ export default function Home() {
           min-height: 100dvh;
           display: flex;
           align-items: flex-end;
-          justify-content: flex-end;
+          justify-content: flex-start;
           overflow: hidden;
           background: url('/images/hero-hand.jpg') center / cover no-repeat;
         }
@@ -138,7 +138,7 @@ export default function Home() {
           position: absolute;
           inset: 0;
           z-index: 2;
-          background: linear-gradient(to right, transparent 20%, rgba(10,8,6,0.75) 55%, rgba(10,8,6,0.88) 100%);
+          background: linear-gradient(to left, transparent 20%, rgba(10,8,6,0.75) 55%, rgba(10,8,6,0.88) 100%);
           pointer-events: none;
         }
 
@@ -148,9 +148,9 @@ export default function Home() {
           display: flex;
           flex-direction: column;
           gap: 2rem;
-          padding: 7rem max(2rem, calc((100vw - 1200px) / 2 + 2.5rem)) 7rem max(2.5rem, 5vw);
+          padding: 7rem 2rem 7rem max(1.5rem, calc((100vw - 1200px) / 2 + 1.5rem));
           max-width: 660px;
-          text-align: right;
+          text-align: left;
         }
         .h2-heading {
           font-family: var(--font-hero);
@@ -174,7 +174,7 @@ export default function Home() {
         .h2-actions {
           display: flex;
           align-items: center;
-          justify-content: flex-end;
+          justify-content: flex-start;
           gap: 2.5rem;
           flex-wrap: wrap;
           margin-top: 0.5rem;
@@ -209,7 +209,7 @@ export default function Home() {
           display: grid;
           grid-template-columns: 1fr 1fr;
           gap: 5rem;
-          padding: 8rem max(2rem, calc((100vw - 1200px) / 2 + 2.5rem));
+          padding: 8rem max(2rem, calc((100vw - 1200px) / 2 + 1.5rem));
         }
         .h2-phil-left {
           display: flex;
@@ -277,7 +277,7 @@ export default function Home() {
         /* ── Paths grid ── */
         .h2-paths {
           border-top: 1px solid var(--color-subtle);
-          padding: 0 max(2rem, calc((100vw - 1200px) / 2 + 2.5rem));
+          padding: 0 max(2rem, calc((100vw - 1200px) / 2 + 1.5rem));
           overflow: hidden;
         }
         .h2-paths-grid {
@@ -384,19 +384,12 @@ export default function Home() {
 
         /* ── Responsive ── */
         @media (max-width: 900px) {
-          .h2-hero {
-            justify-content: flex-start;
-          }
           .h2-scrim {
             background: linear-gradient(to bottom, transparent 30%, rgba(10,8,6,0.78) 60%, rgba(10,8,6,0.92) 100%);
           }
           .h2-hero-content {
             padding: 6rem 2rem 5rem;
             max-width: 100%;
-            text-align: left;
-          }
-          .h2-actions {
-            justify-content: flex-start;
           }
           .h2-phil {
             grid-template-columns: 1fr;

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -53,27 +53,13 @@ const chapters = [
 ];
 
 export function StorySection() {
-  const [active, setActive] = useState(0);
-  const sectionRef = useRef<HTMLElement>(null);
   const chapterRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const trackRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const trackRefs   = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
-    // IntersectionObserver runs on all screen sizes
-    const observers = chapterRefs.current.map((el, i) => {
-      if (!el) return null;
-      const obs = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) setActive(i);
-        },
-        { threshold: 0.3 }
-      );
-      obs.observe(el);
-      return obs;
-    });
+    // image panel + 3 content panels = 4 items per chapter
+    const numPanels = 4;
 
-    // gsap.matchMedia re-runs and auto-reverts on breakpoint change,
-    // fixing the desktop→mobile resize bug from a one-time window.innerWidth check.
     const mm = gsap.matchMedia();
 
     mm.add("(min-width: 769px)", () => {
@@ -81,11 +67,12 @@ export function StorySection() {
         const trackEl = trackRefs.current[i];
         if (!chapterEl || !trackEl) return;
 
-        const numPanels = 3;
-        const getPanelW   = () => trackEl.scrollWidth / numPanels;
-        const getInitialX = () => (chapterEl.offsetWidth - getPanelW()) / 2;
-        const getFinalX   = () => getInitialX() - getPanelW() * (numPanels - 1);
-        const getTravel   = () => getPanelW() * (numPanels - 1);
+        const getPanelW      = () => trackEl.scrollWidth / numPanels;
+        const getCenterOff   = () => (chapterEl.offsetWidth - getPanelW()) / 2;
+        // Image starts flush left (x=0). Final position centers the last content panel.
+        const getInitialX    = () => 0;
+        const getFinalX      = () => -getPanelW() * (numPanels - 1) + getCenterOff();
+        const getTravel      = () => getPanelW() * (numPanels - 1) - getCenterOff();
 
         gsap.fromTo(
           trackEl,
@@ -109,109 +96,62 @@ export function StorySection() {
     });
 
     return () => {
-      observers.forEach((obs) => obs?.disconnect());
+      ScrollTrigger.getAll().forEach((t) => t.kill());
       mm.revert();
     };
   }, []);
 
   return (
-    <section className="story-section" ref={sectionRef}>
-
-      {/* Left panel: sticky image with crossfade */}
-      <div className="story-left" aria-hidden="true">
-        {IMAGES.map((src, i) => (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            key={src}
-            src={src}
-            alt=""
-            className="story-img"
-            style={{ opacity: i === active ? 1 : 0 }}
-          />
-        ))}
-      </div>
-
-      {/* Right panel: chapters with horizontal scroll tracks */}
-      <div className="story-right">
-        {chapters.map((ch, i) => (
+    <section className="story-section">
+      {chapters.map((ch, i) => (
+        <div
+          key={ch.numeral}
+          ref={(el) => { chapterRefs.current[i] = el; }}
+          className="story-chapter"
+        >
           <div
-            key={ch.numeral}
-            ref={(el) => { chapterRefs.current[i] = el; }}
-            className="story-chapter"
+            className="story-track"
+            ref={(el) => { trackRefs.current[i] = el; }}
           >
-            {/* Mobile-only per-chapter image */}
-            <div className="story-chapter-img-wrap" aria-hidden="true">
+            {/* Image panel — first item in the horizontal track */}
+            <div className="story-image-panel">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={IMAGES[i]} alt="" className="story-chapter-img" />
+              <img src={IMAGES[i]} alt="" className="story-img" />
             </div>
 
-            {/* Horizontal scroll track */}
-            <div
-              className="story-track"
-              ref={(el) => { trackRefs.current[i] = el; }}
-            >
-              {/* Panel 1: chapter identity + opening */}
-              <div className="story-panel">
-                <span className="story-numeral">{ch.numeral}</span>
-                <h2 className="story-title">{ch.title}</h2>
-                <div className="story-divider" />
-                <p className="story-body">{ch.panels[0]}</p>
-              </div>
+            {/* Panel 1: chapter identity + opening */}
+            <div className="story-panel">
+              <span className="story-numeral">{ch.numeral}</span>
+              <h2 className="story-title">{ch.title}</h2>
+              <div className="story-divider" />
+              <p className="story-body">{ch.panels[0]}</p>
+            </div>
 
-              {/* Panel 2: continuation */}
-              <div className="story-panel">
-                <p className="story-body">{ch.panels[1]}</p>
-              </div>
+            {/* Panel 2: continuation */}
+            <div className="story-panel">
+              <p className="story-body">{ch.panels[1]}</p>
+            </div>
 
-              {/* Panel 3: closing */}
-              <div className="story-panel">
-                <p className="story-body">{ch.panels[2]}</p>
-              </div>
+            {/* Panel 3: closing */}
+            <div className="story-panel">
+              <p className="story-body">{ch.panels[2]}</p>
             </div>
           </div>
-        ))}
-      </div>
+        </div>
+      ))}
 
       <style>{`
         .story-section {
-          display: flex;
-          align-items: flex-start;
           width: 100%;
         }
 
-        /* ── Left panel ── */
-        .story-left {
-          position: sticky;
-          top: 0;
-          width: 50vw;
-          height: 100vh;
-          overflow: hidden;
-          flex-shrink: 0;
-        }
-
-        .story-img {
-          position: absolute;
-          inset: 0;
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          filter: grayscale(100%);
-          transition: opacity 600ms ease-in-out;
-        }
-
-        /* ── Right panel ── */
-        .story-right {
-          width: 50vw;
-          background-color: var(--color-base);
-        }
-
-        /* ── Chapter block: clips the horizontal track ── */
+        /* Each chapter clips its horizontal track */
         .story-chapter {
           height: 100vh;
           overflow: hidden;
         }
 
-        /* ── Horizontal track: flex row driven by GSAP x ── */
+        /* Horizontal track driven by GSAP */
         .story-track {
           display: flex;
           flex-direction: row;
@@ -219,19 +159,34 @@ export function StorySection() {
           will-change: transform;
         }
 
-        /* ── Individual panels ── */
-        .story-panel {
-          width: 40vw;
+        /* Image as first track item */
+        .story-image-panel {
+          width: 50vw;
           height: 100vh;
           flex-shrink: 0;
-          padding: 80px 60px;
+          overflow: hidden;
+        }
+
+        .story-img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          filter: grayscale(100%);
+        }
+
+        /* Content panels */
+        .story-panel {
+          width: 50vw;
+          height: 100vh;
+          flex-shrink: 0;
+          padding: 80px 10vw;
           display: flex;
           flex-direction: column;
           justify-content: center;
           background-color: var(--color-base);
         }
 
-        /* ── Typography ── */
+        /* Typography */
         .story-numeral {
           font-family: var(--font-body);
           font-size: 0.75rem;
@@ -263,49 +218,25 @@ export function StorySection() {
           color: var(--color-dark);
           margin: 0;
           font-weight: 300;
-          max-width: 400px;
+          max-width: 420px;
         }
 
-        /* ── Mobile-only chapter image ── */
-        .story-chapter-img-wrap {
-          display: none;
-        }
-
-        .story-chapter-img {
-          display: block;
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          filter: grayscale(100%);
-        }
-
-        /* ── Mobile ── */
+        /* Mobile */
         @media (max-width: 768px) {
           .story-section {
-            flex-direction: column;
             overflow-x: hidden;
-          }
-          .story-left {
-            display: none;
-          }
-          .story-right {
-            width: 100%;
           }
           .story-chapter {
             height: auto;
             overflow: visible;
           }
-          .story-chapter-img-wrap {
-            display: block;
-            position: relative;
-            width: 100%;
-            height: 100vh;
-            overflow: hidden;
-            margin-bottom: 0;
-          }
           .story-track {
             flex-direction: column;
             will-change: unset;
+          }
+          .story-image-panel {
+            width: 100%;
+            height: 100vh;
           }
           .story-panel {
             width: 100%;
@@ -318,7 +249,7 @@ export function StorySection() {
         }
       `}</style>
 
-      {/* TODO: chapter transition — cross-chapter scroll transition logic goes here (parallax, clip-path reveals, etc.) */}
+      {/* TODO: chapter transition — cross-chapter scroll transition logic goes here */}
     </section>
   );
 }
