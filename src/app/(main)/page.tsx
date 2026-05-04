@@ -42,10 +42,10 @@ export default function Home() {
         <div className="h2-scrim" />
 
         <div className="h2-hero-content">
-          <p className="h2-eyebrow">Rooted in tradition. Applied to life.</p>
           <h1 className="h2-heading">
             Inviting a<br />Return to Self.
           </h1>
+          <h2 className="h2-eyebrow">Rooted in tradition. Applied to life.</h2>
           <p className="h2-sub">
             A path of movement, culture, and self-mastery. Capoeira. The Movement
             Practice. A way of life.
@@ -114,9 +114,18 @@ export default function Home() {
 
       <style>{`
         /* ── Shared ── */
-        .h2-eyebrow, .h2-label {
+        .h2-eyebrow {
           font-family: var(--font-body);
-          font-size: 0.6875rem;
+          font-size: var(--text-base);
+          letter-spacing: 0.09em;
+          text-transform: uppercase;
+          color: var(--color-copper);
+          margin: 0;
+          text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+        }
+        .h2-label {
+          font-family: var(--font-body);
+          font-size: var(--text-xs);
           letter-spacing: 0.14em;
           text-transform: uppercase;
           color: var(--color-copper);
@@ -154,7 +163,7 @@ export default function Home() {
         }
         .h2-heading {
           font-family: var(--font-hero);
-          font-size: clamp(4rem, 7.5vw, 8rem);
+          font-size: clamp(var(--text-2xl), 7.5vw, var(--text-4xl));
           font-weight: 700;
           font-style: italic;
           line-height: 0.95;
@@ -164,7 +173,7 @@ export default function Home() {
         }
         .h2-sub {
           font-family: var(--font-body);
-          font-size: 1rem;
+          font-size: var(--text-base);
           line-height: 1.8;
           color: rgba(240, 235, 227, 0.85);
           margin: 0;
@@ -181,7 +190,7 @@ export default function Home() {
         }
         .h2-btn-primary {
           font-family: var(--font-body);
-          font-size: 0.75rem;
+          font-size: var(--text-xs);
           letter-spacing: 0.12em;
           text-transform: uppercase;
           color: #1a1a18;
@@ -194,7 +203,7 @@ export default function Home() {
         .h2-btn-primary:hover { background: var(--color-copper); color: #f0ebe3; }
         .h2-btn-text {
           font-family: var(--font-body);
-          font-size: 0.8125rem;
+          font-size: var(--text-xs);
           letter-spacing: 0.04em;
           color: #f0ebe3;
           text-decoration: none;
@@ -218,7 +227,7 @@ export default function Home() {
         }
         .h2-phil-heading {
           font-family: var(--font-display);
-          font-size: clamp(2.25rem, 3.5vw, 3.5rem);
+          font-size: clamp(var(--text-lg), 3.5vw, var(--text-xl));
           font-weight: 300;
           line-height: 1.1;
           color: var(--color-dark);
@@ -231,7 +240,7 @@ export default function Home() {
         }
         .h2-phil-body {
           font-family: var(--font-body);
-          font-size: 0.9375rem;
+          font-size: var(--text-base);
           line-height: 1.85;
           color: var(--color-dark);
           opacity: 0.72;
@@ -247,7 +256,7 @@ export default function Home() {
         .h2-quote { margin: 0; padding: 0; border: none; }
         .h2-quote-mark {
           font-family: var(--font-display);
-          font-size: 5rem;
+          font-size: var(--text-3xl);
           color: var(--color-copper);
           line-height: 0.8;
           display: block;
@@ -255,7 +264,7 @@ export default function Home() {
         }
         .h2-quote p {
           font-family: var(--font-display);
-          font-size: clamp(1.5rem, 2.8vw, 2.25rem);
+          font-size: clamp(var(--text-md), 2.8vw, var(--text-lg));
           font-style: italic;
           font-weight: 300;
           line-height: 1.35;
@@ -264,7 +273,7 @@ export default function Home() {
         }
         .h2-quote-attr {
           font-family: var(--font-body);
-          font-size: 0.625rem;
+          font-size: var(--text-xs);
           letter-spacing: 0.16em;
           text-transform: uppercase;
           color: var(--color-copper);
@@ -345,13 +354,13 @@ export default function Home() {
         }
         .h2-path-num {
           font-family: var(--font-body);
-          font-size: 0.75rem;
+          font-size: var(--text-xs);
           letter-spacing: 0.08em;
           color: var(--color-copper);
         }
         .h2-path-title {
           font-family: var(--font-body);
-          font-size: 0.625rem;
+          font-size: var(--text-xs);
           font-weight: 500;
           letter-spacing: 0.16em;
           text-transform: uppercase;
@@ -362,7 +371,7 @@ export default function Home() {
         }
         .h2-path-desc {
           font-family: var(--font-body);
-          font-size: 0.875rem;
+          font-size: var(--text-base);
           line-height: 1.7;
           color: var(--color-dark);
           opacity: 0.6;
@@ -372,7 +381,7 @@ export default function Home() {
           transition: opacity 0.25s ease;
         }
         .h2-path-arrow {
-          font-size: 1rem;
+          font-size: var(--text-base);
           color: var(--color-dark);
           text-decoration: none;
           opacity: 0.4;

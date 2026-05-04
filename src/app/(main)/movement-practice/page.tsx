@@ -42,26 +42,26 @@ export default function MovementPractice() {
         />
         <div className="mp-hero-scrim" />
         <div className="mp-hero-content">
-          <p
-            className="mp-hero-eyebrow"
-            style={{
-              opacity: loaded ? 1 : 0,
-              transform: loaded ? "translateY(0)" : "translateY(18px)",
-              transition: `opacity 0.8s ${EASE} 0.1s, transform 0.8s ${EASE} 0.1s`,
-            }}
-          >
-            A physical-first path to self mastery
-          </p>
           <h1
             className="mp-hero-h1"
             style={{
               opacity: loaded ? 1 : 0,
               transform: loaded ? "translateY(0)" : "translateY(18px)",
-              transition: `opacity 0.9s ${EASE} 0.35s, transform 0.9s ${EASE} 0.35s`,
+              transition: `opacity 0.9s ${EASE} 0.1s, transform 0.9s ${EASE} 0.1s`,
             }}
           >
             The Movement Practice
           </h1>
+          <h2
+            className="mp-hero-eyebrow"
+            style={{
+              opacity: loaded ? 1 : 0,
+              transform: loaded ? "translateY(0)" : "translateY(18px)",
+              transition: `opacity 0.8s ${EASE} 0.35s, transform 0.8s ${EASE} 0.35s`,
+            }}
+          >
+            A physical-first path to self mastery
+          </h2>
           <p
             className="mp-hero-blurb"
             style={{
@@ -105,7 +105,7 @@ export default function MovementPractice() {
                   <h2
                     style={{
                       fontFamily: "var(--font-display)",
-                      fontSize: "clamp(1.5rem, 2.5vw, 2rem)",
+                      fontSize: "clamp(var(--text-md), 2.5vw, var(--text-lg))",
                       fontWeight: 600,
                       color: "var(--color-dark)",
                       margin: 0,
@@ -117,7 +117,7 @@ export default function MovementPractice() {
                   <p
                     style={{
                       fontFamily: "var(--font-body)",
-                      fontSize: "0.9rem",
+                      fontSize: "var(--text-base)",
                       color: "var(--color-dark)",
                       margin: 0,
                       lineHeight: 1.7,
@@ -178,15 +178,17 @@ export default function MovementPractice() {
         }
         .mp-hero-eyebrow {
           font-family: var(--font-body);
-          font-size: 0.6875rem;
-          letter-spacing: 0.14em;
+          font-size: var(--text-base);
+          letter-spacing: 0.09em;
           text-transform: uppercase;
           color: var(--color-copper);
           margin: 0;
+          font-weight: 400;
+          text-shadow: 0 1px 3px rgba(0,0,0,0.6);
         }
         .mp-hero-h1 {
           font-family: var(--font-hero);
-          font-size: clamp(4rem, 7.5vw, 8rem);
+          font-size: clamp(var(--text-2xl), 7.5vw, var(--text-4xl));
           font-weight: 700;
           font-style: italic;
           line-height: 0.95;
@@ -195,7 +197,7 @@ export default function MovementPractice() {
         }
         .mp-hero-blurb {
           font-family: var(--font-body);
-          font-size: 1rem;
+          font-size: var(--text-base);
           line-height: 1.8;
           color: rgba(240, 235, 227, 0.85);
           margin: 0;
@@ -215,7 +217,7 @@ export default function MovementPractice() {
         }
         .mp-card-link {
           font-family: var(--font-body);
-          font-size: 0.8rem;
+          font-size: var(--text-xs);
           letter-spacing: 0.08em;
           text-transform: uppercase;
           color: var(--color-dark);
@@ -229,7 +231,7 @@ export default function MovementPractice() {
         .mp-card-link:hover { opacity: 1; }
         .mp-full-link {
           font-family: var(--font-body);
-          font-size: 0.875rem;
+          font-size: var(--text-base);
           color: var(--color-mid);
           text-decoration: none;
           letter-spacing: 0.03em;

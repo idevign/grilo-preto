@@ -57,26 +57,26 @@ export default function RmpPersonalized() {
         />
         <div className="pp-hero-scrim" />
         <div className="pp-hero-content">
-          <p
-            className="pp-hero-eyebrow"
-            style={{
-              opacity: loaded ? 1 : 0,
-              transform: loaded ? "translateY(0)" : "translateY(18px)",
-              transition: `opacity 0.8s ${EASE} 0.1s, transform 0.8s ${EASE} 0.1s`,
-            }}
-          >
-            Ritual Movement Practice
-          </p>
           <h1
             className="pp-hero-h1"
             style={{
               opacity: loaded ? 1 : 0,
               transform: loaded ? "translateY(0)" : "translateY(18px)",
-              transition: `opacity 0.9s ${EASE} 0.35s, transform 0.9s ${EASE} 0.35s`,
+              transition: `opacity 0.9s ${EASE} 0.1s, transform 0.9s ${EASE} 0.1s`,
             }}
           >
             RMP⁺ Personalized
           </h1>
+          <h2
+            className="pp-hero-eyebrow"
+            style={{
+              opacity: loaded ? 1 : 0,
+              transform: loaded ? "translateY(0)" : "translateY(18px)",
+              transition: `opacity 0.8s ${EASE} 0.35s, transform 0.8s ${EASE} 0.35s`,
+            }}
+          >
+            Ritual Movement Practice
+          </h2>
           <p
             className="pp-hero-blurb"
             style={{
@@ -157,7 +157,7 @@ export default function RmpPersonalized() {
               style={{
                 fontFamily: "var(--font-display)",
                 fontStyle: "italic",
-                fontSize: "clamp(1.25rem, 2.2vw, 1.625rem)",
+                fontSize: "var(--text-md)",
                 fontWeight: 300,
                 color: "var(--color-dark)",
                 margin: 0,
@@ -309,7 +309,7 @@ export default function RmpPersonalized() {
                   <p
                     style={{
                       fontFamily: "var(--font-body)",
-                      fontSize: "0.75rem",
+                      fontSize: "var(--text-xs)",
                       letterSpacing: "0.08em",
                       textTransform: "uppercase",
                       color: "var(--color-dark)",
@@ -322,7 +322,7 @@ export default function RmpPersonalized() {
                   <p
                     style={{
                       fontFamily: "var(--font-body)",
-                      fontSize: "0.9375rem",
+                      fontSize: "var(--text-base)",
                       lineHeight: 1.7,
                       color: "var(--color-dark)",
                       margin: 0,
@@ -411,7 +411,7 @@ export default function RmpPersonalized() {
             style={{
               fontFamily: "var(--font-display)",
               fontStyle: "italic",
-              fontSize: "clamp(1.5rem, 3vw, 2.25rem)",
+              fontSize: "clamp(var(--text-md), 3vw, var(--text-lg))",
               fontWeight: 300,
               color: "var(--color-dark)",
               margin: 0,
@@ -462,15 +462,17 @@ export default function RmpPersonalized() {
         }
         .pp-hero-eyebrow {
           font-family: var(--font-body);
-          font-size: 0.6875rem;
-          letter-spacing: 0.14em;
+          font-size: var(--text-base);
+          letter-spacing: 0.09em;
           text-transform: uppercase;
           color: var(--color-copper);
           margin: 0;
+          font-weight: 400;
+          text-shadow: 0 1px 3px rgba(0,0,0,0.6);
         }
         .pp-hero-h1 {
           font-family: var(--font-hero);
-          font-size: clamp(4rem, 7.5vw, 8rem);
+          font-size: clamp(var(--text-2xl), 7.5vw, var(--text-4xl));
           font-weight: 700;
           font-style: italic;
           line-height: 0.95;
@@ -479,7 +481,7 @@ export default function RmpPersonalized() {
         }
         .pp-hero-blurb {
           font-family: var(--font-body);
-          font-size: 1rem;
+          font-size: var(--text-base);
           line-height: 1.8;
           color: rgba(240, 235, 227, 0.85);
           margin: 0;
@@ -488,7 +490,7 @@ export default function RmpPersonalized() {
         }
         .pp-body {
           font-family: var(--font-body);
-          font-size: clamp(1rem, 1.8vw, 1.0625rem);
+          font-size: var(--text-base);
           line-height: 1.85;
           color: var(--color-dark);
           margin: 0;
@@ -496,7 +498,7 @@ export default function RmpPersonalized() {
         }
         .pp-label {
           font-family: var(--font-body);
-          font-size: 0.6875rem;
+          font-size: var(--text-xs);
           letter-spacing: 0.12em;
           text-transform: uppercase;
           color: var(--color-mid);
@@ -504,7 +506,7 @@ export default function RmpPersonalized() {
         }
         .pp-section-heading {
           font-family: var(--font-display);
-          font-size: clamp(1.75rem, 3vw, 2.5rem);
+          font-size: clamp(var(--text-lg), 3vw, var(--text-xl));
           font-weight: 600;
           font-style: italic;
           color: var(--color-dark);
@@ -513,7 +515,7 @@ export default function RmpPersonalized() {
         }
         .pp-section-subheading {
           font-family: var(--font-body);
-          font-size: 0.8125rem;
+          font-size: var(--text-xs);
           letter-spacing: 0.1em;
           text-transform: uppercase;
           color: var(--color-mid);
@@ -523,7 +525,7 @@ export default function RmpPersonalized() {
         .pp-italic-sub {
           font-family: var(--font-display);
           font-style: italic;
-          font-size: clamp(1.125rem, 2vw, 1.375rem);
+          font-size: clamp(var(--text-base), 2vw, var(--text-md));
           font-weight: 300;
           color: var(--color-dark);
           margin: 0;
@@ -540,7 +542,7 @@ export default function RmpPersonalized() {
         }
         .pp-cta-link {
           font-family: var(--font-body);
-          font-size: 0.875rem;
+          font-size: var(--text-base);
           letter-spacing: 0.1em;
           text-transform: uppercase;
           color: var(--color-mid);

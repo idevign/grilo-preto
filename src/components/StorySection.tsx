@@ -189,7 +189,7 @@ export function StorySection() {
         /* Typography */
         .story-numeral {
           font-family: var(--font-body);
-          font-size: 0.75rem;
+          font-size: var(--text-xs);
           letter-spacing: 0.08em;
           color: var(--color-mid);
         }
@@ -197,7 +197,7 @@ export function StorySection() {
         .story-title {
           font-family: var(--font-display);
           font-style: italic;
-          font-size: clamp(2rem, 3.5vw, 3rem);
+          font-size: clamp(var(--text-lg), 3.5vw, var(--text-xl));
           font-weight: 300;
           color: var(--color-dark);
           margin: 0.5rem 0 0 0;
@@ -213,7 +213,7 @@ export function StorySection() {
 
         .story-body {
           font-family: var(--font-body);
-          font-size: clamp(1rem, 1.8vw, 1.0625rem);
+          font-size: var(--text-base);
           line-height: 1.85;
           color: var(--color-dark);
           margin: 0;

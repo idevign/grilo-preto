@@ -16,26 +16,26 @@ export default function About() {
       <section className="about-hero">
         <div className="about-hero-scrim" />
         <div className="about-hero-content">
-          <p
-            className="about-hero-eyebrow"
-            style={{
-              opacity: loaded ? 1 : 0,
-              transform: loaded ? "translateY(0)" : "translateY(18px)",
-              transition: `opacity 0.8s ${EASE} 0.1s, transform 0.8s ${EASE} 0.1s`,
-            }}
-          >
-            Mestre. Movement Teacher.
-          </p>
           <h1
             className="about-hero-h1"
             style={{
               opacity: loaded ? 1 : 0,
               transform: loaded ? "translateY(0)" : "translateY(18px)",
-              transition: `opacity 0.9s ${EASE} 0.35s, transform 0.9s ${EASE} 0.35s`,
+              transition: `opacity 0.9s ${EASE} 0.1s, transform 0.9s ${EASE} 0.1s`,
             }}
           >
             About Grilo
           </h1>
+          <h2
+            className="about-hero-eyebrow"
+            style={{
+              opacity: loaded ? 1 : 0,
+              transform: loaded ? "translateY(0)" : "translateY(18px)",
+              transition: `opacity 0.8s ${EASE} 0.35s, transform 0.8s ${EASE} 0.35s`,
+            }}
+          >
+            Mestre. Movement Teacher.
+          </h2>
           <p
             className="about-hero-blurb"
             style={{
@@ -80,15 +80,17 @@ export default function About() {
         }
         .about-hero-eyebrow {
           font-family: var(--font-body);
-          font-size: 0.6875rem;
-          letter-spacing: 0.14em;
+          font-size: var(--text-base);
+          letter-spacing: 0.09em;
           text-transform: uppercase;
           color: var(--color-copper);
           margin: 0;
+          font-weight: 400;
+          text-shadow: 0 1px 3px rgba(0,0,0,0.6);
         }
         .about-hero-h1 {
           font-family: var(--font-hero);
-          font-size: clamp(4rem, 7.5vw, 8rem);
+          font-size: clamp(var(--text-2xl), 7.5vw, var(--text-4xl));
           font-weight: 700;
           font-style: italic;
           line-height: 0.95;
@@ -97,7 +99,7 @@ export default function About() {
         }
         .about-hero-blurb {
           font-family: var(--font-body);
-          font-size: 1rem;
+          font-size: var(--text-base);
           line-height: 1.8;
           color: rgba(240, 235, 227, 0.85);
           margin: 0;

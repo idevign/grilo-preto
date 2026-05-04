@@ -49,7 +49,7 @@ export default function RmpFooter() {
               style={{
                 fontFamily: "var(--font-display)",
                 fontStyle: "italic",
-                fontSize: "0.9375rem",
+                fontSize: "var(--text-base)",
                 color: "var(--color-mid)",
                 margin: 0,
                 letterSpacing: "0.01em",
@@ -76,7 +76,7 @@ export default function RmpFooter() {
             <p
               style={{
                 fontFamily: "var(--font-body)",
-                fontSize: "0.75rem",
+                fontSize: "var(--text-xs)",
                 color: "var(--color-mid)",
                 margin: "1.25rem 0 0",
                 lineHeight: 1.6,
@@ -153,7 +153,7 @@ export default function RmpFooter() {
         }
         .rmp-footer-link {
           font-family: var(--font-body);
-          font-size: 0.875rem;
+          font-size: var(--text-base);
           color: var(--color-dark);
           text-decoration: none;
           transition: opacity 0.2s;
@@ -167,7 +167,7 @@ export default function RmpFooter() {
         }
         .rmp-footer-fine {
           font-family: var(--font-body);
-          font-size: 0.6875rem;
+          font-size: var(--text-xs);
           color: var(--color-dark);
           text-decoration: none;
           letter-spacing: 0.02em;

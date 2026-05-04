@@ -27,26 +27,26 @@ export default function Capoeira() {
       <section className="cap-hero">
         <div className="cap-hero-scrim" />
         <div className="cap-hero-content">
-          <p
-            className="cap-hero-eyebrow"
-            style={{
-              opacity: loaded ? 1 : 0,
-              transform: loaded ? "translateY(0)" : "translateY(18px)",
-              transition: `opacity 0.8s ${EASE} 0.1s, transform 0.8s ${EASE} 0.1s`,
-            }}
-          >
-            An Afro-Brazilian Martial Art
-          </p>
           <h1
             className="cap-hero-h1"
             style={{
               opacity: loaded ? 1 : 0,
               transform: loaded ? "translateY(0)" : "translateY(18px)",
-              transition: `opacity 0.9s ${EASE} 0.35s, transform 0.9s ${EASE} 0.35s`,
+              transition: `opacity 0.9s ${EASE} 0.1s, transform 0.9s ${EASE} 0.1s`,
             }}
           >
             Capoeira
           </h1>
+          <h2
+            className="cap-hero-eyebrow"
+            style={{
+              opacity: loaded ? 1 : 0,
+              transform: loaded ? "translateY(0)" : "translateY(18px)",
+              transition: `opacity 0.8s ${EASE} 0.35s, transform 0.8s ${EASE} 0.35s`,
+            }}
+          >
+            An Afro-Brazilian Martial Art
+          </h2>
           <p
             className="cap-hero-blurb"
             style={{
@@ -107,7 +107,7 @@ export default function Capoeira() {
               style={{
                 fontFamily: "var(--font-display)",
                 fontStyle: "italic",
-                fontSize: "clamp(1.375rem, 2.5vw, 1.75rem)",
+                fontSize: "clamp(var(--text-md), 2.5vw, var(--text-lg))",
                 fontWeight: 300,
                 color: "var(--color-dark)",
                 margin: 0,
@@ -120,7 +120,7 @@ export default function Capoeira() {
                   display: "block",
                   fontFamily: "var(--font-body)",
                   fontStyle: "normal",
-                  fontSize: "0.8125rem",
+                  fontSize: "var(--text-xs)",
                   letterSpacing: "0.06em",
                   color: "var(--color-mid)",
                   marginTop: "0.75rem",
@@ -157,7 +157,7 @@ export default function Capoeira() {
             style={{
               fontFamily: "var(--font-display)",
               fontStyle: "italic",
-              fontSize: "clamp(1.125rem, 2vw, 1.375rem)",
+              fontSize: "clamp(var(--text-base), 2vw, var(--text-md))",
               fontWeight: 300,
               color: "var(--color-dark)",
               margin: 0,
@@ -196,7 +196,7 @@ export default function Capoeira() {
           <h2
             style={{
               fontFamily: "var(--font-display)",
-              fontSize: "clamp(1.75rem, 3vw, 2.5rem)",
+              fontSize: "clamp(var(--text-lg), 3vw, var(--text-xl))",
               fontWeight: 600,
               fontStyle: "italic",
               color: "var(--color-dark)",
@@ -227,7 +227,7 @@ export default function Capoeira() {
           <p
             style={{
               fontFamily: "var(--font-body)",
-              fontSize: "0.75rem",
+              fontSize: "var(--text-xs)",
               letterSpacing: "0.08em",
               color: "var(--color-mid)",
               margin: 0,
@@ -264,7 +264,7 @@ export default function Capoeira() {
           <h2
             style={{
               fontFamily: "var(--font-display)",
-              fontSize: "clamp(1.75rem, 3vw, 2.5rem)",
+              fontSize: "clamp(var(--text-lg), 3vw, var(--text-xl))",
               fontWeight: 600,
               fontStyle: "italic",
               color: "var(--color-dark)",
@@ -405,7 +405,7 @@ export default function Capoeira() {
             style={{
               fontFamily: "var(--font-display)",
               fontStyle: "italic",
-              fontSize: "clamp(1.25rem, 2.5vw, 1.75rem)",
+              fontSize: "clamp(var(--text-md), 2.5vw, var(--text-lg))",
               fontWeight: 300,
               color: "var(--color-dark)",
               margin: 0,
@@ -463,15 +463,17 @@ export default function Capoeira() {
         }
         .cap-hero-eyebrow {
           font-family: var(--font-body);
-          font-size: 0.6875rem;
-          letter-spacing: 0.14em;
+          font-size: var(--text-base);
+          letter-spacing: 0.09em;
           text-transform: uppercase;
           color: var(--color-copper);
           margin: 0;
+          font-weight: 400;
+          text-shadow: 0 1px 3px rgba(0,0,0,0.6);
         }
         .cap-hero-h1 {
           font-family: var(--font-hero);
-          font-size: clamp(4rem, 7.5vw, 8rem);
+          font-size: clamp(var(--text-2xl), 7.5vw, var(--text-4xl));
           font-weight: 700;
           font-style: italic;
           line-height: 0.95;
@@ -480,7 +482,7 @@ export default function Capoeira() {
         }
         .cap-hero-blurb {
           font-family: var(--font-body);
-          font-size: 1rem;
+          font-size: var(--text-base);
           line-height: 1.8;
           color: rgba(240, 235, 227, 0.85);
           margin: 0;
@@ -489,7 +491,7 @@ export default function Capoeira() {
         }
         .cap-body {
           font-family: var(--font-body);
-          font-size: clamp(1rem, 1.8vw, 1.0625rem);
+          font-size: var(--text-base);
           line-height: 1.85;
           color: var(--color-dark);
           margin: 0;
@@ -497,7 +499,7 @@ export default function Capoeira() {
         }
         .cap-subheading {
           font-family: var(--font-body);
-          font-size: 0.75rem;
+          font-size: var(--text-xs);
           letter-spacing: 0.1em;
           text-transform: uppercase;
           color: var(--color-mid);
@@ -505,7 +507,7 @@ export default function Capoeira() {
         }
         .cap-subsubheading {
           font-family: var(--font-display);
-          font-size: clamp(1.25rem, 2vw, 1.625rem);
+          font-size: var(--text-md);
           font-weight: 400;
           color: var(--color-dark);
           margin: 0;
@@ -513,7 +515,7 @@ export default function Capoeira() {
         }
         .cap-link {
           font-family: var(--font-body);
-          font-size: 0.875rem;
+          font-size: var(--text-base);
           color: var(--color-dark);
           text-decoration: none;
           border-bottom: 1px solid var(--color-subtle);
@@ -527,7 +529,7 @@ export default function Capoeira() {
         }
         .cap-event-link {
           font-family: var(--font-body);
-          font-size: 0.9375rem;
+          font-size: var(--text-base);
           color: var(--color-dark);
           text-decoration: none;
           border-bottom: 1px solid var(--color-subtle);
@@ -539,10 +541,10 @@ export default function Capoeira() {
         .cap-event-link:hover { border-color: var(--color-dark); }
         .cap-event-passed { color: var(--color-mid); }
         .cap-event-passed:hover { color: var(--color-mid); border-color: var(--color-subtle); }
-        .cap-event-passed-tag { font-size: 0.8125rem; opacity: 0.6; }
+        .cap-event-passed-tag { font-size: var(--text-xs); opacity: 0.6; }
         .cap-cta-link {
           font-family: var(--font-body);
-          font-size: 0.875rem;
+          font-size: var(--text-base);
           letter-spacing: 0.08em;
           text-transform: uppercase;
           color: var(--color-mid);

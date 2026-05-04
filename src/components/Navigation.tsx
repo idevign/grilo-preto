@@ -42,7 +42,7 @@ export default function Navigation() {
           href="/"
           style={{
             fontFamily: "var(--font-display)",
-            fontSize: "1.5rem",
+            fontSize: "var(--text-md)",
             fontWeight: 600,
             letterSpacing: "0.02em",
             color: "var(--color-dark)",
@@ -72,7 +72,7 @@ export default function Navigation() {
                   href={link.href}
                   style={{
                     fontFamily: "var(--font-body)",
-                    fontSize: "0.9375rem",
+                    fontSize: "var(--text-base)",
                     color: "var(--color-dark)",
                     textDecoration: "none",
                     letterSpacing: "0.01em",
@@ -135,7 +135,7 @@ export default function Navigation() {
                     onClick={() => setOpen(false)}
                     style={{
                       fontFamily: "var(--font-body)",
-                      fontSize: "1rem",
+                      fontSize: "var(--text-base)",
                       color: "var(--color-dark)",
                       textDecoration: "none",
                       opacity: active ? 1 : 0.7,

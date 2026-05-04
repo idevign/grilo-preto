@@ -123,26 +123,26 @@ export default function RmpInPerson() {
         />
         <div className="ip-hero-scrim" />
         <div className="ip-hero-content">
-          <p
-            className="ip-hero-eyebrow"
-            style={{
-              opacity: loaded ? 1 : 0,
-              transform: loaded ? "translateY(0)" : "translateY(18px)",
-              transition: `opacity 0.8s ${EASE} 0.1s, transform 0.8s ${EASE} 0.1s`,
-            }}
-          >
-            Ritual Movement Practice
-          </p>
           <h1
             className="ip-hero-h1"
             style={{
               opacity: loaded ? 1 : 0,
               transform: loaded ? "translateY(0)" : "translateY(18px)",
-              transition: `opacity 0.9s ${EASE} 0.35s, transform 0.9s ${EASE} 0.35s`,
+              transition: `opacity 0.9s ${EASE} 0.1s, transform 0.9s ${EASE} 0.1s`,
             }}
           >
             RMP⁺ In-Person
           </h1>
+          <h2
+            className="ip-hero-eyebrow"
+            style={{
+              opacity: loaded ? 1 : 0,
+              transform: loaded ? "translateY(0)" : "translateY(18px)",
+              transition: `opacity 0.8s ${EASE} 0.35s, transform 0.8s ${EASE} 0.35s`,
+            }}
+          >
+            Ritual Movement Practice
+          </h2>
           <p
             className="ip-hero-blurb"
             style={{
@@ -308,7 +308,7 @@ export default function RmpInPerson() {
             style={{
               fontFamily: "var(--font-display)",
               fontStyle: "italic",
-              fontSize: "clamp(1rem, 1.6vw, 1.125rem)",
+              fontSize: "var(--text-base)",
               fontWeight: 300,
               color: "var(--color-copper)",
               margin: 0,
@@ -358,7 +358,7 @@ export default function RmpInPerson() {
                     <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: "0.375rem" }}>
                       {item.list.map((entry) => (
                         <li key={entry} style={{ display: "flex", gap: "0.625rem", alignItems: "baseline" }}>
-                          <span style={{ fontFamily: "var(--font-body)", fontSize: "0.6875rem", color: "var(--color-mid)", flexShrink: 0 }}>+</span>
+                          <span style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-xs)", color: "var(--color-mid)", flexShrink: 0 }}>+</span>
                           <span className="ip-logistics-body">{entry}</span>
                         </li>
                       ))}
@@ -411,7 +411,7 @@ export default function RmpInPerson() {
                   <p
                     style={{
                       fontFamily: "var(--font-body)",
-                      fontSize: "0.8125rem",
+                      fontSize: "var(--text-xs)",
                       letterSpacing: "0.06em",
                       textTransform: "uppercase",
                       color: "var(--color-dark)",
@@ -424,7 +424,7 @@ export default function RmpInPerson() {
                   <p
                     style={{
                       fontFamily: "var(--font-body)",
-                      fontSize: "0.9375rem",
+                      fontSize: "var(--text-base)",
                       lineHeight: 1.75,
                       color: "var(--color-dark)",
                       margin: 0,
@@ -486,7 +486,7 @@ export default function RmpInPerson() {
                     <span
                       style={{
                         fontFamily: "var(--font-body)",
-                        fontSize: "0.9375rem",
+                        fontSize: "var(--text-base)",
                         fontWeight: 400,
                         color: "var(--color-dark)",
                         lineHeight: 1.4,
@@ -497,7 +497,7 @@ export default function RmpInPerson() {
                     <span
                       style={{
                         fontFamily: "var(--font-body)",
-                        fontSize: "1rem",
+                        fontSize: "var(--text-base)",
                         color: "var(--color-mid)",
                         flexShrink: 0,
                         lineHeight: 1,
@@ -511,7 +511,7 @@ export default function RmpInPerson() {
                     <p
                       style={{
                         fontFamily: "var(--font-body)",
-                        fontSize: "0.9375rem",
+                        fontSize: "var(--text-base)",
                         lineHeight: 1.75,
                         color: "var(--color-dark)",
                         fontWeight: 300,
@@ -558,7 +558,7 @@ export default function RmpInPerson() {
             style={{
               fontFamily: "var(--font-display)",
               fontStyle: "italic",
-              fontSize: "clamp(1.5rem, 3vw, 2.25rem)",
+              fontSize: "clamp(var(--text-md), 3vw, var(--text-lg))",
               fontWeight: 300,
               color: "var(--color-dark)",
               margin: 0,
@@ -609,15 +609,17 @@ export default function RmpInPerson() {
         }
         .ip-hero-eyebrow {
           font-family: var(--font-body);
-          font-size: 0.6875rem;
-          letter-spacing: 0.14em;
+          font-size: var(--text-base);
+          letter-spacing: 0.09em;
           text-transform: uppercase;
           color: var(--color-copper);
           margin: 0;
+          font-weight: 400;
+          text-shadow: 0 1px 3px rgba(0,0,0,0.6);
         }
         .ip-hero-h1 {
           font-family: var(--font-hero);
-          font-size: clamp(4rem, 7.5vw, 8rem);
+          font-size: clamp(var(--text-2xl), 7.5vw, var(--text-4xl));
           font-weight: 700;
           font-style: italic;
           line-height: 0.95;
@@ -626,7 +628,7 @@ export default function RmpInPerson() {
         }
         .ip-hero-blurb {
           font-family: var(--font-body);
-          font-size: 1rem;
+          font-size: var(--text-base);
           line-height: 1.8;
           color: rgba(240, 235, 227, 0.85);
           margin: 0;
@@ -635,7 +637,7 @@ export default function RmpInPerson() {
         }
         .ip-body {
           font-family: var(--font-body);
-          font-size: clamp(1rem, 1.8vw, 1.0625rem);
+          font-size: var(--text-base);
           line-height: 1.85;
           color: var(--color-dark);
           margin: 0;
@@ -643,7 +645,7 @@ export default function RmpInPerson() {
         }
         .ip-label {
           font-family: var(--font-body);
-          font-size: 0.6875rem;
+          font-size: var(--text-xs);
           letter-spacing: 0.12em;
           text-transform: uppercase;
           color: var(--color-mid);
@@ -651,7 +653,7 @@ export default function RmpInPerson() {
         }
         .ip-section-heading {
           font-family: var(--font-display);
-          font-size: clamp(1.75rem, 3vw, 2.5rem);
+          font-size: clamp(var(--text-lg), 3vw, var(--text-xl));
           font-weight: 600;
           font-style: italic;
           color: var(--color-dark);
@@ -660,7 +662,7 @@ export default function RmpInPerson() {
         }
         .ip-section-subheading {
           font-family: var(--font-body);
-          font-size: 0.8125rem;
+          font-size: var(--text-xs);
           letter-spacing: 0.1em;
           text-transform: uppercase;
           color: var(--color-mid);
@@ -670,7 +672,7 @@ export default function RmpInPerson() {
         .ip-italic-sub {
           font-family: var(--font-display);
           font-style: italic;
-          font-size: clamp(1.125rem, 2vw, 1.375rem);
+          font-size: clamp(var(--text-base), 2vw, var(--text-md));
           font-weight: 300;
           color: var(--color-dark);
           margin: 0;
@@ -696,7 +698,7 @@ export default function RmpInPerson() {
         }
         .ip-logistics-title {
           font-family: var(--font-body);
-          font-size: 0.6875rem;
+          font-size: var(--text-xs);
           letter-spacing: 0.12em;
           text-transform: uppercase;
           color: var(--color-mid);
@@ -704,7 +706,7 @@ export default function RmpInPerson() {
         }
         .ip-logistics-body {
           font-family: var(--font-body);
-          font-size: 0.9375rem;
+          font-size: var(--text-base);
           line-height: 1.75;
           color: var(--color-dark);
           margin: 0;
@@ -712,7 +714,7 @@ export default function RmpInPerson() {
         }
         .ip-logistics-link {
           font-family: var(--font-body);
-          font-size: 0.8125rem;
+          font-size: var(--text-xs);
           color: var(--color-dark);
           text-decoration: none;
           border-bottom: 1px solid var(--color-subtle);
@@ -748,7 +750,7 @@ export default function RmpInPerson() {
         }
         .ip-cta-link {
           font-family: var(--font-body);
-          font-size: 0.875rem;
+          font-size: var(--text-base);
           letter-spacing: 0.1em;
           text-transform: uppercase;
           color: var(--color-mid);
