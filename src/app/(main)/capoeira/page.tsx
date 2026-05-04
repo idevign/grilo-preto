@@ -38,7 +38,7 @@ export default function Capoeira() {
             Capoeira
           </h1>
           <h2
-            className="cap-hero-eyebrow"
+            className="hero-eyebrow"
             style={{
               opacity: loaded ? 1 : 0,
               transform: loaded ? "translateY(0)" : "translateY(18px)",
@@ -48,7 +48,7 @@ export default function Capoeira() {
             An Afro-Brazilian Martial Art
           </h2>
           <p
-            className="cap-hero-blurb"
+            className="hero-blurb"
             style={{
               opacity: loaded ? 1 : 0,
               transform: loaded ? "translateY(0)" : "translateY(18px)",
@@ -458,18 +458,8 @@ export default function Capoeira() {
           display: flex;
           flex-direction: column;
           gap: 1.25rem;
-          padding: 5rem max(2rem, calc((100vw - 1200px) / 2 + 1.5rem)) 5rem max(1.5rem, calc((100vw - 1200px) / 2 + 1.5rem));
+          padding: 5rem 2rem 5rem max(1.5rem, calc((100vw - 1200px) / 2 + 1.5rem));
           max-width: 680px;
-        }
-        .cap-hero-eyebrow {
-          font-family: var(--font-body);
-          font-size: var(--text-base);
-          letter-spacing: 0.09em;
-          text-transform: uppercase;
-          color: var(--color-copper);
-          margin: 0;
-          font-weight: 400;
-          text-shadow: 0 1px 3px rgba(0,0,0,0.6);
         }
         .cap-hero-h1 {
           font-family: var(--font-hero);
@@ -479,15 +469,6 @@ export default function Capoeira() {
           line-height: 0.95;
           color: #f0ebe3;
           margin: 0;
-        }
-        .cap-hero-blurb {
-          font-family: var(--font-body);
-          font-size: var(--text-base);
-          line-height: 1.8;
-          color: rgba(240, 235, 227, 0.85);
-          margin: 0;
-          max-width: 42ch;
-          font-weight: 300;
         }
         .cap-body {
           font-family: var(--font-body);

@@ -68,7 +68,7 @@ export default function RmpPersonalized() {
             RMP⁺ Personalized
           </h1>
           <h2
-            className="pp-hero-eyebrow"
+            className="hero-eyebrow"
             style={{
               opacity: loaded ? 1 : 0,
               transform: loaded ? "translateY(0)" : "translateY(18px)",
@@ -78,7 +78,7 @@ export default function RmpPersonalized() {
             Ritual Movement Practice
           </h2>
           <p
-            className="pp-hero-blurb"
+            className="hero-blurb"
             style={{
               opacity: loaded ? 1 : 0,
               transform: loaded ? "translateY(0)" : "translateY(18px)",
@@ -457,18 +457,8 @@ export default function RmpPersonalized() {
           display: flex;
           flex-direction: column;
           gap: 1.25rem;
-          padding: 0 max(1.5rem, calc((100vw - 1200px) / 2 + 1.5rem)) 6rem max(1.5rem, calc((100vw - 1200px) / 2 + 1.5rem));
+          padding: 0 2rem 6rem max(1.5rem, calc((100vw - 1200px) / 2 + 1.5rem));
           max-width: 680px;
-        }
-        .pp-hero-eyebrow {
-          font-family: var(--font-body);
-          font-size: var(--text-base);
-          letter-spacing: 0.09em;
-          text-transform: uppercase;
-          color: var(--color-copper);
-          margin: 0;
-          font-weight: 400;
-          text-shadow: 0 1px 3px rgba(0,0,0,0.6);
         }
         .pp-hero-h1 {
           font-family: var(--font-hero);
@@ -478,15 +468,6 @@ export default function RmpPersonalized() {
           line-height: 0.95;
           color: #f0ebe3;
           margin: 0;
-        }
-        .pp-hero-blurb {
-          font-family: var(--font-body);
-          font-size: var(--text-base);
-          line-height: 1.8;
-          color: rgba(240, 235, 227, 0.85);
-          margin: 0;
-          max-width: 42ch;
-          font-weight: 300;
         }
         .pp-body {
           font-family: var(--font-body);

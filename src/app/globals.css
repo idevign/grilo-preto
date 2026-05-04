@@ -65,6 +65,27 @@ small { font-size: var(--text-xs); }
   Grain texture overlay — add class "grain" to any section.
   The ::after pseudo-element tiles a fractal-noise SVG filter at low opacity.
 */
+.hero-blurb {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.8;
+  color: rgba(240, 235, 227, 0.85);
+  margin: 0;
+  max-width: 800px;
+  font-weight: 300;
+}
+
+.hero-eyebrow {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--color-copper);
+  margin: 0;
+  font-weight: 400;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+}
+
 .grain {
   position: relative;
   isolation: isolate;

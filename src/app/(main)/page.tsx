@@ -45,8 +45,8 @@ export default function Home() {
           <h1 className="h2-heading">
             Inviting a<br />Return to Self.
           </h1>
-          <h2 className="h2-eyebrow">Rooted in tradition. Applied to life.</h2>
-          <p className="h2-sub">
+          <h2 className="hero-eyebrow">Rooted in tradition. Applied to life.</h2>
+          <p className="hero-blurb">
             A path of movement, culture, and self-mastery. Capoeira. The Movement
             Practice. A way of life.
           </p>
@@ -114,15 +114,6 @@ export default function Home() {
 
       <style>{`
         /* ── Shared ── */
-        .h2-eyebrow {
-          font-family: var(--font-body);
-          font-size: var(--text-base);
-          letter-spacing: 0.09em;
-          text-transform: uppercase;
-          color: var(--color-copper);
-          margin: 0;
-          text-shadow: 0 1px 3px rgba(0,0,0,0.6);
-        }
         .h2-label {
           font-family: var(--font-body);
           font-size: var(--text-xs);
@@ -158,7 +149,7 @@ export default function Home() {
           flex-direction: column;
           gap: 2rem;
           padding: 7rem 2rem 7rem max(1.5rem, calc((100vw - 1200px) / 2 + 1.5rem));
-          max-width: 660px;
+          max-width: 1000px;
           text-align: left;
         }
         .h2-heading {
@@ -170,15 +161,6 @@ export default function Home() {
           letter-spacing: -0.01em;
           color: #f0ebe3;
           margin: 0;
-        }
-        .h2-sub {
-          font-family: var(--font-body);
-          font-size: var(--text-base);
-          line-height: 1.8;
-          color: rgba(240, 235, 227, 0.85);
-          margin: 0;
-          max-width: 36ch;
-          font-weight: 300;
         }
         .h2-actions {
           display: flex;
