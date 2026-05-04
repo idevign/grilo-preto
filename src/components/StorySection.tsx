@@ -1,6 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const IMAGES = [
   "https://picsum.photos/seed/10/900/1200",
@@ -13,43 +17,49 @@ const chapters = [
   {
     numeral: "I.",
     title: "The Unfolding",
-    paragraphs: [
+    panels: [
       "Years building a career in software development and design. Conventional success, increasing distance from myself. The kind of life that looks right from the outside and feels increasingly hollow from within. Capoeira found me. Not the other way around. Something broke open. I did not understand it then. I kept returning anyway.",
-      "The practice asked things of me that no other context had. Precision. Presence. Honesty about where I actually was, not where I wanted to be. Every session was a mirror. Some days that was clarifying. Many days it was confronting. I stayed.",
+      "What kept me returning was not pleasure. It was something closer to recognition. The practice had a logic that I could feel before I could name it. The body responds to consistency in ways the mind resists. I was not building skill. I was building a relationship with honesty.",
+      "Years passed before I understood what had happened. The practice had reorganized something in me. Not fixed it. Reorganized it. That distinction matters more than it sounds.",
     ],
   },
   {
     numeral: "II.",
     title: "The Becoming",
-    paragraphs: [
+    panels: [
       "Two decades of practice changes a person in ways that are difficult to name and impossible to fake. The body learns things the mind cannot argue with. Patterns become visible. Some dissolve. Others reveal themselves as load-bearing in ways you did not expect.",
-      "I trained under Mestre Acordeon, the late Mestre Ra, and Mestra Suelly. I studied directly with Ido Portal and his senior students. Each context gave me something distinct. None of it resolved into a system. All of it compounded into a way of seeing.",
+      "Direct study changes you differently than independent study. There is something transmitted in physical proximity that cannot be replicated through video or description. I received things I could not have sought. That is the nature of lineage.",
+      "What I carry from those years is not a collection of techniques. It is a standard. A sense of what honest work feels like from the inside. That standard is now what I hold the practice to.",
     ],
   },
   {
     numeral: "III.",
     title: "The Expansion",
-    paragraphs: [
+    panels: [
       "Teaching began before I felt ready. It always does. What I found was that the practice deepened when I had to articulate it. When someone else's confusion forced me to locate precisely what I actually knew versus what I had simply absorbed.",
-      "The curriculum took years to arrive at its current form. Not because I was slow, but because I refused to codify something I had not yet lived all the way through. What I offer now is the synthesis. Not a fitness method. Not a capoeira class. Something that uses the body as the territory for real development.",
+      "The students who stayed longest were never the most physically gifted. They were the ones willing to be confused without leaving. Confusion, held with patience, becomes understanding. That process cannot be accelerated. It can only be supported.",
+      "I stopped trying to make the practice legible to people who were not ready for it. That clarity made everything better. For the students and for me.",
     ],
   },
   {
     numeral: "IV.",
     title: "The Invitation",
-    paragraphs: [
+    panels: [
       "This is not for everyone. It is for the person who has already done the obvious things and found them incomplete. Who has developed real capability in their life and still carries something unresolved. Who is ready to be honest about how they move and what that reveals.",
-      "The practice is rigorous. It is also patient. It meets you where you are honest, not where you are comfortable. If that distinction means something to you, you are probably in the right place.",
+      "The entry point does not matter as much as the intention you bring to it. Guided, in-person, private. The format is a container. What fills it is yours. The practice will meet the quality of your attention with the quality of what it returns.",
+      "There is no arrival in this work. There is only the quality of your continued return. That is what the practice is built around. That is what it asks of you.",
     ],
   },
 ];
 
-
 export function StorySection() {
   const [active, setActive] = useState(0);
+  const sectionRef = useRef<HTMLElement>(null);
   const chapterRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const trackRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
+    // IntersectionObserver runs on all screen sizes
     const observers = chapterRefs.current.map((el, i) => {
       if (!el) return null;
       const obs = new IntersectionObserver(
@@ -61,11 +71,51 @@ export function StorySection() {
       obs.observe(el);
       return obs;
     });
-    return () => observers.forEach((obs) => obs?.disconnect());
+
+    // gsap.matchMedia re-runs and auto-reverts on breakpoint change,
+    // fixing the desktop→mobile resize bug from a one-time window.innerWidth check.
+    const mm = gsap.matchMedia();
+
+    mm.add("(min-width: 769px)", () => {
+      chapterRefs.current.forEach((chapterEl, i) => {
+        const trackEl = trackRefs.current[i];
+        if (!chapterEl || !trackEl) return;
+
+        const numPanels = 3;
+        const getPanelW   = () => trackEl.scrollWidth / numPanels;
+        const getInitialX = () => (chapterEl.offsetWidth - getPanelW()) / 2;
+        const getFinalX   = () => getInitialX() - getPanelW() * (numPanels - 1);
+        const getTravel   = () => getPanelW() * (numPanels - 1);
+
+        gsap.fromTo(
+          trackEl,
+          { x: getInitialX },
+          {
+            x: getFinalX,
+            ease: "none",
+            scrollTrigger: {
+              trigger: chapterEl,
+              start: "top top",
+              end: () => `+=${getTravel()}`,
+              pin: true,
+              scrub: 1,
+              invalidateOnRefresh: true,
+              onLeave:     () => gsap.to(trackEl, { opacity: 0, duration: 0.4, ease: "power1.in" }),
+              onEnterBack: () => gsap.to(trackEl, { opacity: 1, duration: 0.3, ease: "power1.out" }),
+            },
+          }
+        );
+      });
+    });
+
+    return () => {
+      observers.forEach((obs) => obs?.disconnect());
+      mm.revert();
+    };
   }, []);
 
   return (
-    <section className="story-section">
+    <section className="story-section" ref={sectionRef}>
 
       {/* Left panel: sticky image with crossfade */}
       <div className="story-left" aria-hidden="true">
@@ -81,7 +131,7 @@ export function StorySection() {
         ))}
       </div>
 
-      {/* Right panel: scrolling chapters */}
+      {/* Right panel: chapters with horizontal scroll tracks */}
       <div className="story-right">
         {chapters.map((ch, i) => (
           <div
@@ -95,13 +145,28 @@ export function StorySection() {
               <img src={IMAGES[i]} alt="" className="story-chapter-img" />
             </div>
 
-            <div className="story-chapter-body">
-              <span className="story-numeral">{ch.numeral}</span>
-              <h2 className="story-title">{ch.title}</h2>
-              <div className="story-divider" />
-              {ch.paragraphs.map((para, j) => (
-                <p key={j} className="story-body">{para}</p>
-              ))}
+            {/* Horizontal scroll track */}
+            <div
+              className="story-track"
+              ref={(el) => { trackRefs.current[i] = el; }}
+            >
+              {/* Panel 1: chapter identity + opening */}
+              <div className="story-panel">
+                <span className="story-numeral">{ch.numeral}</span>
+                <h2 className="story-title">{ch.title}</h2>
+                <div className="story-divider" />
+                <p className="story-body">{ch.panels[0]}</p>
+              </div>
+
+              {/* Panel 2: continuation */}
+              <div className="story-panel">
+                <p className="story-body">{ch.panels[1]}</p>
+              </div>
+
+              {/* Panel 3: closing */}
+              <div className="story-panel">
+                <p className="story-body">{ch.panels[2]}</p>
+              </div>
             </div>
           </div>
         ))}
@@ -114,6 +179,7 @@ export function StorySection() {
           width: 100%;
         }
 
+        /* ── Left panel ── */
         .story-left {
           position: sticky;
           top: 0;
@@ -133,35 +199,39 @@ export function StorySection() {
           transition: opacity 600ms ease-in-out;
         }
 
+        /* ── Right panel ── */
         .story-right {
           width: 50vw;
           background-color: var(--color-base);
         }
 
+        /* ── Chapter block: clips the horizontal track ── */
         .story-chapter {
-          min-height: 100vh;
+          height: 100vh;
+          overflow: hidden;
+        }
+
+        /* ── Horizontal track: flex row driven by GSAP x ── */
+        .story-track {
           display: flex;
-          flex-direction: column;
-          padding: 120px 6vw 160px 10vw;
-        }
-
-        .story-chapter-img-wrap {
-          display: none;
-        }
-
-        .story-chapter-img {
-          display: block;
-          width: 100%;
+          flex-direction: row;
           height: 100%;
-          object-fit: cover;
-          filter: grayscale(100%);
+          will-change: transform;
         }
 
-        .story-chapter-body {
+        /* ── Individual panels ── */
+        .story-panel {
+          width: 40vw;
+          height: 100vh;
+          flex-shrink: 0;
+          padding: 80px 60px;
           display: flex;
           flex-direction: column;
+          justify-content: center;
+          background-color: var(--color-base);
         }
 
+        /* ── Typography ── */
         .story-numeral {
           font-family: var(--font-body);
           font-size: 0.75rem;
@@ -191,17 +261,29 @@ export function StorySection() {
           font-size: clamp(1rem, 1.8vw, 1.0625rem);
           line-height: 1.85;
           color: var(--color-dark);
-          margin: 0 0 1.5rem 0;
+          margin: 0;
           font-weight: 300;
-          max-width: 460px;
-        }
-        .story-body:last-child {
-          margin-bottom: 0;
+          max-width: 400px;
         }
 
+        /* ── Mobile-only chapter image ── */
+        .story-chapter-img-wrap {
+          display: none;
+        }
+
+        .story-chapter-img {
+          display: block;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          filter: grayscale(100%);
+        }
+
+        /* ── Mobile ── */
         @media (max-width: 768px) {
           .story-section {
             flex-direction: column;
+            overflow-x: hidden;
           }
           .story-left {
             display: none;
@@ -210,20 +292,25 @@ export function StorySection() {
             width: 100%;
           }
           .story-chapter {
-            min-height: auto;
-            padding: 0 0 4rem 0;
+            height: auto;
+            overflow: visible;
           }
           .story-chapter-img-wrap {
             display: block;
             position: relative;
-            isolation: isolate;
             width: 100%;
             height: 50vw;
             overflow: hidden;
-            margin-bottom: 2.5rem;
+            margin-bottom: 0;
           }
-          .story-chapter-body {
-            padding: 0 2rem;
+          .story-track {
+            flex-direction: column;
+            will-change: unset;
+          }
+          .story-panel {
+            width: 100%;
+            height: auto;
+            padding: 2.5rem 2rem;
           }
           .story-body {
             max-width: 100%;
