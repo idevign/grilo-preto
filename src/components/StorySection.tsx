@@ -299,7 +299,7 @@ export function StorySection() {
             display: block;
             position: relative;
             width: 100%;
-            height: 50vw;
+            height: 100vh;
             overflow: hidden;
             margin-bottom: 0;
           }
