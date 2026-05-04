@@ -197,7 +197,7 @@ export default function Capoeira() {
             style={{
               fontFamily: "var(--font-display)",
               fontSize: "clamp(1.75rem, 3vw, 2.5rem)",
-              fontWeight: 300,
+              fontWeight: 600,
               fontStyle: "italic",
               color: "var(--color-dark)",
               margin: 0,
@@ -265,7 +265,7 @@ export default function Capoeira() {
             style={{
               fontFamily: "var(--font-display)",
               fontSize: "clamp(1.75rem, 3vw, 2.5rem)",
-              fontWeight: 300,
+              fontWeight: 600,
               fontStyle: "italic",
               color: "var(--color-dark)",
               margin: 0,
@@ -470,11 +470,11 @@ export default function Capoeira() {
           margin: 0;
         }
         .cap-hero-h1 {
-          font-family: var(--font-display);
-          font-size: clamp(3rem, 5.5vw, 5.5rem);
-          font-weight: 600;
+          font-family: var(--font-hero);
+          font-size: clamp(4rem, 7.5vw, 8rem);
+          font-weight: 700;
           font-style: italic;
-          line-height: 1.05;
+          line-height: 0.95;
           color: #f0ebe3;
           margin: 0;
         }

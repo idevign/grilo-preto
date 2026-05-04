@@ -154,11 +154,11 @@ export default function Home() {
           text-align: right;
         }
         .h2-heading {
-          font-family: var(--font-display);
-          font-size: clamp(3rem, 5.5vw, 5.5rem);
-          font-weight: 600;
+          font-family: var(--font-hero);
+          font-size: clamp(4rem, 7.5vw, 8rem);
+          font-weight: 700;
           font-style: italic;
-          line-height: 1.05;
+          line-height: 0.95;
           letter-spacing: -0.01em;
           color: #f0ebe3;
           margin: 0;

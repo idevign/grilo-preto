@@ -10,6 +10,7 @@ export const metadata: Metadata = {
 export default function RmpLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
+      <div className="noise-overlay" />
       <RmpNavigation />
       {children}
       <RmpFooter />

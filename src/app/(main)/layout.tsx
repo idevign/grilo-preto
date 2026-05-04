@@ -8,6 +8,7 @@ export default function MainLayout({
 }) {
   return (
     <>
+      <div className="noise-overlay" />
       <Navigation />
       {children}
       <Footer />

@@ -123,10 +123,8 @@ export default function RmpGuided() {
             transition: REVEAL_TR,
           }}
         >
-          <p className="rg-label">Practice Without Borders</p>
-          <p className="rg-italic-sub">
-            Two decades of practice, distilled into something you can return to daily.
-          </p>
+          <h2 className="rg-section-heading">Practice Without Borders</h2>
+          <h3 className="rg-section-subheading">Two decades of practice, distilled into something you can return to daily.</h3>
 
           <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
             <p className="rg-body">
@@ -172,9 +170,9 @@ export default function RmpGuided() {
             transition: REVEAL_TR,
           }}
         >
-          <div>
-            <p className="rg-label" style={{ marginBottom: "0.5rem" }}>Inside the Platform</p>
+          <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
             <h2 className="rg-section-heading">What You Get</h2>
+            <h3 className="rg-section-subheading">Inside the Platform</h3>
           </div>
 
           <div className="rg-grid-2">
@@ -254,9 +252,9 @@ export default function RmpGuided() {
             transition: REVEAL_TR,
           }}
         >
-          <div>
-            <p className="rg-label" style={{ marginBottom: "0.5rem" }}>Phase Structure and Access</p>
+          <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
             <h2 className="rg-section-heading">How It Works</h2>
+            <h3 className="rg-section-subheading">Phase Structure and Access</h3>
           </div>
 
           <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
@@ -336,34 +334,9 @@ export default function RmpGuided() {
             transition: REVEAL_TR,
           }}
         >
-          <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
-            <h2
-              style={{
-                fontFamily: "var(--font-display)",
-                fontStyle: "italic",
-                fontSize: "clamp(2rem, 4vw, 3rem)",
-                fontWeight: 300,
-                color: "var(--color-dark)",
-                margin: 0,
-                lineHeight: 1.1,
-              }}
-            >
-              First Wave
-            </h2>
-
-            <p
-              style={{
-                fontFamily: "var(--font-display)",
-                fontStyle: "italic",
-                fontSize: "clamp(1.125rem, 2vw, 1.375rem)",
-                fontWeight: 300,
-                color: "var(--color-dark)",
-                margin: 0,
-                lineHeight: 1.45,
-              }}
-            >
-              A founding cohort. The beginning of something that will not stay small.
-            </p>
+          <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+            <h2 className="rg-section-heading">First Wave</h2>
+            <h3 className="rg-section-subheading">A founding cohort</h3>
           </div>
 
           <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
@@ -565,11 +538,11 @@ export default function RmpGuided() {
           margin: 0;
         }
         .rg-hero-h1 {
-          font-family: var(--font-display);
-          font-size: clamp(3rem, 5.5vw, 5.5rem);
-          font-weight: 600;
+          font-family: var(--font-hero);
+          font-size: clamp(4rem, 7.5vw, 8rem);
+          font-weight: 700;
           font-style: italic;
-          line-height: 1.05;
+          line-height: 0.95;
           color: #f0ebe3;
           margin: 0;
         }
@@ -610,11 +583,20 @@ export default function RmpGuided() {
         .rg-section-heading {
           font-family: var(--font-display);
           font-size: clamp(1.75rem, 3vw, 2.5rem);
-          font-weight: 300;
+          font-weight: 600;
           font-style: italic;
           color: var(--color-dark);
           margin: 0;
           line-height: 1.2;
+        }
+        .rg-section-subheading {
+          font-family: var(--font-body);
+          font-size: 0.8125rem;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          color: var(--color-mid);
+          margin: 0;
+          font-weight: 500;
         }
         .rg-grid-2 {
           display: grid;

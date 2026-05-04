@@ -106,7 +106,7 @@ export default function MovementPractice() {
                     style={{
                       fontFamily: "var(--font-display)",
                       fontSize: "clamp(1.5rem, 2.5vw, 2rem)",
-                      fontWeight: 400,
+                      fontWeight: 600,
                       color: "var(--color-dark)",
                       margin: 0,
                       lineHeight: 1.2,
@@ -185,11 +185,11 @@ export default function MovementPractice() {
           margin: 0;
         }
         .mp-hero-h1 {
-          font-family: var(--font-display);
-          font-size: clamp(3rem, 5.5vw, 5.5rem);
-          font-weight: 600;
+          font-family: var(--font-hero);
+          font-size: clamp(4rem, 7.5vw, 8rem);
+          font-weight: 700;
           font-style: italic;
-          line-height: 1.05;
+          line-height: 0.95;
           color: #f0ebe3;
           margin: 0;
         }

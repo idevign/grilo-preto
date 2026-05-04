@@ -113,7 +113,8 @@ export default function RmpPersonalized() {
             transition: REVEAL_TR,
           }}
         >
-          <p className="pp-label">Who This Is Designed For</p>
+          <h2 className="pp-section-heading">Who This Is For</h2>
+          <h3 className="pp-section-subheading">Capable in almost every context</h3>
           <p className="pp-italic-sub">
             Capable in almost every context. And still carrying something that has not yet been
             resolved.
@@ -194,8 +195,8 @@ export default function RmpPersonalized() {
           }}
         >
           <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-            <p className="pp-label">What This Actually Is</p>
             <h2 className="pp-section-heading">The Work</h2>
+            <h3 className="pp-section-subheading">What This Actually Is</h3>
           </div>
           <p className="pp-italic-sub">
             A private engagement built from the ground up. Not a program. A path.
@@ -246,8 +247,8 @@ export default function RmpPersonalized() {
           }}
         >
           <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-            <p className="pp-label">This Will Not Stay Comfortable</p>
             <h2 className="pp-section-heading">What It Asks</h2>
+            <h3 className="pp-section-subheading">This Will Not Stay Comfortable</h3>
           </div>
           <p className="pp-italic-sub">
             The practice meets you where you are honest. That is rarely where you are comfortable.
@@ -294,8 +295,8 @@ export default function RmpPersonalized() {
           }}
         >
           <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-            <p className="pp-label">Format, Frequency, and Access</p>
             <h2 className="pp-section-heading">How It Works</h2>
+            <h3 className="pp-section-subheading">Format, Frequency, and Access</h3>
           </div>
           <p className="pp-italic-sub">
             In-person in Denver or remote. Weekly or biweekly. Directly with me.
@@ -362,8 +363,8 @@ export default function RmpPersonalized() {
           }}
         >
           <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-            <p className="pp-label">A Recommended Starting Point</p>
             <h2 className="pp-section-heading">Before You Begin</h2>
+            <h3 className="pp-section-subheading">A Recommended Starting Point</h3>
           </div>
           <p className="pp-italic-sub">
             One completed phase of RMP⁺ Guided or RMP⁺ In-Person is recommended before applying.
@@ -468,11 +469,11 @@ export default function RmpPersonalized() {
           margin: 0;
         }
         .pp-hero-h1 {
-          font-family: var(--font-display);
-          font-size: clamp(3rem, 5.5vw, 5.5rem);
-          font-weight: 600;
+          font-family: var(--font-hero);
+          font-size: clamp(4rem, 7.5vw, 8rem);
+          font-weight: 700;
           font-style: italic;
-          line-height: 1.05;
+          line-height: 0.95;
           color: #f0ebe3;
           margin: 0;
         }
@@ -504,11 +505,20 @@ export default function RmpPersonalized() {
         .pp-section-heading {
           font-family: var(--font-display);
           font-size: clamp(1.75rem, 3vw, 2.5rem);
-          font-weight: 300;
+          font-weight: 600;
           font-style: italic;
           color: var(--color-dark);
           margin: 0;
           line-height: 1.2;
+        }
+        .pp-section-subheading {
+          font-family: var(--font-body);
+          font-size: 0.8125rem;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          color: var(--color-mid);
+          margin: 0;
+          font-weight: 500;
         }
         .pp-italic-sub {
           font-family: var(--font-display);

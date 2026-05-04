@@ -100,6 +100,8 @@ export default function RmpHome() {
             transition: REVEAL_TR,
           }}
         >
+          <h2 className="rmp-section-heading">The Practice</h2>
+          <h3 className="rmp-section-subheading">What you will find here</h3>
           <p className="rmp-body">
             People arrive here expecting a workout. What they find goes further than that.
           </p>
@@ -176,8 +178,8 @@ export default function RmpHome() {
             transition: REVEAL_TR,
           }}
         >
-          <p className="rmp-section-label">What Develops</p>
           <h2 className="rmp-section-heading">What Develops</h2>
+          <h3 className="rmp-section-subheading">What Develops</h3>
 
           <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
             <p className="rmp-body">
@@ -637,11 +639,11 @@ export default function RmpHome() {
           margin: 0;
         }
         .rmp-hero-h1 {
-          font-family: var(--font-display);
-          font-size: clamp(3rem, 5.5vw, 5.5rem);
-          font-weight: 600;
+          font-family: var(--font-hero);
+          font-size: clamp(4rem, 7.5vw, 8rem);
+          font-weight: 700;
           font-style: italic;
-          line-height: 1.05;
+          line-height: 0.95;
           color: #f0ebe3;
           margin: 0;
         }
@@ -674,11 +676,20 @@ export default function RmpHome() {
         .rmp-section-heading {
           font-family: var(--font-display);
           font-size: clamp(1.75rem, 3vw, 2.5rem);
-          font-weight: 300;
+          font-weight: 600;
           font-style: italic;
           color: var(--color-dark);
           margin: 0;
           line-height: 1.2;
+        }
+        .rmp-section-subheading {
+          font-family: var(--font-body);
+          font-size: 0.8125rem;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          color: var(--color-mid);
+          margin: 0;
+          font-weight: 500;
         }
         .rmp-curriculum-grid {
           display: grid;

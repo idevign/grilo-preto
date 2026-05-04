@@ -179,7 +179,8 @@ export default function RmpInPerson() {
             transition: REVEAL_TR,
           }}
         >
-          <p className="ip-label">Being in Collective Practice</p>
+          <h2 className="ip-section-heading">The Practice</h2>
+          <h3 className="ip-section-subheading">Being in collective practice</h3>
           <p className="ip-italic-sub">
             This is not a class you drop into. It is a practice you use to explore and refine who
             you are over time.
@@ -230,8 +231,8 @@ export default function RmpInPerson() {
           }}
         >
           <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-            <p className="ip-label">What a Typical Session Is Like</p>
             <h2 className="ip-section-heading">A Session</h2>
+            <h3 className="ip-section-subheading">What a Typical Session Is Like</h3>
           </div>
           <p className="ip-italic-sub">
             Each session has a shape. What fills it varies and yet is consistent.
@@ -291,8 +292,8 @@ export default function RmpInPerson() {
           }}
         >
           <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-            <p className="ip-label">What to Expect</p>
             <h2 className="ip-section-heading">Your First Session</h2>
+            <h3 className="ip-section-subheading">What to Expect</h3>
           </div>
           <p className="ip-italic-sub">
             Your first session is one of the most important parts of this process.
@@ -343,8 +344,8 @@ export default function RmpInPerson() {
           }}
         >
           <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-            <p className="ip-label">Session Details</p>
             <h2 className="ip-section-heading">Logistics</h2>
+            <h3 className="ip-section-subheading">Session Details</h3>
           </div>
 
           <div className="ip-logistics-grid">
@@ -399,8 +400,8 @@ export default function RmpInPerson() {
           }}
         >
           <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-            <p className="ip-label">Membership Standards</p>
             <h2 className="ip-section-heading">Collective Culture Agreements</h2>
+            <h3 className="ip-section-subheading">Membership Standards</h3>
           </div>
 
           <div className="ip-culture-grid">
@@ -463,6 +464,7 @@ export default function RmpInPerson() {
           }}
         >
           <h2 className="ip-section-heading">FAQ</h2>
+          <h3 className="ip-section-subheading">Common questions</h3>
 
           <div style={{ display: "flex", flexDirection: "column" }}>
             {faqs.map((faq, i) => (
@@ -614,11 +616,11 @@ export default function RmpInPerson() {
           margin: 0;
         }
         .ip-hero-h1 {
-          font-family: var(--font-display);
-          font-size: clamp(3rem, 5.5vw, 5.5rem);
-          font-weight: 600;
+          font-family: var(--font-hero);
+          font-size: clamp(4rem, 7.5vw, 8rem);
+          font-weight: 700;
           font-style: italic;
-          line-height: 1.05;
+          line-height: 0.95;
           color: #f0ebe3;
           margin: 0;
         }
@@ -650,11 +652,20 @@ export default function RmpInPerson() {
         .ip-section-heading {
           font-family: var(--font-display);
           font-size: clamp(1.75rem, 3vw, 2.5rem);
-          font-weight: 300;
+          font-weight: 600;
           font-style: italic;
           color: var(--color-dark);
           margin: 0;
           line-height: 1.2;
+        }
+        .ip-section-subheading {
+          font-family: var(--font-body);
+          font-size: 0.8125rem;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          color: var(--color-mid);
+          margin: 0;
+          font-weight: 500;
         }
         .ip-italic-sub {
           font-family: var(--font-display);
