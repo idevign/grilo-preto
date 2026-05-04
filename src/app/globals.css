@@ -58,6 +58,13 @@ h6 {
   isolation: isolate;
 }
 
+/* Grayscale all hero images via their scrim's backdrop-filter.
+   Covers both CSS background-image heroes and <img>-based heroes. */
+[class*="-hero-scrim"],
+.h2-scrim {
+  backdrop-filter: grayscale(100%);
+}
+
 /* Full-page fixed noise overlay — add <div className="noise-overlay" /> as first child of a layout */
 .noise-overlay {
   position: fixed;

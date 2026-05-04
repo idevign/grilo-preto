@@ -1,5 +1,5 @@
 import Link from "next/link";
-import HeroLensCanvas from "@/components/HeroLensCanvas";
+// import HeroLensCanvas from "@/components/HeroLensCanvas";
 
 const PATHS = [
   {
@@ -39,7 +39,6 @@ export default function Home() {
       {/* ── Hero ── */}
       <section className="h2-hero">
 
-        <HeroLensCanvas />
         <div className="h2-scrim" />
 
         <div className="h2-hero-content">
