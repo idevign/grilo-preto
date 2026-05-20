@@ -25,7 +25,8 @@ export default function RmpFooter() {
   return (
     <footer
       style={{
-        backgroundColor: "#ece9e4",
+        backgroundColor: "var(--color-bg-primary)",
+        borderTop: "1px solid var(--color-border)",
         padding: "5rem 0 0",
       }}
     >
@@ -47,10 +48,10 @@ export default function RmpFooter() {
             </a>
             <p
               style={{
-                fontFamily: "var(--font-display)",
+                fontFamily: "var(--font-body)",
                 fontStyle: "italic",
                 fontSize: "var(--text-base)",
-                color: "var(--color-mid)",
+                color: "var(--color-text-secondary)",
                 margin: 0,
                 letterSpacing: "0.01em",
               }}
@@ -117,7 +118,7 @@ export default function RmpFooter() {
         {/* ── Bottom strip ── */}
         <div
           style={{
-            borderTop: "1px solid var(--color-mid)",
+            borderTop: "1px solid var(--color-border)",
             marginTop: "4rem",
             padding: "1.25rem 0",
             display: "flex",
@@ -152,12 +153,14 @@ export default function RmpFooter() {
           }
         }
         .rmp-footer-link {
-          font-family: var(--font-body);
-          font-size: var(--text-base);
-          color: var(--color-dark);
+          font-family: var(--font-label);
+          font-size: var(--text-xs);
+          letter-spacing: var(--tracking-widest);
+          text-transform: uppercase;
+          color: var(--color-text-primary);
           text-decoration: none;
           transition: opacity 0.2s;
-          opacity: 0.65;
+          opacity: 0.55;
         }
         .rmp-footer-link:hover { opacity: 1; }
         .rmp-footer-social {
@@ -166,11 +169,12 @@ export default function RmpFooter() {
           gap: 6px;
         }
         .rmp-footer-fine {
-          font-family: var(--font-body);
+          font-family: var(--font-label);
           font-size: var(--text-xs);
-          color: var(--color-dark);
+          letter-spacing: var(--tracking-wide);
+          color: var(--color-text-primary);
           text-decoration: none;
-          letter-spacing: 0.02em;
+          text-transform: uppercase;
         }
       `}</style>
     </footer>

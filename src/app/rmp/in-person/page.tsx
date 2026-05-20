@@ -115,13 +115,6 @@ export default function RmpInPerson() {
 
       {/* ── Hero ── */}
       <section className="ip-hero">
-        <img
-          src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1600&q=80"
-          alt=""
-          aria-hidden="true"
-          className="ip-hero-img"
-        />
-        <div className="ip-hero-scrim" />
         <div className="ip-hero-content">
           <h1
             className="ip-hero-h1"
@@ -575,45 +568,26 @@ export default function RmpInPerson() {
 
       <style>{`
         .ip-hero {
-          position: relative;
           min-height: 100dvh;
           display: flex;
           flex-direction: column;
-          justify-content: flex-end;
+          justify-content: flex-start;
           overflow: hidden;
         }
-        .ip-hero-img {
-          position: absolute;
-          inset: 0;
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          object-position: center;
-          z-index: 0;
-        }
-        .ip-hero-scrim {
-          position: absolute;
-          inset: 0;
-          z-index: 1;
-          background: linear-gradient(to bottom, rgba(10,8,6,0.35) 0%, rgba(10,8,6,0.72) 100%);
-          pointer-events: none;
-        }
         .ip-hero-content {
-          position: relative;
-          z-index: 2;
           display: flex;
           flex-direction: column;
           gap: 1.25rem;
-          padding: 0 2rem 6rem max(1.5rem, calc((100vw - 1200px) / 2 + 1.5rem));
+          padding: 6rem 2rem 6rem max(1.5rem, calc((100vw - 1200px) / 2 + 1.5rem));
           max-width: 680px;
         }
         .ip-hero-h1 {
           font-family: var(--font-hero);
           font-size: clamp(var(--text-2xl), 7.5vw, var(--text-4xl));
-          font-weight: 700;
-          font-style: italic;
+          font-weight: 400;
           line-height: 0.95;
-          color: #f0ebe3;
+          letter-spacing: var(--tracking-tight);
+          color: var(--color-text-primary);
           margin: 0;
         }
         .ip-body {
@@ -635,11 +609,11 @@ export default function RmpInPerson() {
         .ip-section-heading {
           font-family: var(--font-display);
           font-size: clamp(var(--text-lg), 3vw, var(--text-xl));
-          font-weight: 600;
-          font-style: italic;
+          font-weight: 400;
           color: var(--color-dark);
           margin: 0;
           line-height: 1.2;
+          letter-spacing: var(--tracking-tight);
         }
         .ip-section-subheading {
           font-family: var(--font-body);

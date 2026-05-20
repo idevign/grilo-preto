@@ -34,13 +34,6 @@ export default function MovementPractice() {
     <main>
       {/* ── Hero ── */}
       <section className="mp-hero">
-        <img
-          src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=1600&q=80"
-          alt=""
-          aria-hidden="true"
-          className="mp-hero-img"
-        />
-        <div className="mp-hero-scrim" />
         <div className="mp-hero-content">
           <h1
             className="mp-hero-h1"
@@ -106,10 +99,11 @@ export default function MovementPractice() {
                     style={{
                       fontFamily: "var(--font-display)",
                       fontSize: "clamp(var(--text-md), 2.5vw, var(--text-lg))",
-                      fontWeight: 600,
+                      fontWeight: 400,
                       color: "var(--color-dark)",
                       margin: 0,
                       lineHeight: 1.2,
+                      letterSpacing: "var(--tracking-tight)",
                     }}
                   >
                     {path.title}
@@ -144,45 +138,26 @@ export default function MovementPractice() {
 
       <style>{`
         .mp-hero {
-          position: relative;
           min-height: 100dvh;
           display: flex;
           flex-direction: column;
-          justify-content: flex-end;
+          justify-content: flex-start;
           overflow: hidden;
         }
-        .mp-hero-img {
-          position: absolute;
-          inset: 0;
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          object-position: center;
-          z-index: 0;
-        }
-        .mp-hero-scrim {
-          position: absolute;
-          inset: 0;
-          z-index: 1;
-          background: linear-gradient(to bottom, rgba(10,8,6,0.35) 0%, rgba(10,8,6,0.72) 100%);
-          pointer-events: none;
-        }
         .mp-hero-content {
-          position: relative;
-          z-index: 2;
           display: flex;
           flex-direction: column;
           gap: 1.25rem;
-          padding: 0 2rem 6rem max(1.5rem, calc((100vw - 1200px) / 2 + 1.5rem));
+          padding: 6rem 2rem 6rem max(1.5rem, calc((100vw - 1200px) / 2 + 1.5rem));
           max-width: 680px;
         }
         .mp-hero-h1 {
           font-family: var(--font-hero);
           font-size: clamp(var(--text-2xl), 7.5vw, var(--text-4xl));
-          font-weight: 700;
-          font-style: italic;
+          font-weight: 400;
           line-height: 0.95;
-          color: #f0ebe3;
+          letter-spacing: var(--tracking-tight);
+          color: var(--color-text-primary);
           margin: 0;
         }
         .mp-grid {

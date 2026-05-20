@@ -1,19 +1,19 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, DM_Sans } from "next/font/google";
+import { Lora, DM_Mono } from "next/font/google";
 import "./globals.css";
 
-const cormorant = Cormorant_Garamond({
-  variable: "--font-cormorant",
+const lora = Lora({
+  variable: "--font-lora",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "500"],
   style: ["normal", "italic"],
   display: "swap",
 });
 
-const dmSans = DM_Sans({
-  variable: "--font-dm-sans",
+const dmMono = DM_Mono({
+  variable: "--font-dm-mono",
   subsets: ["latin"],
-  weight: ["300", "400", "500"],
+  weight: ["300", "400"],
   display: "swap",
 });
 
@@ -26,7 +26,12 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${dmSans.variable}`}>
+    <html lang="en" className={`${lora.variable} ${dmMono.variable}`}>
+      <head>
+        <link rel="preconnect" href="https://use.typekit.net" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://p.typekit.net" crossOrigin="anonymous" />
+        <link rel="stylesheet" href="https://use.typekit.net/keu6kxj.css" />
+      </head>
       <body>{children}</body>
     </html>
   );

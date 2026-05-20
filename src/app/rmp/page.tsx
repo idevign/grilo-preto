@@ -36,13 +36,6 @@ export default function RmpHome() {
 
       {/* Hero */}
       <section className="rmp-hero">
-        <img
-          src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=1600&q=80"
-          alt=""
-          aria-hidden="true"
-          className="rmp-hero-img"
-        />
-        <div className="rmp-hero-scrim" />
         <div className="rmp-hero-content">
           <h1
             className="rmp-hero-h1"
@@ -598,45 +591,26 @@ export default function RmpHome() {
 
       <style>{`
         .rmp-hero {
-          position: relative;
           min-height: 100dvh;
           display: flex;
           flex-direction: column;
-          justify-content: flex-end;
+          justify-content: flex-start;
           overflow: hidden;
         }
-        .rmp-hero-img {
-          position: absolute;
-          inset: 0;
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          object-position: center;
-          z-index: 0;
-        }
-        .rmp-hero-scrim {
-          position: absolute;
-          inset: 0;
-          z-index: 1;
-          background: linear-gradient(to bottom, rgba(10,8,6,0.35) 0%, rgba(10,8,6,0.72) 100%);
-          pointer-events: none;
-        }
         .rmp-hero-content {
-          position: relative;
-          z-index: 2;
           display: flex;
           flex-direction: column;
           gap: 1.25rem;
-          padding: 0 2rem 6rem max(1.5rem, calc((100vw - 1200px) / 2 + 1.5rem));
+          padding: 6rem 2rem 6rem max(1.5rem, calc((100vw - 1200px) / 2 + 1.5rem));
           max-width: 680px;
         }
         .rmp-hero-h1 {
           font-family: var(--font-hero);
           font-size: clamp(var(--text-2xl), 7.5vw, var(--text-4xl));
-          font-weight: 700;
-          font-style: italic;
+          font-weight: 400;
           line-height: 0.95;
-          color: #f0ebe3;
+          letter-spacing: var(--tracking-tight);
+          color: var(--color-text-primary);
           margin: 0;
         }
         .rmp-body {
@@ -659,11 +633,11 @@ export default function RmpHome() {
         .rmp-section-heading {
           font-family: var(--font-display);
           font-size: clamp(var(--text-lg), 3vw, var(--text-xl));
-          font-weight: 600;
-          font-style: italic;
+          font-weight: 400;
           color: var(--color-dark);
           margin: 0;
           line-height: 1.2;
+          letter-spacing: var(--tracking-tight);
         }
         .rmp-section-subheading {
           font-family: var(--font-body);

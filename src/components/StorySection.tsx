@@ -188,10 +188,11 @@ export function StorySection() {
 
         /* Typography */
         .story-numeral {
-          font-family: var(--font-body);
+          font-family: var(--font-label);
           font-size: var(--text-xs);
-          letter-spacing: 0.08em;
-          color: var(--color-mid);
+          letter-spacing: var(--tracking-widest);
+          text-transform: uppercase;
+          color: var(--color-text-secondary);
         }
 
         .story-title {

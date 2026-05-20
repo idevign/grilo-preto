@@ -39,8 +39,6 @@ export default function Home() {
       {/* ── Hero ── */}
       <section className="h2-hero">
 
-        <div className="h2-scrim" />
-
         <div className="h2-hero-content">
           <h1 className="h2-heading">
             Inviting a<br />Return to Self.
@@ -115,11 +113,11 @@ export default function Home() {
       <style>{`
         /* ── Shared ── */
         .h2-label {
-          font-family: var(--font-body);
+          font-family: var(--font-label);
           font-size: var(--text-xs);
-          letter-spacing: 0.14em;
+          letter-spacing: var(--tracking-widest);
           text-transform: uppercase;
-          color: var(--color-copper);
+          color: var(--color-text-accent);
           margin: 0;
         }
 
@@ -128,18 +126,9 @@ export default function Home() {
           position: relative;
           min-height: 100dvh;
           display: flex;
-          align-items: flex-end;
+          align-items: flex-start;
           justify-content: flex-start;
           overflow: hidden;
-          background: url('/images/hero-hand.jpg') center / cover no-repeat;
-        }
-
-        .h2-scrim {
-          position: absolute;
-          inset: 0;
-          z-index: 2;
-          background: linear-gradient(to left, transparent 20%, rgba(10,8,6,0.75) 55%, rgba(10,8,6,0.88) 100%);
-          pointer-events: none;
         }
 
         .h2-hero-content {
@@ -155,11 +144,10 @@ export default function Home() {
         .h2-heading {
           font-family: var(--font-hero);
           font-size: clamp(var(--text-2xl), 7.5vw, var(--text-4xl));
-          font-weight: 700;
-          font-style: italic;
+          font-weight: 400;
           line-height: 0.95;
-          letter-spacing: -0.01em;
-          color: #f0ebe3;
+          letter-spacing: var(--tracking-tight);
+          color: var(--color-text-primary);
           margin: 0;
         }
         .h2-actions {
@@ -171,25 +159,26 @@ export default function Home() {
           margin-top: 0.5rem;
         }
         .h2-btn-primary {
-          font-family: var(--font-body);
+          font-family: var(--font-label);
           font-size: var(--text-xs);
-          letter-spacing: 0.12em;
+          letter-spacing: var(--tracking-widest);
           text-transform: uppercase;
-          color: #1a1a18;
-          background: #f0ebe3;
+          color: var(--color-text-inverse);
+          background: var(--color-text-primary);
           text-decoration: none;
           padding: 0.9rem 2rem;
           transition: background 0.2s, color 0.2s;
           white-space: nowrap;
         }
-        .h2-btn-primary:hover { background: var(--color-copper); color: #f0ebe3; }
+        .h2-btn-primary:hover { background: var(--color-text-accent); color: var(--color-text-inverse); }
         .h2-btn-text {
-          font-family: var(--font-body);
+          font-family: var(--font-label);
           font-size: var(--text-xs);
-          letter-spacing: 0.04em;
-          color: #f0ebe3;
+          letter-spacing: var(--tracking-widest);
+          text-transform: uppercase;
+          color: var(--color-text-primary);
           text-decoration: none;
-          opacity: 0.7;
+          opacity: 0.55;
           transition: opacity 0.2s;
           white-space: nowrap;
         }
@@ -254,11 +243,11 @@ export default function Home() {
           margin: 0 0 1.75rem;
         }
         .h2-quote-attr {
-          font-family: var(--font-body);
+          font-family: var(--font-label);
           font-size: var(--text-xs);
-          letter-spacing: 0.16em;
+          letter-spacing: var(--tracking-widest);
           text-transform: uppercase;
-          color: var(--color-copper);
+          color: var(--color-text-accent);
           border-top: 1px solid var(--color-subtle);
           padding-top: 1.25rem;
           display: block;
@@ -335,18 +324,18 @@ export default function Home() {
           color: #f0ebe3;
         }
         .h2-path-num {
-          font-family: var(--font-body);
+          font-family: var(--font-label);
           font-size: var(--text-xs);
-          letter-spacing: 0.08em;
-          color: var(--color-copper);
+          letter-spacing: var(--tracking-widest);
+          color: var(--color-text-accent);
         }
         .h2-path-title {
-          font-family: var(--font-body);
+          font-family: var(--font-label);
           font-size: var(--text-xs);
-          font-weight: 500;
-          letter-spacing: 0.16em;
+          font-weight: 400;
+          letter-spacing: var(--tracking-widest);
           text-transform: uppercase;
-          color: var(--color-dark);
+          color: var(--color-text-primary);
           margin: 0;
           transform-origin: left center;
           transition: transform 0.3s ease, color 0.3s ease;
@@ -375,9 +364,6 @@ export default function Home() {
 
         /* ── Responsive ── */
         @media (max-width: 900px) {
-          .h2-scrim {
-            background: linear-gradient(to bottom, transparent 30%, rgba(10,8,6,0.78) 60%, rgba(10,8,6,0.92) 100%);
-          }
           .h2-hero-content {
             padding: 6rem 2rem 5rem;
             max-width: 100%;

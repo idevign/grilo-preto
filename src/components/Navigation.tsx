@@ -24,7 +24,8 @@ export default function Navigation() {
   return (
     <header
       style={{
-        backgroundColor: "var(--color-base)",
+        backgroundColor: "var(--color-bg-primary)",
+        borderBottom: "1px solid var(--color-border)",
       }}
     >
       <nav
@@ -41,11 +42,12 @@ export default function Navigation() {
         <Link
           href="/"
           style={{
-            fontFamily: "var(--font-display)",
-            fontSize: "var(--text-md)",
-            fontWeight: 600,
-            letterSpacing: "0.02em",
-            color: "var(--color-dark)",
+            fontFamily: "var(--font-label)",
+            fontSize: "var(--text-xs)",
+            fontWeight: 400,
+            letterSpacing: "var(--tracking-widest)",
+            textTransform: "uppercase" as const,
+            color: "var(--color-text-primary)",
             textDecoration: "none",
           }}
         >
@@ -71,12 +73,13 @@ export default function Navigation() {
                 <Link
                   href={link.href}
                   style={{
-                    fontFamily: "var(--font-body)",
-                    fontSize: "var(--text-base)",
-                    color: "var(--color-dark)",
+                    fontFamily: "var(--font-label)",
+                    fontSize: "var(--text-xs)",
+                    color: "var(--color-text-primary)",
                     textDecoration: "none",
-                    letterSpacing: "0.01em",
-                    opacity: active ? 1 : 0.7,
+                    letterSpacing: "var(--tracking-widest)",
+                    textTransform: "uppercase",
+                    opacity: active ? 1 : 0.55,
                     transition: "opacity 0.2s",
                   }}
                   onMouseEnter={(e) => { if (!active) e.currentTarget.style.opacity = "1"; }}
@@ -121,7 +124,7 @@ export default function Navigation() {
         <div
           className="nav-mobile-menu"
           style={{
-            borderTop: "1px solid var(--color-subtle)",
+            borderTop: "1px solid var(--color-border)",
             padding: "1rem 1.5rem 1.5rem",
           }}
         >
@@ -134,11 +137,13 @@ export default function Navigation() {
                     href={link.href}
                     onClick={() => setOpen(false)}
                     style={{
-                      fontFamily: "var(--font-body)",
-                      fontSize: "var(--text-base)",
-                      color: "var(--color-dark)",
+                      fontFamily: "var(--font-label)",
+                      fontSize: "var(--text-xs)",
+                      color: "var(--color-text-primary)",
                       textDecoration: "none",
-                      opacity: active ? 1 : 0.7,
+                      letterSpacing: "var(--tracking-widest)",
+                      textTransform: "uppercase",
+                      opacity: active ? 1 : 0.55,
                     }}
                   >
                     {link.label}

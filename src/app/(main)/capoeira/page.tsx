@@ -25,7 +25,6 @@ export default function Capoeira() {
 
       {/* ── Hero ── */}
       <section className="cap-hero">
-        <div className="cap-hero-scrim" />
         <div className="cap-hero-content">
           <h1
             className="cap-hero-h1"
@@ -197,11 +196,11 @@ export default function Capoeira() {
             style={{
               fontFamily: "var(--font-display)",
               fontSize: "clamp(var(--text-lg), 3vw, var(--text-xl))",
-              fontWeight: 600,
-              fontStyle: "italic",
+              fontWeight: 400,
               color: "var(--color-dark)",
               margin: 0,
               lineHeight: 1.2,
+              letterSpacing: "var(--tracking-tight)",
             }}
           >
             Lineage
@@ -265,11 +264,11 @@ export default function Capoeira() {
             style={{
               fontFamily: "var(--font-display)",
               fontSize: "clamp(var(--text-lg), 3vw, var(--text-xl))",
-              fontWeight: 600,
-              fontStyle: "italic",
+              fontWeight: 400,
               color: "var(--color-dark)",
               margin: 0,
               lineHeight: 1.2,
+              letterSpacing: "var(--tracking-tight)",
             }}
           >
             Train &amp; Play
@@ -440,21 +439,11 @@ export default function Capoeira() {
           position: relative;
           min-height: 100dvh;
           display: flex;
-          align-items: flex-end;
+          align-items: flex-start;
           justify-content: flex-start;
           overflow: hidden;
-          background: url('https://images.unsplash.com/photo-1555597673-b21d5c935865?w=1600&q=80') center / cover no-repeat;
-        }
-        .cap-hero-scrim {
-          position: absolute;
-          inset: 0;
-          z-index: 1;
-          background: linear-gradient(to bottom, rgba(10,8,6,0.35) 0%, rgba(10,8,6,0.72) 100%);
-          pointer-events: none;
         }
         .cap-hero-content {
-          position: relative;
-          z-index: 2;
           display: flex;
           flex-direction: column;
           gap: 1.25rem;
@@ -464,10 +453,10 @@ export default function Capoeira() {
         .cap-hero-h1 {
           font-family: var(--font-hero);
           font-size: clamp(var(--text-2xl), 7.5vw, var(--text-4xl));
-          font-weight: 700;
-          font-style: italic;
+          font-weight: 400;
           line-height: 0.95;
-          color: #f0ebe3;
+          letter-spacing: var(--tracking-tight);
+          color: var(--color-text-primary);
           margin: 0;
         }
         .cap-body {

@@ -37,7 +37,8 @@ export default function RmpNavigation() {
   return (
     <header
       style={{
-        backgroundColor: "var(--color-base)",
+        backgroundColor: "var(--color-bg-primary)",
+        borderBottom: "1px solid var(--color-border)",
       }}
     >
       <nav
@@ -54,11 +55,12 @@ export default function RmpNavigation() {
         <Link
           href={basePath || "/"}
           style={{
-            fontFamily: "var(--font-display)",
-            fontSize: "var(--text-md)",
-            fontWeight: 600,
-            letterSpacing: "0.02em",
-            color: "var(--color-copper)",
+            fontFamily: "var(--font-label)",
+            fontSize: "var(--text-xs)",
+            fontWeight: 400,
+            letterSpacing: "var(--tracking-widest)",
+            textTransform: "uppercase" as const,
+            color: "var(--color-text-accent)",
             textDecoration: "none",
           }}
         >
@@ -80,12 +82,13 @@ export default function RmpNavigation() {
           {links.map((link) => {
             const active = !link.mainSite && isActive(link.href, pathname);
             const linkStyle = {
-              fontFamily: "var(--font-body)",
-              fontSize: "var(--text-base)",
-              color: "var(--color-dark)",
+              fontFamily: "var(--font-label)",
+              fontSize: "var(--text-xs)",
+              color: "var(--color-text-primary)",
               textDecoration: "none",
-              letterSpacing: "0.01em",
-              opacity: active ? 1 : 0.7,
+              letterSpacing: "var(--tracking-widest)",
+              textTransform: "uppercase" as const,
+              opacity: active ? 1 : 0.55,
               transition: "opacity 0.2s",
             };
             return (
@@ -143,16 +146,18 @@ export default function RmpNavigation() {
 
       {/* Mobile menu */}
       {open && (
-        <div style={{ borderTop: "1px solid var(--color-subtle)", padding: "1rem 1.5rem 1.5rem" }}>
+        <div style={{ borderTop: "1px solid var(--color-border)", padding: "1rem 1.5rem 1.5rem" }}>
           <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: "1rem" }}>
             {links.map((link) => {
               const active = !link.mainSite && isActive(link.href, pathname);
               const linkStyle = {
-                fontFamily: "var(--font-body)",
-                fontSize: "var(--text-base)",
-                color: "var(--color-dark)",
+                fontFamily: "var(--font-label)",
+                fontSize: "var(--text-xs)",
+                color: "var(--color-text-primary)",
                 textDecoration: "none",
-                opacity: active ? 1 : 0.7,
+                letterSpacing: "var(--tracking-widest)",
+                textTransform: "uppercase" as const,
+                opacity: active ? 1 : 0.55,
               };
               return (
                 <li key={link.href}>

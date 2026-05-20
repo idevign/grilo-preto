@@ -49,13 +49,6 @@ export default function RmpPersonalized() {
 
       {/* ── Hero ── */}
       <section className="pp-hero">
-        <img
-          src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=1600&q=80"
-          alt=""
-          aria-hidden="true"
-          className="pp-hero-img"
-        />
-        <div className="pp-hero-scrim" />
         <div className="pp-hero-content">
           <h1
             className="pp-hero-h1"
@@ -428,45 +421,26 @@ export default function RmpPersonalized() {
 
       <style>{`
         .pp-hero {
-          position: relative;
           min-height: 100dvh;
           display: flex;
           flex-direction: column;
-          justify-content: flex-end;
+          justify-content: flex-start;
           overflow: hidden;
         }
-        .pp-hero-img {
-          position: absolute;
-          inset: 0;
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          object-position: center;
-          z-index: 0;
-        }
-        .pp-hero-scrim {
-          position: absolute;
-          inset: 0;
-          z-index: 1;
-          background: linear-gradient(to bottom, rgba(10,8,6,0.35) 0%, rgba(10,8,6,0.72) 100%);
-          pointer-events: none;
-        }
         .pp-hero-content {
-          position: relative;
-          z-index: 2;
           display: flex;
           flex-direction: column;
           gap: 1.25rem;
-          padding: 0 2rem 6rem max(1.5rem, calc((100vw - 1200px) / 2 + 1.5rem));
+          padding: 6rem 2rem 6rem max(1.5rem, calc((100vw - 1200px) / 2 + 1.5rem));
           max-width: 680px;
         }
         .pp-hero-h1 {
           font-family: var(--font-hero);
           font-size: clamp(var(--text-2xl), 7.5vw, var(--text-4xl));
-          font-weight: 700;
-          font-style: italic;
+          font-weight: 400;
           line-height: 0.95;
-          color: #f0ebe3;
+          letter-spacing: var(--tracking-tight);
+          color: var(--color-text-primary);
           margin: 0;
         }
         .pp-body {
@@ -488,11 +462,11 @@ export default function RmpPersonalized() {
         .pp-section-heading {
           font-family: var(--font-display);
           font-size: clamp(var(--text-lg), 3vw, var(--text-xl));
-          font-weight: 600;
-          font-style: italic;
+          font-weight: 400;
           color: var(--color-dark);
           margin: 0;
           line-height: 1.2;
+          letter-spacing: var(--tracking-tight);
         }
         .pp-section-subheading {
           font-family: var(--font-body);
