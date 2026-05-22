@@ -13,10 +13,9 @@ export default function About() {
     <main>
 
       {/* ── Hero ── */}
-      <section className="about-hero">
-        <div className="about-hero-content">
+      <section className="hero-section">
+        <div className="hero-content">
           <h1
-            className="about-hero-h1"
             style={{
               opacity: loaded ? 1 : 0,
               transform: loaded ? "translateY(0)" : "translateY(18px)",
@@ -48,35 +47,9 @@ export default function About() {
         </div>
       </section>
 
-      {/* ── Story of Grilo Preto ── */}
+      {/* ── Story ── */}
       <StorySection />
 
-      <style>{`
-        .about-hero {
-          position: relative;
-          min-height: 100dvh;
-          display: flex;
-          align-items: flex-start;
-          justify-content: flex-start;
-          overflow: hidden;
-        }
-        .about-hero-content {
-          display: flex;
-          flex-direction: column;
-          gap: 1.25rem;
-          padding: 5rem 2rem 5rem max(1.5rem, calc((100vw - 1200px) / 2 + 1.5rem));
-          max-width: 680px;
-        }
-        .about-hero-h1 {
-          font-family: var(--font-hero);
-          font-size: clamp(var(--text-2xl), 7.5vw, var(--text-4xl));
-          font-weight: 400;
-          letter-spacing: var(--tracking-tight);
-          line-height: 0.95;
-          color: var(--color-text-primary);
-          margin: 0;
-        }
-      `}</style>
     </main>
   );
 }

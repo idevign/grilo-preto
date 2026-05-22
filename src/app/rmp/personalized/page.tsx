@@ -1,46 +1,18 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
-import { EASE, REVEAL_TR, useReveal, StaggerItem } from "@/components/animations";
+import { useEffect, useState } from "react";
+import { EASE } from "@/components/animations";
 
 const formatItems = [
-  {
-    title: "Format",
-    body: "1:1 or small group (2 max). Weekly or biweekly sessions. In-person in Denver or remote.",
-  },
-  {
-    title: "Platform",
-    body: "RMP⁺ Guided included. Bespoke curriculum map. Session tracking. Direct communication.",
-  },
-  {
-    title: "Remote",
-    body: "Video feedback via app. Film your sessions. Receive direct feedback from me.",
-  },
-  {
-    title: "Pricing",
-    body: "Starting at $333/month. Remote and in-person rates differ. Structured in phases.",
-  },
+  { title: "Format", body: "1:1 or small group (2 max). Weekly or biweekly sessions. In-person in Denver or remote." },
+  { title: "Platform", body: "RMP⁺ Guided included. Bespoke curriculum map. Session tracking. Direct communication." },
+  { title: "Remote", body: "Video feedback via app. Film your sessions. Receive direct feedback from me." },
+  { title: "Pricing", body: "Starting at $333/month. Remote and in-person rates differ. Structured in phases." },
 ];
 
 export default function RmpPersonalized() {
   const [loaded, setLoaded] = useState(false);
-
-  const s1Ref = useRef<HTMLDivElement>(null);
-  const bqRef = useRef<HTMLDivElement>(null);
-  const s2Ref = useRef<HTMLDivElement>(null);
-  const s3Ref = useRef<HTMLDivElement>(null);
-  const s4Ref = useRef<HTMLDivElement>(null);
-  const s5Ref = useRef<HTMLDivElement>(null);
-  const s6Ref = useRef<HTMLDivElement>(null);
-
-  const r1 = useReveal(s1Ref);
-  const rBq = useReveal(bqRef);
-  const r2 = useReveal(s2Ref);
-  const r3 = useReveal(s3Ref);
-  const r4 = useReveal(s4Ref);
-  const r5 = useReveal(s5Ref);
-  const r6 = useReveal(s6Ref);
 
   useEffect(() => { setLoaded(true); }, []);
 
@@ -48,10 +20,9 @@ export default function RmpPersonalized() {
     <main>
 
       {/* ── Hero ── */}
-      <section className="pp-hero">
-        <div className="pp-hero-content">
+      <section className="hero-section">
+        <div className="hero-content">
           <h1
-            className="pp-hero-h1"
             style={{
               opacity: loaded ? 1 : 0,
               transform: loaded ? "translateY(0)" : "translateY(18px)",
@@ -83,80 +54,26 @@ export default function RmpPersonalized() {
         </div>
       </section>
 
-      {/* ── Section 1: No heading ── */}
-      <section
-        style={{
-          minHeight: "100dvh",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          padding: "6rem max(1.5rem, calc((100vw - 1200px) / 2 + 1.5rem))",
-        }}
-      >
-        <div
-          ref={s1Ref}
-          style={{
-            maxWidth: "1200px",
-            margin: "0 auto",
-            display: "flex",
-            flexDirection: "column",
-            gap: "1.75rem",
-            opacity: r1 ? 1 : 0,
-            transform: r1 ? "none" : "translateY(24px)",
-            transition: REVEAL_TR,
-          }}
-        >
-          <h2 className="pp-section-heading">Who This Is For</h2>
-          <h3 className="pp-section-subheading">Capable in almost every context</h3>
-          <p className="pp-italic-sub">
-            Capable in almost every context. And still carrying something that has not yet been
-            resolved.
+      {/* ── Who This Is For ── */}
+      <section className="page-section">
+        <div className="section-inner">
+          <h2>Who This Is For</h2>
+          <p className="italic-callout">
+            Capable in almost every context. And still carrying something that has not yet been resolved.
           </p>
-
-          <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
-            <p className="pp-body">
-              You have built things. Developed yourself in real ways. Moved through difficulty and
-              come out the other side. And underneath all of that there is a version of yourself that
-              has not yet been fully inhabited. Not because you have not tried. You have tried harder
-              than most people around you will ever know.
-            </p>
-            <p className="pp-body">
-              What you are looking for is not another method to follow. It is a practice that meets
-              you specifically. Your patterns. Your history. Your body. The particular way your
-              intelligence has become both your greatest asset and the thing that keeps you circling.
-            </p>
-          </div>
-
-          <div
-            ref={bqRef}
-            style={{
-              position: "relative",
-              margin: "0.5rem 0 0",
-              paddingLeft: "1.5rem",
-            }}
-          >
-            <div
-              style={{
-                position: "absolute",
-                left: 0,
-                top: 0,
-                width: "2px",
-                backgroundColor: "var(--color-copper)",
-                height: rBq ? "100%" : "0%",
-                transition: `height 0.6s ${EASE} 0.2s`,
-              }}
-            />
-            <blockquote
-              style={{
-                fontFamily: "var(--font-display)",
-                fontStyle: "italic",
-                fontSize: "var(--text-md)",
-                fontWeight: 300,
-                color: "var(--color-dark)",
-                margin: 0,
-                lineHeight: 1.45,
-              }}
-            >
+          <p className="body-prose">
+            You have built things. Developed yourself in real ways. Moved through difficulty and
+            come out the other side. And underneath all of that there is a version of yourself that
+            has not yet been fully inhabited. Not because you have not tried. You have tried harder
+            than most people around you will ever know.
+          </p>
+          <p className="body-prose">
+            What you are looking for is not another method to follow. It is a practice that meets
+            you specifically. Your patterns. Your history. Your body. The particular way your
+            intelligence has become both your greatest asset and the thing that keeps you circling.
+          </p>
+          <div className="blockquote-copper">
+            <blockquote>
               &ldquo;You are not looking to become someone different. You are looking to stop being governed
               by standards and definitions that were never yours to begin with.&rdquo;
             </blockquote>
@@ -164,352 +81,101 @@ export default function RmpPersonalized() {
         </div>
       </section>
 
-      {/* ── Section 2: The Work ── */}
-      <section
-        style={{
-          minHeight: "100dvh",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          padding: "6rem max(1.5rem, calc((100vw - 1200px) / 2 + 1.5rem))",
-        }}
-      >
-        <div
-          ref={s2Ref}
-          style={{
-            maxWidth: "1200px",
-            margin: "0 auto",
-            display: "flex",
-            flexDirection: "column",
-            gap: "1.75rem",
-            opacity: r2 ? 1 : 0,
-            transform: r2 ? "none" : "translateY(24px)",
-            transition: REVEAL_TR,
-          }}
-        >
-          <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-            <h2 className="pp-section-heading">The Work</h2>
-            <h3 className="pp-section-subheading">What This Actually Is</h3>
-          </div>
-          <p className="pp-italic-sub">
-            A private engagement built from the ground up. Not a program. A path.
+      {/* ── The Work ── */}
+      <section className="page-section">
+        <div className="section-inner">
+          <h2>The Work</h2>
+          <h3 className="section-subheading">What This Actually Is</h3>
+          <p className="italic-callout">A private engagement built from the ground up. Not a program. A path.</p>
+          <p className="body-prose">
+            RMP⁺ Personalized is a 1:1 engagement, or small group of two, built entirely around
+            your patterns, your history, and where you intend to go. It uses the same platform and
+            foundation as RMP⁺ Guided, and goes further. Your curriculum is not drawn from a
+            general phase map. It is built for you specifically and tracked in real time.
           </p>
-          <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
-            <p className="pp-body">
-              RMP⁺ Personalized is a 1:1 engagement, or small group of two, built entirely around
-              your patterns, your history, and where you intend to go. It uses the same platform and
-              foundation as RMP⁺ Guided, and goes further. Your curriculum is not drawn from a
-              general phase map. It is built for you specifically and tracked in real time.
-            </p>
-            <p className="pp-body">
-              We work through the body because that is where the patterns actually live. The way you
-              move under pressure, the way you hold yourself in uncertainty, where you brace and
-              where you go soft. These are not separate from how you operate in your work, your
-              relationships, your decisions. Making them visible changes them.
-            </p>
-            <p className="pp-body">
-              What shifts over time is difficult to put simply. People describe making decisions
-              differently. Inhabiting their own presence differently. A quieter relationship with
-              themselves that does not depend on external conditions to exist.
-            </p>
-          </div>
+          <p className="body-prose">
+            We work through the body because that is where the patterns actually live. The way you
+            move under pressure, the way you hold yourself in uncertainty, where you brace and
+            where you go soft. These are not separate from how you operate in your work, your
+            relationships, your decisions. Making them visible changes them.
+          </p>
+          <p className="body-prose">
+            What shifts over time is difficult to put simply. People describe making decisions
+            differently. Inhabiting their own presence differently. A quieter relationship with
+            themselves that does not depend on external conditions to exist.
+          </p>
         </div>
       </section>
 
-      {/* ── Section 3: What It Asks ── */}
-      <section
-        style={{
-          minHeight: "100dvh",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          padding: "6rem max(1.5rem, calc((100vw - 1200px) / 2 + 1.5rem))",
-        }}
-      >
-        <div
-          ref={s3Ref}
-          style={{
-            maxWidth: "1200px",
-            margin: "0 auto",
-            display: "flex",
-            flexDirection: "column",
-            gap: "1.75rem",
-            opacity: r3 ? 1 : 0,
-            transform: r3 ? "none" : "translateY(24px)",
-            transition: REVEAL_TR,
-          }}
-        >
-          <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-            <h2 className="pp-section-heading">What It Asks</h2>
-            <h3 className="pp-section-subheading">This Will Not Stay Comfortable</h3>
-          </div>
-          <p className="pp-italic-sub">
+      {/* ── What It Asks ── */}
+      <section className="page-section">
+        <div className="section-inner">
+          <h2>What It Asks</h2>
+          <h3 className="section-subheading">This Will Not Stay Comfortable</h3>
+          <p className="italic-callout">
             The practice meets you where you are honest. That is rarely where you are comfortable.
           </p>
-          <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
-            <p className="pp-body">
-              This will not stay comfortable with you when comfort is what is keeping you in place.
-              The first thing most people encounter is exposure. Something the practice asks that
-              performing cannot answer.
-            </p>
-            <p className="pp-body">
-              For one person, at the end of her session she was in tears. Not from physical pain but
-              from a realization that she had never moved without being watched, even by herself. The
-              usual tools did not work. The familiar performance had nowhere to go.
-            </p>
-            <p className="pp-body">
-              She stayed. She did the work. And she brought the people she loves.
-            </p>
-          </div>
+          <p className="body-prose">
+            This will not stay comfortable with you when comfort is what is keeping you in place.
+            The first thing most people encounter is exposure. Something the practice asks that
+            performing cannot answer.
+          </p>
+          <p className="body-prose">
+            For one person, at the end of her session she was in tears. Not from physical pain but
+            from a realization that she had never moved without being watched, even by herself. The
+            usual tools did not work. The familiar performance had nowhere to go.
+          </p>
+          <p className="body-prose">She stayed. She did the work. And she brought the people she loves.</p>
         </div>
       </section>
 
-      {/* ── Section 4: How It Works ── */}
-      <section
-        style={{
-          minHeight: "100dvh",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          padding: "6rem max(1.5rem, calc((100vw - 1200px) / 2 + 1.5rem))",
-        }}
-      >
-        <div
-          ref={s4Ref}
-          style={{
-            maxWidth: "1200px",
-            margin: "0 auto",
-            display: "flex",
-            flexDirection: "column",
-            gap: "2.5rem",
-            opacity: r4 ? 1 : 0,
-            transform: r4 ? "none" : "translateY(24px)",
-            transition: REVEAL_TR,
-          }}
-        >
-          <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-            <h2 className="pp-section-heading">How It Works</h2>
-            <h3 className="pp-section-subheading">Format, Frequency, and Access</h3>
-          </div>
-          <p className="pp-italic-sub">
-            In-person in Denver or remote. Weekly or biweekly. Directly with me.
-          </p>
-
-          <div className="pp-grid-2">
-            {formatItems.map((item, i) => (
-              <StaggerItem key={item.title} index={i}>
-                <div style={{ display: "flex", flexDirection: "column", gap: "0.625rem" }}>
-                  <p
-                    style={{
-                      fontFamily: "var(--font-body)",
-                      fontSize: "var(--text-xs)",
-                      letterSpacing: "0.08em",
-                      textTransform: "uppercase",
-                      color: "var(--color-dark)",
-                      margin: 0,
-                      fontWeight: 400,
-                    }}
-                  >
-                    {item.title}
-                  </p>
-                  <p
-                    style={{
-                      fontFamily: "var(--font-body)",
-                      fontSize: "var(--text-base)",
-                      lineHeight: 1.7,
-                      color: "var(--color-dark)",
-                      margin: 0,
-                      fontWeight: 300,
-                      opacity: 0.75,
-                    }}
-                  >
-                    {item.body}
-                  </p>
-                </div>
-              </StaggerItem>
+      {/* ── How It Works ── */}
+      <section className="page-section">
+        <div className="section-inner">
+          <h2>How It Works</h2>
+          <h3 className="section-subheading">Format, Frequency, and Access</h3>
+          <p className="italic-callout">In-person in Denver or remote. Weekly or biweekly. Directly with me.</p>
+          <div className="grid-2" style={{ maxWidth: "680px" }}>
+            {formatItems.map((item) => (
+              <div key={item.title} className="pp-format-item">
+                <p className="section-subheading">{item.title}</p>
+                <p className="body-prose">{item.body}</p>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── Section 5: Before You Begin ── */}
-      <section
-        style={{
-          minHeight: "100dvh",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          padding: "6rem max(1.5rem, calc((100vw - 1200px) / 2 + 1.5rem))",
-        }}
-      >
-        <div
-          ref={s5Ref}
-          style={{
-            maxWidth: "1200px",
-            margin: "0 auto",
-            display: "flex",
-            flexDirection: "column",
-            gap: "1.75rem",
-            opacity: r5 ? 1 : 0,
-            transform: r5 ? "none" : "translateY(24px)",
-            transition: REVEAL_TR,
-          }}
-        >
-          <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-            <h2 className="pp-section-heading">Before You Begin</h2>
-            <h3 className="pp-section-subheading">A Recommended Starting Point</h3>
-          </div>
-          <p className="pp-italic-sub">
+      {/* ── Before You Begin ── */}
+      <section className="page-section">
+        <div className="section-inner">
+          <h2>Before You Begin</h2>
+          <h3 className="section-subheading">A Recommended Starting Point</h3>
+          <p className="italic-callout">
             One completed phase of RMP⁺ Guided or RMP⁺ In-Person is recommended before applying.
           </p>
-          <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
-            <p className="pp-body">
-              The private work builds from what the foundation practice begins to surface. Those who
-              arrive at Personalized having already moved through a phase understand what this
-              practice can do. The 1:1 work takes it further and makes it entirely yours.
-            </p>
-            <p className="pp-body">
-              If you have significant physical limitations or medical conditions, reach out before
-              applying so we can determine the right path for you.
-            </p>
-          </div>
+          <p className="body-prose">
+            The private work builds from what the foundation practice begins to surface. Those who
+            arrive at Personalized having already moved through a phase understand what this
+            practice can do. The 1:1 work takes it further and makes it entirely yours.
+          </p>
+          <p className="body-prose">
+            If you have significant physical limitations or medical conditions, reach out before
+            applying so we can determine the right path for you.
+          </p>
         </div>
       </section>
 
-      {/* ── Closing CTA ── */}
-      <section
-        style={{
-          minHeight: "100dvh",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          padding: "6rem max(1.5rem, calc((100vw - 1200px) / 2 + 1.5rem))",
-          textAlign: "center",
-        }}
-      >
-        <div
-          ref={s6Ref}
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            gap: "2rem",
-            opacity: r6 ? 1 : 0,
-            transform: r6 ? "none" : "translateY(24px)",
-            transition: REVEAL_TR,
-          }}
-        >
-          <p
-            style={{
-              fontFamily: "var(--font-display)",
-              fontStyle: "italic",
-              fontSize: "clamp(var(--text-md), 3vw, var(--text-lg))",
-              fontWeight: 300,
-              color: "var(--color-dark)",
-              margin: 0,
-              lineHeight: 1.35,
-            }}
-          >
-            Not sure where to begin?
-          </p>
-          <Link href="/rmp/starting-point" className="pp-cta-link">
-            Find Your Starting Point
-          </Link>
+      {/* ── CTA ── */}
+      <section className="page-section" style={{ textAlign: "center" }}>
+        <p className="italic-callout">Not sure where to begin?</p>
+        <div style={{ marginTop: "2rem" }}>
+          <Link href="/rmp/starting-point" className="link-cta">Find Your Starting Point</Link>
         </div>
       </section>
 
       <style>{`
-        .pp-hero {
-          min-height: 100dvh;
-          display: flex;
-          flex-direction: column;
-          justify-content: flex-start;
-          overflow: hidden;
-        }
-        .pp-hero-content {
-          display: flex;
-          flex-direction: column;
-          gap: 1.25rem;
-          padding: 6rem 2rem 6rem max(1.5rem, calc((100vw - 1200px) / 2 + 1.5rem));
-          max-width: 680px;
-        }
-        .pp-hero-h1 {
-          font-family: var(--font-hero);
-          font-size: clamp(var(--text-2xl), 7.5vw, var(--text-4xl));
-          font-weight: 400;
-          line-height: 0.95;
-          letter-spacing: var(--tracking-tight);
-          color: var(--color-text-primary);
-          margin: 0;
-        }
-        .pp-body {
-          font-family: var(--font-body);
-          font-size: var(--text-base);
-          line-height: 1.85;
-          color: var(--color-dark);
-          margin: 0;
-          font-weight: 300;
-        }
-        .pp-label {
-          font-family: var(--font-body);
-          font-size: var(--text-xs);
-          letter-spacing: 0.12em;
-          text-transform: uppercase;
-          color: var(--color-mid);
-          margin: 0;
-        }
-        .pp-section-heading {
-          font-family: var(--font-display);
-          font-size: clamp(var(--text-lg), 3vw, var(--text-xl));
-          font-weight: 400;
-          color: var(--color-dark);
-          margin: 0;
-          line-height: 1.2;
-          letter-spacing: var(--tracking-tight);
-        }
-        .pp-section-subheading {
-          font-family: var(--font-body);
-          font-size: var(--text-xs);
-          letter-spacing: 0.1em;
-          text-transform: uppercase;
-          color: var(--color-mid);
-          margin: 0;
-          font-weight: 500;
-        }
-        .pp-italic-sub {
-          font-family: var(--font-display);
-          font-style: italic;
-          font-size: clamp(var(--text-base), 2vw, var(--text-md));
-          font-weight: 300;
-          color: var(--color-dark);
-          margin: 0;
-          line-height: 1.45;
-        }
-        .pp-grid-2 {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 2.5rem 4rem;
-          max-width: 680px;
-        }
-        @media (max-width: 560px) {
-          .pp-grid-2 { grid-template-columns: 1fr; gap: 2rem; }
-        }
-        .pp-cta-link {
-          font-family: var(--font-body);
-          font-size: var(--text-base);
-          letter-spacing: 0.1em;
-          text-transform: uppercase;
-          color: var(--color-mid);
-          text-decoration: none;
-          border-bottom: 1px solid var(--color-subtle);
-          padding-bottom: 2px;
-          transition: color 0.2s, border-color 0.2s;
-        }
-        .pp-cta-link:hover {
-          color: var(--color-dark);
-          border-color: var(--color-dark);
-        }
+        .pp-format-item { display: flex; flex-direction: column; gap: 0.625rem; }
       `}</style>
     </main>
   );

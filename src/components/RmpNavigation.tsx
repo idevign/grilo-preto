@@ -18,7 +18,6 @@ function resolveHref(href: string, basePath: string) {
 }
 
 function isActive(href: string, pathname: string) {
-  // Normalize: strip /rmp prefix if present so checks are consistent
   const normalized = pathname.startsWith("/rmp")
     ? pathname.slice(4) || "/"
     : pathname;
@@ -30,84 +29,29 @@ export default function RmpNavigation() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
-  // In dev, pages live at /rmp/*; on the subdomain they live at /*
   const basePath = pathname.startsWith("/rmp") ? "/rmp" : "";
   const mainSiteHref = basePath ? "/" : "https://grilopreto.com";
 
   return (
-    <header
-      style={{
-        backgroundColor: "var(--color-bg-primary)",
-        borderBottom: "1px solid var(--color-border)",
-      }}
-    >
-      <nav
-        style={{
-          maxWidth: "1200px",
-          margin: "0 auto",
-          padding: "1.25rem 1.5rem",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-        }}
-      >
-        {/* Logo */}
-        <Link
-          href={basePath || "/"}
-          style={{
-            fontFamily: "var(--font-label)",
-            fontSize: "var(--text-xs)",
-            fontWeight: 400,
-            letterSpacing: "var(--tracking-widest)",
-            textTransform: "uppercase" as const,
-            color: "var(--color-text-accent)",
-            textDecoration: "none",
-          }}
-        >
+    <header className="nav-header">
+      <nav className="nav-inner">
+        <Link href={basePath || "/"} className="nav-brand nav-brand--accent">
           RMP⁺
         </Link>
 
-        {/* Desktop links */}
-        <ul
-          className="rmp-nav-desktop"
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "2rem",
-            listStyle: "none",
-            margin: 0,
-            padding: 0,
-          }}
-        >
+        <ul className="nav-links nav-desktop">
           {links.map((link) => {
             const active = !link.mainSite && isActive(link.href, pathname);
-            const linkStyle = {
-              fontFamily: "var(--font-label)",
-              fontSize: "var(--text-xs)",
-              color: "var(--color-text-primary)",
-              textDecoration: "none",
-              letterSpacing: "var(--tracking-widest)",
-              textTransform: "uppercase" as const,
-              opacity: active ? 1 : 0.55,
-              transition: "opacity 0.2s",
-            };
             return (
               <li key={link.href}>
                 {link.mainSite ? (
-                  <a
-                    href={mainSiteHref}
-                    style={linkStyle}
-                    onMouseEnter={(e) => { e.currentTarget.style.opacity = "1"; }}
-                    onMouseLeave={(e) => { e.currentTarget.style.opacity = "0.7"; }}
-                  >
+                  <a href={mainSiteHref} className="nav-link">
                     {link.label}
                   </a>
                 ) : (
                   <Link
                     href={resolveHref(link.href, basePath)}
-                    style={linkStyle}
-                    onMouseEnter={(e) => { if (!active) e.currentTarget.style.opacity = "1"; }}
-                    onMouseLeave={(e) => { if (!active) e.currentTarget.style.opacity = "0.7"; }}
+                    className={active ? "nav-link active" : "nav-link"}
                   >
                     {link.label}
                   </Link>
@@ -117,20 +61,11 @@ export default function RmpNavigation() {
           })}
         </ul>
 
-        {/* Mobile toggle */}
         <button
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           onClick={() => setOpen(!open)}
-          className="rmp-nav-toggle"
-          style={{
-            display: "none",
-            background: "none",
-            border: "none",
-            cursor: "pointer",
-            padding: "0.5rem",
-            color: "var(--color-dark)",
-          }}
+          className="nav-toggle"
         >
           {open ? (
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden>
@@ -144,32 +79,22 @@ export default function RmpNavigation() {
         </button>
       </nav>
 
-      {/* Mobile menu */}
       {open && (
-        <div style={{ borderTop: "1px solid var(--color-border)", padding: "1rem 1.5rem 1.5rem" }}>
-          <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: "1rem" }}>
+        <div className="nav-mobile-panel">
+          <ul className="nav-mobile-links">
             {links.map((link) => {
               const active = !link.mainSite && isActive(link.href, pathname);
-              const linkStyle = {
-                fontFamily: "var(--font-label)",
-                fontSize: "var(--text-xs)",
-                color: "var(--color-text-primary)",
-                textDecoration: "none",
-                letterSpacing: "var(--tracking-widest)",
-                textTransform: "uppercase" as const,
-                opacity: active ? 1 : 0.55,
-              };
               return (
                 <li key={link.href}>
                   {link.mainSite ? (
-                    <a href={mainSiteHref} onClick={() => setOpen(false)} style={linkStyle}>
+                    <a href={mainSiteHref} onClick={() => setOpen(false)} className="nav-link">
                       {link.label}
                     </a>
                   ) : (
                     <Link
                       href={resolveHref(link.href, basePath)}
                       onClick={() => setOpen(false)}
-                      style={linkStyle}
+                      className={active ? "nav-link active" : "nav-link"}
                     >
                       {link.label}
                     </Link>
@@ -180,13 +105,6 @@ export default function RmpNavigation() {
           </ul>
         </div>
       )}
-
-      <style>{`
-        @media (max-width: 768px) {
-          .rmp-nav-desktop { display: none !important; }
-          .rmp-nav-toggle  { display: block !important; }
-        }
-      `}</style>
     </header>
   );
 }

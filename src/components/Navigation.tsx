@@ -22,90 +22,30 @@ export default function Navigation() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header
-      style={{
-        backgroundColor: "var(--color-bg-primary)",
-        borderBottom: "1px solid var(--color-border)",
-      }}
-    >
-      <nav
-        style={{
-          maxWidth: "1200px",
-          margin: "0 auto",
-          padding: "1.25rem 1.5rem",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-        }}
-      >
-        {/* Logo */}
-        <Link
-          href="/"
-          style={{
-            fontFamily: "var(--font-label)",
-            fontSize: "var(--text-xs)",
-            fontWeight: 400,
-            letterSpacing: "var(--tracking-widest)",
-            textTransform: "uppercase" as const,
-            color: "var(--color-text-primary)",
-            textDecoration: "none",
-          }}
-        >
+    <header className="nav-header">
+      <nav className="nav-inner">
+        <Link href="/" className="nav-brand">
           Grilo Preto
         </Link>
 
-        {/* Desktop nav */}
-        <ul
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "2rem",
-            listStyle: "none",
-            margin: 0,
-            padding: 0,
-          }}
-          className="nav-desktop"
-        >
-          {links.map((link) => {
-            const active = isActive(link.href, pathname);
-            return (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  style={{
-                    fontFamily: "var(--font-label)",
-                    fontSize: "var(--text-xs)",
-                    color: "var(--color-text-primary)",
-                    textDecoration: "none",
-                    letterSpacing: "var(--tracking-widest)",
-                    textTransform: "uppercase",
-                    opacity: active ? 1 : 0.55,
-                    transition: "opacity 0.2s",
-                  }}
-                  onMouseEnter={(e) => { if (!active) e.currentTarget.style.opacity = "1"; }}
-                  onMouseLeave={(e) => { if (!active) e.currentTarget.style.opacity = "0.7"; }}
-                >
-                  {link.label}
-                </Link>
-              </li>
-            );
-          })}
+        <ul className="nav-links nav-desktop">
+          {links.map((link) => (
+            <li key={link.href}>
+              <Link
+                href={link.href}
+                className={isActive(link.href, pathname) ? "nav-link active" : "nav-link"}
+              >
+                {link.label}
+              </Link>
+            </li>
+          ))}
         </ul>
 
-        {/* Mobile toggle */}
         <button
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           onClick={() => setOpen(!open)}
-          className="nav-mobile-toggle"
-          style={{
-            display: "none",
-            background: "none",
-            border: "none",
-            cursor: "pointer",
-            padding: "0.5rem",
-            color: "var(--color-dark)",
-          }}
+          className="nav-toggle"
         >
           {open ? (
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden>
@@ -119,48 +59,23 @@ export default function Navigation() {
         </button>
       </nav>
 
-      {/* Mobile menu */}
       {open && (
-        <div
-          className="nav-mobile-menu"
-          style={{
-            borderTop: "1px solid var(--color-border)",
-            padding: "1rem 1.5rem 1.5rem",
-          }}
-        >
-          <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: "1rem" }}>
-            {links.map((link) => {
-              const active = isActive(link.href, pathname);
-              return (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    onClick={() => setOpen(false)}
-                    style={{
-                      fontFamily: "var(--font-label)",
-                      fontSize: "var(--text-xs)",
-                      color: "var(--color-text-primary)",
-                      textDecoration: "none",
-                      letterSpacing: "var(--tracking-widest)",
-                      textTransform: "uppercase",
-                      opacity: active ? 1 : 0.55,
-                    }}
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              );
-            })}
+        <div className="nav-mobile-panel">
+          <ul className="nav-mobile-links">
+            {links.map((link) => (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  onClick={() => setOpen(false)}
+                  className={isActive(link.href, pathname) ? "nav-link active" : "nav-link"}
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
       )}
-
-      <style>{`
-        @media (max-width: 768px) {
-          .nav-desktop { display: none !important; }
-          .nav-mobile-toggle { display: block !important; }
-        }
-      `}</style>
     </header>
   );
 }

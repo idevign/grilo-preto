@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { EASE, REVEAL_TR, useReveal, StaggerItem } from "@/components/animations";
+import { useEffect, useState } from "react";
+import { EASE } from "@/components/animations";
 
 type LogisticsItem = {
   title: string;
@@ -12,101 +12,32 @@ type LogisticsItem = {
 };
 
 const logistics: LogisticsItem[] = [
-  {
-    title: "Days and Time",
-    body: "Monday and Wednesday. 12:00pm — 1:15pm. Doors open at 11:50am. Collective start at 12:10pm.",
-    link: null,
-  },
-  {
-    title: "Membership",
-    body: "$222/month recommended contribution. One phase commitment (3 months). Fellowships available.",
-    link: null,
-  },
-  {
-    title: "What to Bring",
-    body: "A curious mind. Comfortable clothing you can move and stretch in. Barefoot or minimal shoes. Water.",
-    link: null,
-  },
-  {
-    title: "Location",
-    body: "910 Santa Fe Dr, Studio 8. Denver, CO 80204. 910 Arts courtyard. Next to the coffee shop.",
-    link: null,
-  },
-  {
-    title: "Includes",
-    body: null,
-    list: ["RMP⁺ Guided", "Full phase curriculum", "Daily Ritual", "Group forum"],
-    link: null,
-  },
-  {
-    title: "Your Invite",
-    body: "Get your invite by finding your starting point. Available to those local to Denver, CO and visiting guests of existing members.",
-    link: { text: "Find Your Starting Point", href: "/rmp/starting-point" },
-    highlight: true,
-  },
+  { title: "Days and Time", body: "Monday and Wednesday. 12:00pm — 1:15pm. Doors open at 11:50am. Collective start at 12:10pm.", link: null },
+  { title: "Membership", body: "$222/month recommended contribution. One phase commitment (3 months). Fellowships available.", link: null },
+  { title: "What to Bring", body: "A curious mind. Comfortable clothing you can move and stretch in. Barefoot or minimal shoes. Water.", link: null },
+  { title: "Location", body: "910 Santa Fe Dr, Studio 8. Denver, CO 80204. 910 Arts courtyard. Next to the coffee shop.", link: null },
+  { title: "Includes", body: null, list: ["RMP⁺ Guided", "Full phase curriculum", "Daily Ritual", "Group forum"], link: null },
+  { title: "Your Invite", body: "Get your invite by finding your starting point. Available to those local to Denver, CO and visiting guests of existing members.", link: { text: "Find Your Starting Point", href: "/rmp/starting-point" }, highlight: true },
 ];
 
 const cultureItems = [
-  {
-    title: "Attendance",
-    body: "Showing up is part of the agreement. Planned absences communicated in advance are understood. Cancellations driven by motivation are not. The practice is designed to be returned to especially when it feels hard to.",
-  },
-  {
-    title: "Progress",
-    body: "Members demonstrate development across at least one area over a phase. Progress may be visible or subtle. Maintenance and recovery phases are valid.",
-  },
-  {
-    title: "Effort",
-    body: "Effort is measured by the willingness to show up fully in the process. Attentiveness, intention, and openness to feedback. Output alone is not the measure.",
-  },
-  {
-    title: "Confidentiality",
-    body: "What is shared within the practice stays within the group. This is what makes the space safe enough for real work.",
-  },
+  { title: "Attendance", body: "Showing up is part of the agreement. Planned absences communicated in advance are understood. Cancellations driven by motivation are not. The practice is designed to be returned to especially when it feels hard to." },
+  { title: "Progress", body: "Members demonstrate development across at least one area over a phase. Progress may be visible or subtle. Maintenance and recovery phases are valid." },
+  { title: "Effort", body: "Effort is measured by the willingness to show up fully in the process. Attentiveness, intention, and openness to feedback. Output alone is not the measure." },
+  { title: "Confidentiality", body: "What is shared within the practice stays within the group. This is what makes the space safe enough for real work." },
 ];
 
 const faqs = [
-  {
-    q: "Do I need prior movement experience?",
-    a: "No. What matters more is curiosity, a willingness to be challenged, and genuine interest in depth. The self-assessment will help point you in the right direction to start.",
-  },
-  {
-    q: "What if I travel frequently or have an unpredictable schedule?",
-    a: "The attendance expectation is real. If your schedule is consistently unpredictable, RMP⁺ Guided is likely a better starting point. Members who travel can access the curriculum remotely via the app during planned absences.",
-  },
-  {
-    q: "Can I join mid-phase?",
-    a: "Yes. You will be integrated into the current material with individual guidance. If you prefer to begin at a phase start, that can be arranged.",
-  },
-  {
-    q: "What is a fellowship?",
-    a: "Fellowships are available for the right candidate when financial access is a barrier. Reach out directly to discuss.",
-  },
-  {
-    q: "What happens after the first session?",
-    a: "If it feels right for both of us, you will be onboarded through Everfit and begin the membership commitment from the next session or phase start.",
-  },
+  { q: "Do I need prior movement experience?", a: "No. What matters more is curiosity, a willingness to be challenged, and genuine interest in depth. The self-assessment will help point you in the right direction to start." },
+  { q: "What if I travel frequently or have an unpredictable schedule?", a: "The attendance expectation is real. If your schedule is consistently unpredictable, RMP⁺ Guided is likely a better starting point. Members who travel can access the curriculum remotely via the app during planned absences." },
+  { q: "Can I join mid-phase?", a: "Yes. You will be integrated into the current material with individual guidance. If you prefer to begin at a phase start, that can be arranged." },
+  { q: "What is a fellowship?", a: "Fellowships are available for the right candidate when financial access is a barrier. Reach out directly to discuss." },
+  { q: "What happens after the first session?", a: "If it feels right for both of us, you will be onboarded through Everfit and begin the membership commitment from the next session or phase start." },
 ];
 
 export default function RmpInPerson() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [loaded, setLoaded] = useState(false);
-
-  const s1Ref = useRef<HTMLDivElement>(null);
-  const s2Ref = useRef<HTMLDivElement>(null);
-  const s3Ref = useRef<HTMLDivElement>(null);
-  const s4Ref = useRef<HTMLDivElement>(null);
-  const s5Ref = useRef<HTMLDivElement>(null);
-  const s6Ref = useRef<HTMLDivElement>(null);
-  const s7Ref = useRef<HTMLDivElement>(null);
-
-  const r1 = useReveal(s1Ref);
-  const r2 = useReveal(s2Ref);
-  const r3 = useReveal(s3Ref);
-  const r4 = useReveal(s4Ref);
-  const r5 = useReveal(s5Ref);
-  const r6 = useReveal(s6Ref);
-  const r7 = useReveal(s7Ref);
 
   useEffect(() => { setLoaded(true); }, []);
 
@@ -114,10 +45,9 @@ export default function RmpInPerson() {
     <main>
 
       {/* ── Hero ── */}
-      <section className="ip-hero">
-        <div className="ip-hero-content">
+      <section className="hero-section">
+        <div className="hero-content">
           <h1
-            className="ip-hero-h1"
             style={{
               opacity: loaded ? 1 : 0,
               transform: loaded ? "translateY(0)" : "translateY(18px)",
@@ -149,574 +79,216 @@ export default function RmpInPerson() {
         </div>
       </section>
 
-      {/* ── Section 1: No heading ── */}
-      <section
-        style={{
-          minHeight: "100dvh",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          padding: "6rem max(1.5rem, calc((100vw - 1200px) / 2 + 1.5rem))",
-        }}
-      >
-        <div
-          ref={s1Ref}
-          style={{
-            maxWidth: "1200px",
-            margin: "0 auto",
-            display: "flex",
-            flexDirection: "column",
-            gap: "1.75rem",
-            opacity: r1 ? 1 : 0,
-            transform: r1 ? "none" : "translateY(24px)",
-            transition: REVEAL_TR,
-          }}
-        >
-          <h2 className="ip-section-heading">The Practice</h2>
-          <h3 className="ip-section-subheading">Being in collective practice</h3>
-          <p className="ip-italic-sub">
+      {/* ── The Practice ── */}
+      <section className="page-section">
+        <div className="section-inner">
+          <h2>The Practice</h2>
+          <h3 className="section-subheading">Being in collective practice</h3>
+          <p className="italic-callout">
             This is not a class you drop into. It is a practice you use to explore and refine who
             you are over time.
           </p>
-          <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
-            <p className="ip-body">
-              The group sessions are where the curriculum becomes lived experience. The same material
-              available through RMP⁺ Guided is present here, and something is added that cannot be
-              replicated alone. What happens between people in a shared physical space changes what
-              is possible inside it.
-            </p>
-            <p className="ip-body">
-              Sessions move through a consistent structure. One that carries the work from
-              preparation through to physical depth and collective exploration. The structure holds.
-              What fills it shifts based on the phase, the theme, and the people present on any
-              given day.
-            </p>
-            <p className="ip-body">
-              The space is invite-only. The practice asks a lot of each individual in the room. The
-              invite process is a simple way to check for alignment, to make sure it is a fit for
-              you, and to curate the space for those who are focused and showing up fully.
-            </p>
-          </div>
+          <p className="body-prose">
+            The group sessions are where the curriculum becomes lived experience. The same material
+            available through RMP⁺ Guided is present here, and something is added that cannot be
+            replicated alone. What happens between people in a shared physical space changes what
+            is possible inside it.
+          </p>
+          <p className="body-prose">
+            Sessions move through a consistent structure. One that carries the work from
+            preparation through to physical depth and collective exploration. The structure holds.
+            What fills it shifts based on the phase, the theme, and the people present on any
+            given day.
+          </p>
+          <p className="body-prose">
+            The space is invite-only. The practice asks a lot of each individual in the room. The
+            invite process is a simple way to check for alignment, to make sure it is a fit for
+            you, and to curate the space for those who are focused and showing up fully.
+          </p>
         </div>
       </section>
 
-      {/* ── Section 2: A Session ── */}
-      <section
-        style={{
-          minHeight: "100dvh",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          padding: "6rem max(1.5rem, calc((100vw - 1200px) / 2 + 1.5rem))",
-        }}
-      >
-        <div
-          ref={s2Ref}
-          style={{
-            maxWidth: "1200px",
-            margin: "0 auto",
-            display: "flex",
-            flexDirection: "column",
-            gap: "1.75rem",
-            opacity: r2 ? 1 : 0,
-            transform: r2 ? "none" : "translateY(24px)",
-            transition: REVEAL_TR,
-          }}
-        >
-          <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-            <h2 className="ip-section-heading">A Session</h2>
-            <h3 className="ip-section-subheading">What a Typical Session Is Like</h3>
-          </div>
-          <p className="ip-italic-sub">
-            Each session has a shape. What fills it varies and yet is consistent.
+      {/* ── A Session ── */}
+      <section className="page-section">
+        <div className="section-inner">
+          <h2>A Session</h2>
+          <h3 className="section-subheading">What a Typical Session Is Like</h3>
+          <p className="italic-callout">Each session has a shape. What fills it varies and yet is consistent.</p>
+          <p className="body-prose">
+            Doors open at 11:50am. That first twenty minutes before the collective start is not
+            waiting time. It is the beginning of the session. The body starts its reset before the
+            work is named.
           </p>
-          <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
-            <p className="ip-body">
-              Doors open at 11:50am. That first twenty minutes before the collective start is not
-              waiting time. It is the beginning of the session. The body starts its reset before the
-              work is named.
-            </p>
-            <p className="ip-body">
-              At 12:10pm we open together. A brief collective hello, a check-in, and then we move
-              into the Daily Ritual activating and becoming aware of the body. All this is part of
-              your practice outside the studio too. Here it becomes shared.
-            </p>
-            <p className="ip-body">
-              From there the session develops through several layers of work. The physical demands
-              are real. The precision required is equally real. You will be asked to do things that
-              take genuine attention to execute well, and to keep that attention even when the work
-              gets challenging.
-            </p>
-            <p className="ip-body">
-              One component is specific to being in the room together. Relational exploration of the
-              material with the group. It does not always arrive at the same point in the session.
-              Sometimes it opens the work. Sometimes it runs through the middle of it. Where it lands
-              depends on what the session needs and what the group brings that day.
-            </p>
-            <p className="ip-body">
-              Some sessions will ask more of you than others. Some will surprise you. Arrive with
-              what you have that day. The practice will meet you there.
-            </p>
-          </div>
+          <p className="body-prose">
+            At 12:10pm we open together. A brief collective hello, a check-in, and then we move
+            into the Daily Ritual activating and becoming aware of the body. All this is part of
+            your practice outside the studio too. Here it becomes shared.
+          </p>
+          <p className="body-prose">
+            From there the session develops through several layers of work. The physical demands
+            are real. The precision required is equally real. You will be asked to do things that
+            take genuine attention to execute well, and to keep that attention even when the work
+            gets challenging.
+          </p>
+          <p className="body-prose">
+            One component is specific to being in the room together. Relational exploration of the
+            material with the group. It does not always arrive at the same point in the session.
+            Sometimes it opens the work. Sometimes it runs through the middle of it. Where it lands
+            depends on what the session needs and what the group brings that day.
+          </p>
+          <p className="body-prose">
+            Some sessions will ask more of you than others. Some will surprise you. Arrive with
+            what you have that day. The practice will meet you there.
+          </p>
         </div>
       </section>
 
-      {/* ── Section 3: Your First Session ── */}
-      <section
-        style={{
-          minHeight: "100dvh",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          padding: "6rem max(1.5rem, calc((100vw - 1200px) / 2 + 1.5rem))",
-        }}
-      >
-        <div
-          ref={s3Ref}
-          style={{
-            maxWidth: "1200px",
-            margin: "0 auto",
-            display: "flex",
-            flexDirection: "column",
-            gap: "1.75rem",
-            opacity: r3 ? 1 : 0,
-            transform: r3 ? "none" : "translateY(24px)",
-            transition: REVEAL_TR,
-          }}
-        >
-          <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-            <h2 className="ip-section-heading">Your First Session</h2>
-            <h3 className="ip-section-subheading">What to Expect</h3>
-          </div>
-          <p className="ip-italic-sub">
-            Your first session is one of the most important parts of this process.
-          </p>
-          <p className="ip-body">
+      {/* ── Your First Session ── */}
+      <section className="page-section">
+        <div className="section-inner">
+          <h2>Your First Session</h2>
+          <h3 className="section-subheading">What to Expect</h3>
+          <p className="italic-callout">Your first session is one of the most important parts of this process.</p>
+          <p className="body-prose">
             You will not fully understand the practice until you experience it directly over time.
             Words can only hint at it. It may feel more or less intense than you expect. It might be
             more refreshing or more frustrating than imagined. One session cannot define it. But it
             will begin it.
           </p>
-          <p
-            style={{
-              fontFamily: "var(--font-display)",
-              fontStyle: "italic",
-              fontSize: "var(--text-base)",
-              fontWeight: 300,
-              color: "var(--color-copper)",
-              margin: 0,
-              lineHeight: 1.5,
-            }}
-          >
+          <p style={{ fontSize: "var(--text-base)", fontWeight: 300, color: "var(--color-text-accent)", margin: 0, lineHeight: 1.5 }}>
             Your first session is complimentary. No fee to attend.
           </p>
         </div>
       </section>
 
-      {/* ── Section 4: Logistics ── */}
-      <section
-        style={{
-          minHeight: "100dvh",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          padding: "6rem max(1.5rem, calc((100vw - 1200px) / 2 + 1.5rem))",
-        }}
-      >
-        <div
-          ref={s4Ref}
-          style={{
-            maxWidth: "1200px",
-            margin: "0 auto",
-            display: "flex",
-            flexDirection: "column",
-            gap: "2.5rem",
-            opacity: r4 ? 1 : 0,
-            transform: r4 ? "none" : "translateY(24px)",
-            transition: REVEAL_TR,
-          }}
-        >
-          <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-            <h2 className="ip-section-heading">Logistics</h2>
-            <h3 className="ip-section-subheading">Session Details</h3>
-          </div>
-
+      {/* ── Logistics ── */}
+      <section className="page-section">
+        <div className="section-inner">
+          <h2>Logistics</h2>
+          <h3 className="section-subheading">Session Details</h3>
           <div className="ip-logistics-grid">
-            {logistics.map((item, i) => (
-              <StaggerItem key={item.title} index={i}>
-                <div className={item.highlight ? "ip-logistics-item ip-logistics-item--highlight" : "ip-logistics-item"}>
-                  <p className="ip-logistics-title">{item.title}</p>
-                  {item.body && <p className="ip-logistics-body">{item.body}</p>}
-                  {item.list && (
-                    <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: "0.375rem" }}>
-                      {item.list.map((entry) => (
-                        <li key={entry} style={{ display: "flex", gap: "0.625rem", alignItems: "baseline" }}>
-                          <span style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-xs)", color: "var(--color-mid)", flexShrink: 0 }}>+</span>
-                          <span className="ip-logistics-body">{entry}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                  {item.link && (
-                    <a href={item.link.href} className="ip-logistics-link">
-                      {item.link.text}
-                    </a>
-                  )}
-                </div>
-              </StaggerItem>
+            {logistics.map((item) => (
+              <div key={item.title} className={item.highlight ? "ip-logistics-item ip-logistics-item--highlight" : "ip-logistics-item"}>
+                <p className="section-subheading">{item.title}</p>
+                {item.body && <p className="body-prose">{item.body}</p>}
+                {item.list && (
+                  <ul className="ip-logistics-list">
+                    {item.list.map((entry) => (
+                      <li key={entry} className="body-prose">{entry}</li>
+                    ))}
+                  </ul>
+                )}
+                {item.link && (
+                  <a href={item.link.href} className="link-underline">{item.link.text}</a>
+                )}
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── Section 5: Collective Culture Agreements ── */}
-      <section
-        style={{
-          minHeight: "100dvh",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          padding: "6rem max(1.5rem, calc((100vw - 1200px) / 2 + 1.5rem))",
-        }}
-      >
-        <div
-          ref={s5Ref}
-          style={{
-            maxWidth: "1200px",
-            margin: "0 auto",
-            display: "flex",
-            flexDirection: "column",
-            gap: "2.5rem",
-            opacity: r5 ? 1 : 0,
-            transform: r5 ? "none" : "translateY(24px)",
-            transition: REVEAL_TR,
-          }}
-        >
-          <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-            <h2 className="ip-section-heading">Collective Culture Agreements</h2>
-            <h3 className="ip-section-subheading">Membership Standards</h3>
-          </div>
-
-          <div className="ip-culture-grid">
-            {cultureItems.map((item, i) => (
-              <StaggerItem key={item.title} index={i}>
-                <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
-                  <p
-                    style={{
-                      fontFamily: "var(--font-body)",
-                      fontSize: "var(--text-xs)",
-                      letterSpacing: "0.06em",
-                      textTransform: "uppercase",
-                      color: "var(--color-dark)",
-                      margin: 0,
-                      fontWeight: 400,
-                    }}
-                  >
-                    {item.title}
-                  </p>
-                  <p
-                    style={{
-                      fontFamily: "var(--font-body)",
-                      fontSize: "var(--text-base)",
-                      lineHeight: 1.75,
-                      color: "var(--color-dark)",
-                      margin: 0,
-                      fontWeight: 300,
-                    }}
-                  >
-                    {item.body}
-                  </p>
-                </div>
-              </StaggerItem>
+      {/* ── Culture Agreements ── */}
+      <section className="page-section">
+        <div className="section-inner">
+          <h2>Collective Culture Agreements</h2>
+          <h3 className="section-subheading">Membership Standards</h3>
+          <div className="grid-2" style={{ maxWidth: "860px" }}>
+            {cultureItems.map((item) => (
+              <div key={item.title} className="ip-culture-item">
+                <p className="section-subheading">{item.title}</p>
+                <p className="body-prose">{item.body}</p>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── Section 6: FAQ ── */}
-      <section
-        style={{
-          minHeight: "100dvh",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          padding: "6rem max(1.5rem, calc((100vw - 1200px) / 2 + 1.5rem))",
-        }}
-      >
-        <div
-          ref={s6Ref}
-          style={{
-            maxWidth: "1200px",
-            margin: "0 auto",
-            display: "flex",
-            flexDirection: "column",
-            gap: "2rem",
-            opacity: r6 ? 1 : 0,
-            transform: r6 ? "none" : "translateY(24px)",
-            transition: REVEAL_TR,
-          }}
-        >
-          <h2 className="ip-section-heading">FAQ</h2>
-          <h3 className="ip-section-subheading">Common questions</h3>
-
-          <div style={{ display: "flex", flexDirection: "column" }}>
+      {/* ── FAQ ── */}
+      <section className="page-section">
+        <div className="section-inner">
+          <h2>FAQ</h2>
+          <h3 className="section-subheading">Common questions</h3>
+          <div className="ip-faq">
             {faqs.map((faq, i) => (
-              <StaggerItem key={i} index={i}>
-                <div style={{ borderTop: "1px solid var(--color-subtle)" }}>
-                  <button
-                    onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                    style={{
-                      all: "unset",
-                      display: "flex",
-                      alignItems: "baseline",
-                      justifyContent: "space-between",
-                      width: "100%",
-                      padding: "1.25rem 0",
-                      cursor: "pointer",
-                      gap: "1rem",
-                    }}
-                  >
-                    <span
-                      style={{
-                        fontFamily: "var(--font-body)",
-                        fontSize: "var(--text-base)",
-                        fontWeight: 400,
-                        color: "var(--color-dark)",
-                        lineHeight: 1.4,
-                      }}
-                    >
-                      {faq.q}
-                    </span>
-                    <span
-                      style={{
-                        fontFamily: "var(--font-body)",
-                        fontSize: "var(--text-base)",
-                        color: "var(--color-mid)",
-                        flexShrink: 0,
-                        lineHeight: 1,
-                      }}
-                    >
-                      {openFaq === i ? "—" : "+"}
-                    </span>
-                  </button>
-
-                  {openFaq === i && (
-                    <p
-                      style={{
-                        fontFamily: "var(--font-body)",
-                        fontSize: "var(--text-base)",
-                        lineHeight: 1.75,
-                        color: "var(--color-dark)",
-                        fontWeight: 300,
-                        margin: "0 0 1.5rem",
-                        maxWidth: "56ch",
-                      }}
-                    >
-                      {faq.a}
-                    </p>
-                  )}
-                </div>
-              </StaggerItem>
+              <div key={i} className="ip-faq-item">
+                <button
+                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                  className="ip-faq-q"
+                >
+                  <span>{faq.q}</span>
+                  <span className="ip-faq-toggle">{openFaq === i ? "—" : "+"}</span>
+                </button>
+                {openFaq === i && <p className="body-prose ip-faq-a">{faq.a}</p>}
+              </div>
             ))}
-            <div style={{ borderTop: "1px solid var(--color-subtle)" }} />
           </div>
         </div>
       </section>
 
-      {/* ── Closing CTA ── */}
-      <section
-        style={{
-          minHeight: "100dvh",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          padding: "6rem max(1.5rem, calc((100vw - 1200px) / 2 + 1.5rem))",
-          textAlign: "center",
-        }}
-      >
-        <div
-          ref={s7Ref}
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            gap: "2rem",
-            opacity: r7 ? 1 : 0,
-            transform: r7 ? "none" : "translateY(24px)",
-            transition: REVEAL_TR,
-          }}
-        >
-          <p
-            style={{
-              fontFamily: "var(--font-display)",
-              fontStyle: "italic",
-              fontSize: "clamp(var(--text-md), 3vw, var(--text-lg))",
-              fontWeight: 300,
-              color: "var(--color-dark)",
-              margin: 0,
-              lineHeight: 1.35,
-            }}
-          >
-            Not sure where to begin?
-          </p>
-          <a href="/rmp/starting-point" className="ip-cta-link">
-            Find Your Starting Point
-          </a>
+      {/* ── CTA ── */}
+      <section className="page-section" style={{ textAlign: "center" }}>
+        <p className="italic-callout">Not sure where to begin?</p>
+        <div style={{ marginTop: "2rem" }}>
+          <a href="/rmp/starting-point" className="link-cta">Find Your Starting Point</a>
         </div>
       </section>
 
       <style>{`
-        .ip-hero {
-          min-height: 100dvh;
-          display: flex;
-          flex-direction: column;
-          justify-content: flex-start;
-          overflow: hidden;
-        }
-        .ip-hero-content {
-          display: flex;
-          flex-direction: column;
-          gap: 1.25rem;
-          padding: 6rem 2rem 6rem max(1.5rem, calc((100vw - 1200px) / 2 + 1.5rem));
-          max-width: 680px;
-        }
-        .ip-hero-h1 {
-          font-family: var(--font-hero);
-          font-size: clamp(var(--text-2xl), 7.5vw, var(--text-4xl));
-          font-weight: 400;
-          line-height: 0.95;
-          letter-spacing: var(--tracking-tight);
-          color: var(--color-text-primary);
-          margin: 0;
-        }
-        .ip-body {
-          font-family: var(--font-body);
-          font-size: var(--text-base);
-          line-height: 1.85;
-          color: var(--color-dark);
-          margin: 0;
-          font-weight: 300;
-        }
-        .ip-label {
-          font-family: var(--font-body);
-          font-size: var(--text-xs);
-          letter-spacing: 0.12em;
-          text-transform: uppercase;
-          color: var(--color-mid);
-          margin: 0;
-        }
-        .ip-section-heading {
-          font-family: var(--font-display);
-          font-size: clamp(var(--text-lg), 3vw, var(--text-xl));
-          font-weight: 400;
-          color: var(--color-dark);
-          margin: 0;
-          line-height: 1.2;
-          letter-spacing: var(--tracking-tight);
-        }
-        .ip-section-subheading {
-          font-family: var(--font-body);
-          font-size: var(--text-xs);
-          letter-spacing: 0.1em;
-          text-transform: uppercase;
-          color: var(--color-mid);
-          margin: 0;
-          font-weight: 500;
-        }
-        .ip-italic-sub {
-          font-family: var(--font-display);
-          font-style: italic;
-          font-size: clamp(var(--text-base), 2vw, var(--text-md));
-          font-weight: 300;
-          color: var(--color-dark);
-          margin: 0;
-          line-height: 1.45;
-        }
         .ip-logistics-grid {
           display: grid;
           grid-template-columns: 1fr 1fr;
           max-width: 900px;
-          border-top: 1px solid var(--color-subtle);
+          border-top: 1px solid var(--color-border);
         }
         .ip-logistics-item {
           display: flex;
           flex-direction: column;
           gap: 0.875rem;
           padding: 2.5rem 3rem 2.5rem 0;
-          border-bottom: 1px solid var(--color-subtle);
+          border-bottom: 1px solid var(--color-border);
         }
         .ip-logistics-grid > div:nth-child(even) .ip-logistics-item {
           padding-left: 3rem;
           padding-right: 0;
-          border-left: 1px solid var(--color-subtle);
+          border-left: 1px solid var(--color-border);
         }
-        .ip-logistics-title {
-          font-family: var(--font-body);
-          font-size: var(--text-xs);
-          letter-spacing: 0.12em;
-          text-transform: uppercase;
-          color: var(--color-mid);
-          margin: 0;
-        }
-        .ip-logistics-body {
-          font-family: var(--font-body);
-          font-size: var(--text-base);
-          line-height: 1.75;
-          color: var(--color-dark);
-          margin: 0;
-          font-weight: 300;
-        }
-        .ip-logistics-link {
-          font-family: var(--font-body);
-          font-size: var(--text-xs);
-          color: var(--color-dark);
-          text-decoration: none;
-          border-bottom: 1px solid var(--color-subtle);
-          padding-bottom: 1px;
-          align-self: flex-start;
-          transition: border-color 0.2s;
-        }
-        .ip-logistics-link:hover { border-color: var(--color-dark); }
         .ip-logistics-item--highlight {
-          outline: 1px solid var(--color-copper);
+          outline: 1px solid var(--color-text-accent);
           outline-offset: -1px;
           padding: 3rem;
         }
-        .ip-logistics-item--highlight .ip-logistics-title {
-          color: var(--color-copper);
+        .ip-logistics-item--highlight .section-subheading { color: var(--color-text-accent); }
+        .ip-logistics-list {
+          display: flex;
+          flex-direction: column;
+          gap: 0.375rem;
+          list-style: none;
+          margin: 0;
+          padding: 0;
         }
+        .ip-culture-item { display: flex; flex-direction: column; gap: 0.75rem; }
+        .ip-faq { display: flex; flex-direction: column; }
+        .ip-faq-item { border-top: 1px solid var(--color-border); }
+        .ip-faq-item:last-child { border-bottom: 1px solid var(--color-border); }
+        .ip-faq-q {
+          all: unset;
+          display: flex;
+          align-items: baseline;
+          justify-content: space-between;
+          width: 100%;
+          padding: 1.25rem 0;
+          cursor: pointer;
+          gap: 1rem;
+          font-size: var(--text-base);
+          color: var(--color-text-primary);
+          line-height: 1.4;
+        }
+        .ip-faq-toggle { color: var(--color-text-secondary); flex-shrink: 0; }
+        .ip-faq-a { padding-bottom: 1.5rem; max-width: 56ch; }
         @media (max-width: 640px) {
           .ip-logistics-grid { grid-template-columns: 1fr; }
           .ip-logistics-item { padding: 2rem 0; }
-          .ip-logistics-grid > div:nth-child(even) .ip-logistics-item {
-            padding-left: 0;
-            border-left: none;
-          }
-        }
-        .ip-culture-grid {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 2.5rem 4rem;
-          max-width: 860px;
-        }
-        @media (max-width: 640px) {
-          .ip-culture-grid { grid-template-columns: 1fr; gap: 2rem; }
-        }
-        .ip-cta-link {
-          font-family: var(--font-body);
-          font-size: var(--text-base);
-          letter-spacing: 0.1em;
-          text-transform: uppercase;
-          color: var(--color-mid);
-          text-decoration: none;
-          border-bottom: 1px solid var(--color-subtle);
-          padding-bottom: 2px;
-          transition: color 0.2s, border-color 0.2s;
-        }
-        .ip-cta-link:hover {
-          color: var(--color-dark);
-          border-color: var(--color-dark);
+          .ip-logistics-grid > div:nth-child(even) .ip-logistics-item { padding-left: 0; border-left: none; }
         }
       `}</style>
     </main>
