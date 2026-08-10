@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -7,10 +8,10 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const IMAGES = [
-  "https://picsum.photos/seed/10/900/1200",
-  "https://picsum.photos/seed/23/900/1200",
-  "https://picsum.photos/seed/37/900/1200",
-  "https://picsum.photos/seed/52/900/1200",
+  "/images/gp_rmpBG_001_sm.jpg",
+  "/images/gp_rmpBG_002_sm.jpg",
+  "/images/gp_rmpBG_005_sm.jpg",
+  "/images/gp_rmpBG_007_sm.jpg",
 ];
 
 const chapters = [
@@ -115,8 +116,17 @@ export function StorySection() {
           >
             {/* Image panel — first item in the horizontal track */}
             <div className="story-image-panel">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={IMAGES[i]} alt="" className="story-img" />
+              <Image
+                src={IMAGES[i]}
+                alt=""
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="story-img"
+                /* GSAP pins these panels and drives them with transforms, which
+                   stops the browser's lazy-load intersection check from firing —
+                   panels would sit blank on screen. Only four images, so load eagerly. */
+                loading="eager"
+              />
             </div>
 
             {/* Panel 1: chapter identity + opening */}
@@ -165,11 +175,10 @@ export function StorySection() {
           height: 100vh;
           flex-shrink: 0;
           overflow: hidden;
+          position: relative;
         }
 
         .story-img {
-          width: 100%;
-          height: 100%;
           object-fit: cover;
           filter: grayscale(100%);
         }

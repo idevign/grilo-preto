@@ -1,10 +1,11 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const PATHS = [
-  { num: "01", title: "Movement Practice", desc: "Functional movement, mobility, and embodied awareness.", href: "/movement-practice" },
-  { num: "02", title: "Capoeira", desc: "The art of movement, music, and liberation.", href: "/capoeira" },
-  { num: "03", title: "Journal", desc: "Reflections, lessons, and ongoing practice.", href: "/journal" },
-  { num: "04", title: "About", desc: "Two decades of practice. One invitation to begin.", href: "/about" },
+  { num: "01", title: "Movement Practice", desc: "Functional movement, mobility, and embodied awareness.", href: "/movement-practice", img: "/images/gp_rmpBG_005_sm.jpg" },
+  { num: "02", title: "Capoeira", desc: "The art of movement, music, and liberation.", href: "/capoeira", img: "/images/gp_rmpBG_004_sm.jpg" },
+  { num: "03", title: "About", desc: "Two decades of practice. One invitation to begin.", href: "/about", img: "/images/gp_rmpBG_002_sm.jpg" },
+  { num: "04", title: "Start Here", desc: "A few questions to find where your practice begins.", href: "/rmp/starting-point", img: "/images/gp_rmpBG_003_sm.jpg" },
 ];
 
 export default function Home() {
@@ -12,8 +13,8 @@ export default function Home() {
     <main>
 
       {/* ── Hero ── */}
-      <section className="hero-section">
-        <div className="hero-content" style={{ paddingTop: "7rem", paddingBottom: "7rem" }}>
+      <section className="hero-section hero-split">
+        <div className="hero-content">
           <h1>Inviting a<br />Return to Self.</h1>
           <h2 className="hero-eyebrow">Rooted in tradition. Applied to life.</h2>
           <p className="hero-blurb">
@@ -23,6 +24,16 @@ export default function Home() {
             <Link href="/movement-practice" className="home-btn-primary">Explore the Practice</Link>
             <Link href="/rmp/starting-point" className="home-btn-text">Find your starting point &rarr;</Link>
           </div>
+        </div>
+        <div className="hero-figure">
+          <Image
+            src="/images/gp_rmpBG_007_sm.jpg"
+            alt=""
+            fill
+            priority
+            sizes="(max-width: 900px) 100vw, 42vw"
+            className="hero-figure-img"
+          />
         </div>
       </section>
 
@@ -51,20 +62,50 @@ export default function Home() {
       <section className="home-paths-section">
         <div className="home-paths-grid">
           {PATHS.map((p) => (
-            <div key={p.href} className="home-path-item">
-              <div className="home-path-bg-img" />
+            <Link key={p.href} href={p.href} className="home-path-item">
+              <div className="home-path-bg-img" aria-hidden>
+                <Image
+                  src={p.img}
+                  alt=""
+                  fill
+                  sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 25vw"
+                  className="home-path-img"
+                />
+              </div>
               <div className="home-path-content">
                 <span className="home-path-num">{p.num}</span>
                 <h3 className="home-path-title">{p.title}</h3>
                 <p className="home-path-desc">{p.desc}</p>
-                <Link href={p.href} className="home-path-arrow" aria-label={`Go to ${p.title}`}>&rarr;</Link>
+                <span className="home-path-arrow" aria-hidden>&rarr;</span>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </section>
 
       <style>{`
+        /* ── Split hero ── */
+        .hero-split {
+          display: grid;
+          grid-template-columns: 1fr 42%;
+          align-items: center;
+          gap: 0;
+        }
+        .hero-split .hero-content {
+          padding-top: 6rem;
+          padding-bottom: 6rem;
+        }
+        .hero-figure {
+          align-self: stretch;
+          position: relative;
+          overflow: hidden;
+        }
+        .hero-figure-img {
+          object-fit: cover;
+          object-position: center;
+          filter: grayscale(100%) contrast(1.05);
+        }
+
         /* ── Hero actions ── */
         .home-hero-actions {
           display: flex;
@@ -162,8 +203,47 @@ export default function Home() {
           gap: 0.75rem;
           position: relative;
           overflow: hidden;
+          text-decoration: none;
+          color: inherit;
         }
         .home-path-item:last-child { border-right: none; }
+        .home-path-bg-img {
+          position: absolute;
+          inset: 0;
+          opacity: 0;
+          transform: scale(1.06);
+          transition: opacity 0.6s var(--easing), transform 0.9s var(--easing);
+        }
+        .home-path-img {
+          object-fit: cover;
+          object-position: center;
+          filter: grayscale(100%);
+        }
+        .home-path-bg-img::after {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(to top, rgba(26,25,22,0.82), rgba(26,25,22,0.45));
+        }
+        .home-path-item:hover .home-path-bg-img,
+        .home-path-item:focus-visible .home-path-bg-img {
+          opacity: 1;
+          transform: scale(1);
+        }
+        .home-path-item:hover .home-path-title,
+        .home-path-item:hover .home-path-desc,
+        .home-path-item:hover .home-path-arrow,
+        .home-path-item:focus-visible .home-path-title,
+        .home-path-item:focus-visible .home-path-desc,
+        .home-path-item:focus-visible .home-path-arrow {
+          color: var(--color-text-inverse);
+          opacity: 1;
+        }
+        .home-path-content > * { transition: color 0.4s var(--easing), opacity 0.4s var(--easing); }
+        @media (prefers-reduced-motion: reduce) {
+          .home-path-bg-img { transition: opacity 0.2s linear; transform: none; }
+          .home-path-item:hover .home-path-bg-img { transform: none; }
+        }
         .home-path-content {
           position: relative;
           z-index: 1;
@@ -208,6 +288,12 @@ export default function Home() {
         .home-path-arrow:hover { opacity: 1; }
 
         @media (max-width: 900px) {
+          .hero-split {
+            grid-template-columns: 1fr;
+            grid-template-rows: auto 45vh;
+            align-items: start;
+          }
+          .hero-split .hero-content { padding-top: 4rem; padding-bottom: 3rem; }
           .home-phil { grid-template-columns: 1fr; gap: 3rem; }
           .home-phil-right { padding-left: 0; border-left: none; padding-top: 3rem; border-top: 1px solid var(--color-border); }
           .home-paths-grid { grid-template-columns: 1fr 1fr; }

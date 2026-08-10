@@ -17,9 +17,31 @@ const dmMono = DM_Mono({
   display: "swap",
 });
 
+const DESCRIPTION =
+  "Grilo Preto — Mestre de Capoeira and movement teacher in Denver. Two decades of practice, taught as a path of movement, culture, and self-mastery.";
+
 export const metadata: Metadata = {
-  title: "Grilo Preto",
-  description: "Movement practice rooted in capoeira",
+  metadataBase: new URL("https://grilopreto.com"),
+  title: {
+    default: "Grilo Preto — Inviting a Return to Self",
+    template: "%s · Grilo Preto",
+  },
+  description: DESCRIPTION,
+  openGraph: {
+    title: "Grilo Preto — Inviting a Return to Self",
+    description: DESCRIPTION,
+    url: "/",
+    siteName: "Grilo Preto",
+    locale: "en_US",
+    type: "website",
+    images: [{ url: "/images/hero-hand.jpg", width: 2560, height: 1440, alt: "Grilo Preto" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Grilo Preto — Inviting a Return to Self",
+    description: DESCRIPTION,
+    images: ["/images/hero-hand.jpg"],
+  },
 };
 
 export default function RootLayout({

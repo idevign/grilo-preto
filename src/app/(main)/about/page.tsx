@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { EASE } from "@/components/animations";
 import { StorySection } from "@/components/StorySection";
@@ -13,7 +14,15 @@ export default function About() {
     <main>
 
       {/* ── Hero ── */}
-      <section className="hero-section">
+      <section className="hero-section hero-media">
+        <Image
+          src="/images/gp_rmpBG_003_sm.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="hero-media-img"
+        />
         <div className="hero-content">
           <h1
             style={{
